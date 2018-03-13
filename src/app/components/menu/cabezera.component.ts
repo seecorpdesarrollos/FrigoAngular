@@ -1,0 +1,68 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import {LoginService} from '../../servicios/login.service';
+declare var $;
+@Component({
+  selector: 'app-cabezera',
+  templateUrl: './cabezera.component.html',
+  styles: []
+})
+export class CabezeraComponent implements OnInit {
+
+  constructor(
+    private rura:Router,
+    private servicio:LoginService,
+  ) { }
+
+  ngOnInit() {
+
+  }
+
+
+  panel(){
+    $(document).ready(function(){
+
+    // $('#toggle-btn').on('click', function (e) {
+        // e.preventDefault();
+        $(this).toggleClass('active');
+
+        $('.side-navbar').toggleClass('shrinked');
+        $('.content-inner').toggleClass('active');
+        $(document).trigger('sidebarChanged');
+
+        if ($(window).outerWidth() > 1183) {
+            if ($('#toggle-btn').hasClass('active')) {
+                $('.navbar-header .brand-small').hide();
+                $('.navbar-header .brand-big').show();
+            } else {
+                $('.navbar-header .brand-small').show();
+                $('.navbar-header .brand-big').hide();
+            }
+        }
+
+        if ($(window).outerWidth() < 1183) {
+            $('.navbar-header .brand-small').show();
+        }
+    });
+
+  // });
+  }
+
+
+  idAdmin:string;
+  salir(){
+
+    this.idAdmin = localStorage.getItem('idAdmin');
+
+   this.servicio.updateUsuario(this.idAdmin)
+   .subscribe(res=>{
+   })
+   localStorage.removeItem('nombreAdmin' );
+   localStorage.removeItem('idAdmin' );
+   localStorage.removeItem('rol' );
+   localStorage.removeItem('fechaCreado');
+   this.rura.navigate(['/login']);
+   // location.reload();
+  }
+
+}

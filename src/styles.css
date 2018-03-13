@@ -1,1 +1,76 @@
 /* You can add global styles to this file, and also import other style files */
+.main{
+  margin:20px;
+  width: 95%;
+}
+#toggle-btn{
+  cursor: pointer;
+}
+.fondo{
+  padding: 5px;
+  background: #fff;
+  border: 1px solid #d0d0d0;
+   box-shadow: 0 0 8px #d0d0d0
+}
+.tops{
+  margin-top: 40px;
+}
+.to{
+  margin-top: 10px;
+}
+.modal-content{
+padding: 5px;
+}
+
+textarea:focus, input:focus,.form-control:focus, input[type]:focus {
+    border-color: #fff;
+    box-shadow: 0 1px 1px rgba(249, 249, 249, 0.93)inset, 0 0 8px rgba(249, 249, 249, 0.93);
+    outline: 0 none;
+}
+
+.errorLogin{
+  margin-top: 10px;
+}
+
+.top{
+  margin-top: 80px;
+  background: rgb(58, 58, 60);
+  opacity: 0.9;
+}
+.alert{
+  border-radius: 4px;
+}
+.hr{
+  border: 1px solid rgb(56, 35, 184);
+}
+.alert-infos{
+  background-color: rgb(210, 43, 43);
+  color:#fff;
+}
+body{
+  background: url('assets/img/Optimized-fondo.jpg');
+}
+.lo{
+  margin-right:20px;
+}
+
+.login{
+  /* position: absolute; */
+  z-index: 1;
+  margin-top: -50px;
+
+}
+.activo{
+border-bottom: 2px solid rgb(215, 51, 28)!important;
+}
+
+.spiner{
+margin-top: 50px;
+}
+
+.input-group-text{
+  margin-right: 15px!important;
+}
+.modal {
+  background: rgba(0,0,0,0.5);
+}

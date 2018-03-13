@@ -1,0 +1,67 @@
+<form #forma="ngForm" (ngSubmit)="agregarPro(forma)">
+<div class="container to animated fadeIn">
+   <div class="row">
+      <div class="col-md-12">
+        <nav aria-label="breadcrumb">
+         <ol class="breadcrumb text-center">
+          <li class="breadcrumb-item active " aria-current="page">Agregar Productos</li>
+         </ol>
+       </nav>
+      </div>
+     <div class="col-md-6 to">
+       <div class="input-group mb-3">
+        <div class="input-group-prepend">
+         <span class="input-group-text" id="basic-addon1"><i class="fa fa-edit"> </i> </span>
+        </div>
+        <input type="text" name="dueHacienda" ngModel class="form-control" placeholder="Dueño Hacienda" aria-label="Username" aria-describedby="basic-addon1" required autocomplete="off">
+     </div>
+     </div>
+     <div class="col-md-6 to">
+       <div class="input-group mb-3">
+        <div class="input-group-prepend">
+         <span class="input-group-text" id="basic-addon1"><i class="fa fa-edit"> </i> </span>
+        </div>
+        <input type="number" min="0" name="cantCabeza" ngModel class="form-control" placeholder="Cantidad de Cabezas" aria-label="Username" aria-describedby="basic-addon1" required autocomplete="off">
+     </div>
+     </div>
+
+     <div class="col-md-6 to">
+       <div class="input-group mb-3">
+        <div class="input-group-prepend">
+         <span class="input-group-text" id="basic-addon1"><i class="fa fa-edit"> </i> </span>
+        </div>
+        <input type="number" min="0" name="cantMedia" ngModel class="form-control" placeholder="Cantidad de Medias" aria-label="Username" aria-describedby="basic-addon1" required autocomplete="off">
+     </div>
+     </div>
+     <div class="col-md-6 to">
+       <div class="input-group mb-3">
+        <div class="input-group-prepend">
+         <span class="input-group-text" id="basic-addon1"><i class="fa fa-edit"> </i> </span>
+        </div>
+        <input type="date" name="fechaFaena" ngModel class="form-control" placeholder="Fecha de Faena" aria-label="Username" aria-describedby="basic-addon1" required autocomplete="off">
+     </div>
+     </div>
+ <br>
+     <div class="col-md-6 to">
+       <div class="input-group mb-3">
+        <div class="input-group-prepend">
+         <span class="input-group-text" id="basic-addon1"><i class="fa fa-edit"> </i> </span>
+        </div>
+        <input type="number" min="0"  name="cantKilos" ngModel class="form-control" placeholder="Cantidad de Kilos" aria-label="Username" aria-describedby="basic-addon1" required autocomplete="off">
+     </div>
+     </div>
+     <div class="col-md-6 to">
+       <div class="input-group mb-3">
+        <div class="input-group-prepend">
+         <span class="input-group-text" id="basic-addon1"><i class="fa fa-edit"> </i> </span>
+        </div>
+        <input type="text" name="nroTropa" ngModel class="form-control" placeholder="Número de Tropa" aria-label="Username" aria-describedby="basic-addon1" required autocomplete="off">
+     </div>
+     </div>
+      <div class="col-md-12 to">
+        <button [disabled]="forma.invalid"
+        type="submit" class="btn btn-primary btn-block btn-lg">Agregar Producto</button>
+      </div>
+   </div>
+</div>
+</form>

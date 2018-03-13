@@ -1,0 +1,32 @@
+
+
+
+
+    <div class="page">
+
+      <app-cabezera></app-cabezera>
+      <div class="page-content d-flex align-items-stretch">
+
+     <app-menu></app-menu>
+
+       <div class="content-inner">
+
+             <header class="page-header">
+              <div class="container-fluid">
+                <h2 class="no-margin-bottom text-center">Inventario</h2>
+              </div>
+            </header>
+
+         <div class="container main">
+            <div class="fondo">
+              <nav class="nav nav-pills nav-fill">
+               <a class="nav-item nav-link" routerLinkActive="activo"  [routerLink]="['listadoInv']">Listado Inventario</a>
+               <a class="nav-item nav-link" routerLinkActive="activo"  [routerLink]="['agregarInv']" >Agregar Inventario</a>
+               <a class="nav-item nav-link" routerLinkActive="activo"  [routerLink]="['editarInv']" >Editar Inventario</a>
+              </nav>
+              <router-outlet></router-outlet>
+
+        <app-footer></app-footer>
+        </div>
+      </div>
+    </div>

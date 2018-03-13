@@ -1,0 +1,34 @@
+<form #forma="ngForm" (ngSubmit)="agregarInv(forma)">
+<div class="container to animated fadeIn">
+   <div class="row">
+      <div class="col-md-12">
+        <nav aria-label="breadcrumb">
+         <ol class="breadcrumb text-center">
+          <li class="breadcrumb-item active " aria-current="page">Agregar Inventario</li>
+         </ol>
+       </nav>
+      </div>
+     <div class="col-md-6 to">
+       <div class="input-group mb-3">
+        <div class="input-group-prepend">
+         <span class="input-group-text" id="basic-addon1"><i class="fa fa-edit"> </i> </span>
+        </div>
+        <input type="number" name="kiloMedia" ngModel class="form-control" placeholder="Peso de la Media" aria-label="Username" aria-describedby="basic-addon1" required autocomplete="off">
+     </div>
+     </div>
+     <div class="col-md-6 to">
+       <div class="input-group mb-3">
+        <div class="input-group-prepend">
+         <span class="input-group-text" id="basic-addon1"><i class="fa fa-edit"> </i> </span>
+        </div>
+        <input type="number" name="nroTropa" ngModel class="form-control" placeholder="Número de tropa" aria-label="Username" aria-describedby="basic-addon1" required autocomplete="off">
+     </div>
+     </div>
+
+      <div class="col-md-12 to">
+        <button [disabled]="forma.invalid"
+        type="submit" class="btn btn-primary btn-block btn-lg">Agregar Inventario</button>
+      </div>
+   </div>
+</div>
+</form>
