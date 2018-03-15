@@ -26,6 +26,7 @@ import {LoginService} from './servicios/login.service';
 import {ProductosService} from './servicios/productos.service';
 import {InventarioService} from './servicios/inventario.service';
 import {VendedoresService} from './servicios/vendedores.service';
+import {ClientesService} from './servicios/clientes.service';
 
 
 import { CabezeraComponent } from './components/menu/cabezera.component';
@@ -39,7 +40,7 @@ import { InventarioComponent } from './components/inventario/inventario.componen
 import { ListaInvComponent } from './components/inventario/lista-inv/lista-inv.component';
 import { AgregarInvComponent } from './components/inventario/agregar-inv/agregar-inv.component';
 import { EditarInvComponent } from './components/inventario/editar-inv/editar-inv.component';
-import {ExitosInvComponent} from './components/inventario/exitosInv/exitos-inv.component';
+import {ExitosInvComponent} from './components/inventario/exitos-inv/exitos-inv.component';
 import { DataFilterPipe } from './pipes/data-filter.pipe';
 import { VendedoresComponent } from './components/vendedores/vendedores.component';
 import { ListadoVendedoresComponent } from './components/vendedores/listado-vendedores/listado-vendedores.component';
@@ -49,6 +50,10 @@ import { ClientesComponent } from './components/clientes/clientes.component';
 import { ListadoClientesComponent } from './components/clientes/listado-clientes/listado-clientes.component';
 import { AgregarClientesComponent } from './components/clientes/agregar-clientes/agregar-clientes.component';
 import { EditarClientesComponent } from './components/clientes/editar-clientes/editar-clientes.component';
+import { ExitosVendedoresComponent } from './components/vendedores/exitos-vendedores/exitos-vendedores.component';
+import { InactivosVendedoresComponent } from './components/vendedores/inactivos-vendedores/inactivos-vendedores.component';
+import { ExitosClientesComponent } from './components/clientes/exitos-clientes/exitos-clientes.component';
+import { InactivosClientesComponent } from './components/clientes/inactivos-clientes/inactivos-clientes.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,7 +82,11 @@ import { EditarClientesComponent } from './components/clientes/editar-clientes/e
     ClientesComponent,
     ListadoClientesComponent,
     AgregarClientesComponent,
-    EditarClientesComponent
+    EditarClientesComponent,
+    ExitosVendedoresComponent,
+    InactivosVendedoresComponent,
+    ExitosClientesComponent,
+    InactivosClientesComponent
   ],
   imports: [
     BrowserModule,
@@ -93,7 +102,8 @@ import { EditarClientesComponent } from './components/clientes/editar-clientes/e
    LoginService,
    ProductosService,
    InventarioService,
-   VendedoresService
+   VendedoresService,
+   ClientesService
   ],
   bootstrap: [AppComponent],
   schemas: [ NO_ERRORS_SCHEMA ],

@@ -16,27 +16,31 @@ export class MenuComponent implements OnInit {
    }
 
   ngOnInit(){
-
+  this.datosAdmin();
    }
 
   nombreAdmin:string;
   rol:string;
   fechaCreado:any;
   idAdmin:any;
+  tipoMenu:boolean = true;
   datosAdmin(){
     this.nombreAdmin = localStorage.getItem('nombreAdmin');
     this.rol = localStorage.getItem('rol');
     if (this.rol == 'A') {
+      this.tipoMenu = true;
         this.rol = 'Administrador';
     }else{
       this.rol = 'Usuario';
+      this.tipoMenu = false;
+
     }
     this.fechaCreado = localStorage.getItem('fechaCreado');
     this.idAdmin = localStorage.getItem('idAdmin');
 
     this.servi.getUsuarioActual(this.idAdmin)
-    .subscribe(res=>{
-     console.log(res);
+    .subscribe(()=>{
+     // console.log(res);
     });
 
   }

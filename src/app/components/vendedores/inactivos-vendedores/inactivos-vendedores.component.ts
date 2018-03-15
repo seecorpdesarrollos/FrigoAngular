@@ -1,19 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import {VendedoresService} from '../../../servicios/vendedores.service';
 import { Router , ActivatedRoute } from '@angular/router';
-
 declare var $;
 @Component({
-  selector: 'app-listado-vendedores',
-  templateUrl: './listado-vendedores.component.html',
+  selector: 'app-inactivos-vendedores',
+  templateUrl: './inactivos-vendedores.component.html',
   styles: []
 })
-export class ListadoVendedoresComponent implements OnInit {
+export class InactivosVendedoresComponent implements OnInit {
 
-  constructor( private service:VendedoresService, private ruta:Router) { }
+  constructor(private service:VendedoresService, private ruta:Router) { }
 
   ngOnInit() {
-    this.getVendedores();
+    this.getVendedoresInactivos();
   }
 
 
@@ -23,37 +22,37 @@ export class ListadoVendedoresComponent implements OnInit {
      public data: any[];
      public filterQuery = "";
      public rowsOnPage = 2;
-    nada:boolean=false;
-      getVendedores(){
-        this.service.getVendedores()
+  nada:boolean=false;
+      getVendedoresInactivos(){
+        this.service.getVendedoresInactivos()
         .subscribe(res=>{
           this.loader = true;
           this.data= res;
-           if(this.data == undefined){
-             this.nada= false;
-           }else{
-             this.nada =true;
-           }
+          if(this.data == undefined){
+            this.nada= false;
+          }else{
+            this.nada =true;
+          }
+
         })
       }
 
       nombre:string;
       id:number
-      bajaVendedor(idVendedor, nombreVendedor){
+      altaVendedor(idVendedor, nombreVendedor){
         this.nombre = nombreVendedor
         this.id = idVendedor
         $('#vendedor').modal('show');
       }
 
-      eliminar(id){
-        this.service.bajaVededorId(id)
+      alta(id){
+        this.service.altaVededorId(id)
         .subscribe(()=>{
-          this.ruta.navigate(['vendedores/exitosVen/baja']);
+          this.ruta.navigate(['vendedores/exitosVen/alta']);
           setTimeout(()=>{
             this.ruta.navigate(['vendedores']);
 
           },4000);
         })
       }
-
 }
