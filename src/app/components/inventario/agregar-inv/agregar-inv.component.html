@@ -21,14 +21,50 @@
         <div class="input-group-prepend">
          <span class="input-group-text" id="basic-addon1"><i class="fa fa-edit"> </i> </span>
         </div>
-        <input type="number" name="nroTropa" ngModel class="form-control" placeholder="Número de tropa" aria-label="Username" aria-describedby="basic-addon1" required autocomplete="off">
+        <input type="number" (change)="comprobarInventario(forma)" name="nroTropa" ngModel class="form-control" placeholder="Número de tropa" aria-label="Username" aria-describedby="basic-addon1" required autocomplete="off">
      </div>
      </div>
 
-      <div class="col-md-12 to">
+      <div class="col-md-12 to" *ngIf="comprobarInv">
         <button [disabled]="forma.invalid"
         type="submit" class="btn btn-primary btn-block btn-lg">Agregar Inventario</button>
       </div>
+
+      <div  *ngIf="!comprobarInv">
+        <div class="col-md-12">
+          <span class="alert alert-danger">El Nro. de tropa no exite. Consulte la tabla productos</span>
+       </div>
+     </div>
+     <br><br>
+ <div *ngIf="!comprobarInv">
+   <div class="col-md-12">
+     <span class="alert alert-info">Modifique el Nro. de tropa de las media res y has click en cualquier parte de la pantalla.</span>
+   </div>
+ </div>
    </div>
 </div>
 </form>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="noMedias" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Tropa Nro. {{ nroTropa }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="alert alert-danger">Las medias para este Nro. Tropa ya estan completas</p>
+        <p class="alert alert-primary">Por favor revisar la sección de productos.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+
+      </div>
+    </div>
+  </div>
+</div>

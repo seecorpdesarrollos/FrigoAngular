@@ -13,6 +13,11 @@ import {AgregarInvComponent} from './components/inventario/agregar-inv/agregar-i
 import {EditarInvComponent} from './components/inventario/editar-inv/editar-inv.component';
 import {ListaInvComponent} from './components/inventario/lista-inv/lista-inv.component';
 import {ExitosInvComponent} from './components/inventario/exitos-inv/exitos-inv.component';
+import {CuarteoComponent} from './components/inventario/cuarteo/cuarteo.component';
+import {CuarteoListComponent} from './components/inventario/cuarteo-list/cuarteo-list.component';
+import {ExitosCuarteoComponent} from './components/inventario/cuarteo-list/exitos-cuarteo/exitos-cuarteo.component';
+import {AgregarCuarteoComponent} from './components/inventario/agregar-cuarteo/agregar-cuarteo.component';
+import {InventarioCuarteoComponent} from './components/inventario/inventario-cuarteo/inventario-cuarteo.component';
 
 import {VendedoresComponent} from './components/vendedores/vendedores.component';
 import {ListadoVendedoresComponent} from './components/vendedores/listado-vendedores/listado-vendedores.component';
@@ -24,6 +29,11 @@ import {InactivosVendedoresComponent} from './components/vendedores/inactivos-ve
 // LoginGuard
 import {LoginGuard} from './login.guard';
 import {LogoutGuard} from './logout.guard';
+// ventas
+import { VentasComponent } from './components/ventas/ventas.component';
+import { VentasVComponent } from './components/ventas/ventas/ventas.component';
+import { CarritoComponent } from './components/ventas/carrito/carrito.component';
+import { FacturasComponent } from './components/ventas/facturas/facturas.component';
 // clientes
 import { ClientesComponent } from './components/clientes/clientes.component';
 import { ListadoClientesComponent } from './components/clientes/listado-clientes/listado-clientes.component';
@@ -32,9 +42,36 @@ import { AgregarClientesComponent } from './components/clientes/agregar-clientes
 import { EditarClientesComponent } from './components/clientes/editar-clientes/editar-clientes.component';
 import { InactivosClientesComponent } from './components/clientes/inactivos-clientes/inactivos-clientes.component';
 
+
+// cuentas
+import {CuentasComponent} from './components/cuentas/cuentas.component';
+import {ListadoCuentasComponent} from './components/cuentas/listado/listado.component';
+import {GenerarPagosComponent} from './components/cuentas/generar-pagos/generar-pagos.component';
+import { ListadoSaldosComponent } from './components/cuentas/listado-saldos/listado-saldos.component';
+import { CobrosComponent } from './components/cuentas/cobros/cobros.component';
+import { ListaPagosComponent } from './components/cuentas/lista-pagos/lista-pagos.component';
+
 const APP_ROUTES: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [LogoutGuard] },
   { path: 'principal', component: PrincipalComponent, canActivate:[LoginGuard] },
+  { path: 'cuentas', component: CuentasComponent, canActivate:[LoginGuard],
+  children:[
+    { path: 'listadoCuentas', component: ListadoCuentasComponent },
+    { path: 'pagos', component: GenerarPagosComponent },
+    { path: 'listaPagos', component: ListaPagosComponent },
+    { path: 'cobros', component: CobrosComponent },
+    { path: 'listadoSaldos', component: ListadoSaldosComponent },
+    { path: '**', pathMatch: 'full', redirectTo: 'listadoCuentas'}
+  ]
+ },
+  { path: 'ventas', component: VentasComponent, canActivate:[LoginGuard],
+   children:[
+    { path: 'ventas1', component: VentasVComponent },
+    { path: 'reportes', component: CarritoComponent },
+    { path: 'facturas', component: FacturasComponent },
+    { path: '**', pathMatch: 'full', redirectTo: 'ventas1'}
+   ]
+},
   { path: 'inventario', component: InventarioComponent, canActivate:[LoginGuard],
    children:[
      { path: 'listadoInv', component: ListaInvComponent },
@@ -44,6 +81,15 @@ const APP_ROUTES: Routes = [
      { path: '**', pathMatch: 'full', redirectTo: 'listadoInv'}
    ]
  },
+ { path: 'cuarteo', component: CuarteoComponent, canActivate:[LoginGuard],
+  children:[
+    { path: 'cuarteoList', component: CuarteoListComponent },
+    { path: 'inventarioCuerteo', component: InventarioCuarteoComponent },
+   { path: 'cuarteoAdd', component: AgregarCuarteoComponent },
+    { path: 'exitosCuarteo/:id', component: ExitosCuarteoComponent },
+    { path: '**', pathMatch: 'full', redirectTo: 'cuarteoList'}
+  ]
+},
  { path: 'vendedores', component: VendedoresComponent, canActivate:[LoginGuard],
   children:[
     { path: 'listadoVen', component: ListadoVendedoresComponent },

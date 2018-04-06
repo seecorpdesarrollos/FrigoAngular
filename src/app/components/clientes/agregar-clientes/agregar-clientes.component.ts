@@ -32,8 +32,8 @@ export class AgregarClientesComponent implements OnInit {
     }else{
 
       this.servicio.addCliente(this.nombreCliente, this.telefonoCliente, this.direccionCliente)
-      .subscribe(res=>{
-        this.ruta.navigate(['clientes']);
+      .subscribe(()=>{
+       this.ruta.navigate(['clientes']);
 
       })
     }

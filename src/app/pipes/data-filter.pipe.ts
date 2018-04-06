@@ -15,7 +15,11 @@ export class DataFilterPipe implements PipeTransform {
         row.fechaFaena+
         row.estado+
         row.nombreVendedor+
-        row.nombreCliente
+        row.nombreCliente+
+        row.nroFactura+
+        row.fecha+
+        row.nroCheque+
+        row.banco
       ).toLowerCase().indexOf(query) > -1
 
     );

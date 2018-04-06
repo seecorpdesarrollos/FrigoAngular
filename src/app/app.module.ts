@@ -54,6 +54,23 @@ import { ExitosVendedoresComponent } from './components/vendedores/exitos-vended
 import { InactivosVendedoresComponent } from './components/vendedores/inactivos-vendedores/inactivos-vendedores.component';
 import { ExitosClientesComponent } from './components/clientes/exitos-clientes/exitos-clientes.component';
 import { InactivosClientesComponent } from './components/clientes/inactivos-clientes/inactivos-clientes.component';
+import { VentasComponent } from './components/ventas/ventas.component';
+import { VentasVComponent } from './components/ventas/ventas/ventas.component';
+import { CarritoComponent } from './components/ventas/carrito/carrito.component';
+import { FacturasComponent } from './components/ventas/facturas/facturas.component';
+import { CuarteoComponent } from './components/inventario/cuarteo/cuarteo.component';
+import { CuarteoListComponent } from './components/inventario/cuarteo-list/cuarteo-list.component';
+import { ExitosCuarteoComponent } from './components/inventario/cuarteo-list/exitos-cuarteo/exitos-cuarteo.component';
+import { AgregarCuarteoComponent } from './components/inventario/agregar-cuarteo/agregar-cuarteo.component';
+import { InventarioCuarteoComponent } from './components/inventario/inventario-cuarteo/inventario-cuarteo.component';
+import { CuentasComponent } from './components/cuentas/cuentas.component';
+import {ListadoCuentasComponent} from './components/cuentas/listado/listado.component';
+import { GenerarPagosComponent } from './components/cuentas/generar-pagos/generar-pagos.component';
+import { ListadoSaldosComponent } from './components/cuentas/listado-saldos/listado-saldos.component';
+import { CuentasService } from './servicios/cuentas.service';
+import { CobrosComponent } from './components/cuentas/cobros/cobros.component';
+import { ListaPagosComponent } from './components/cuentas/lista-pagos/lista-pagos.component';
+import { ConsultasService } from './servicios/consultas.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,7 +103,22 @@ import { InactivosClientesComponent } from './components/clientes/inactivos-clie
     ExitosVendedoresComponent,
     InactivosVendedoresComponent,
     ExitosClientesComponent,
-    InactivosClientesComponent
+    InactivosClientesComponent,
+    VentasComponent,
+    VentasVComponent,
+    CarritoComponent,
+    FacturasComponent,
+    CuarteoComponent,
+    CuarteoListComponent,
+    ExitosCuarteoComponent,
+    AgregarCuarteoComponent,
+    InventarioCuarteoComponent,
+    CuentasComponent,
+    ListadoCuentasComponent,
+    GenerarPagosComponent,
+    ListadoSaldosComponent,
+    CobrosComponent,
+    ListaPagosComponent
   ],
   imports: [
     BrowserModule,
@@ -103,7 +135,9 @@ import { InactivosClientesComponent } from './components/clientes/inactivos-clie
    ProductosService,
    InventarioService,
    VendedoresService,
-   ClientesService
+   ClientesService,
+   CuentasService,
+   ConsultasService
   ],
   bootstrap: [AppComponent],
   schemas: [ NO_ERRORS_SCHEMA ],

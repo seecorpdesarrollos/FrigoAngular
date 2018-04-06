@@ -23,10 +23,10 @@ export class ListaInvComponent implements OnInit {
   totalMedia:any=0;
    public data: any[];
    public filterQuery = "";
-   public rowsOnPage = 2;
+   public rowsOnPage = 10;
 
     getInventario(){
-      this.service.getInventario()
+      this.service.getInventarioTotal()
       .subscribe(res=>{
         this.loader = true;
         this.data= res;

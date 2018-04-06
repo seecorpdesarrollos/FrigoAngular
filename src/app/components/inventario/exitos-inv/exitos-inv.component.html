@@ -1,4 +1,4 @@
-<div class="row tops" *ngIf="!dato">
+<div class="row tops" *ngIf="dato">
   <div class="col">
     <div class="card text-center">
   <h5 class="card-header text-success">Exitos!!</h5>
@@ -11,8 +11,21 @@
   </div>
 </div>
 
+<div class="row tops" *ngIf="datos">
+  <div class="col">
+    <div class="card text-center">
+  <h5 class="card-header text-success">Exitos!!</h5>
+  <div class="card-body">
+    <h5 class="card-title">Inventario Cuarteo Agregado!</h5>
+    <p class="card-text text-info">El inventario del cuarteo ha sido <strong>agregado</strong> correctamente en la base de datos.</p>
+    <button (click)="back()" class="btn btn-danger">Volver</button>
+  </div>
+</div>
+  </div>
+</div>
 
-<div class="row tops" *ngIf="dato">
+
+<!-- <div class="row tops" *ngIf="dato">
   <div class="col">
     <div class="card text-center">
   <h5 class="card-header text-success">Exitos!!</h5>
@@ -23,4 +36,4 @@
   </div>
 </div>
   </div>
-</div>
+</div> -->

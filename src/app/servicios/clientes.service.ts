@@ -12,6 +12,12 @@ export class ClientesService {
       .map(res=>res.json())
   }
 
+  addDeuda(idCliente,  montoDeuda, idVendedor) {
+    return this.http.post("http://localhost/Frigorifico/controllers/clienteController.php?id=deudaCliente",
+      {'idCliente': idCliente, 'montoDeuda': montoDeuda, 'idVendedor':idVendedor })
+      .map(res=>res.json())
+  }
+
   vendedor:any;
     getClientes() {
     return this.http.get("http://localhost/Frigorifico/controllers/clienteController.php?id=getCli")
@@ -44,6 +50,26 @@ getClienteId(idCliente) {
      this.getCli = res;
      return this.getCli.json();
    });
+}
+
+
+getSaldo(idCliente) {
+ return this.http.post("http://localhost/Frigorifico/controllers/clienteController.php?id=getSaldo",
+  { 'idCliente': idCliente })
+   .map(res => {
+     return res.json();
+   });
+}
+
+
+
+getClienteFacturadoId(idCliente) {
+return this.http.post("http://localhost/Frigorifico/controllers/clienteController.php?id=getClienteFacturadoId",
+{ 'idCliente': idCliente })
+ .map(res => {
+
+   return res.json();
+ });
 }
 
 baja: any;

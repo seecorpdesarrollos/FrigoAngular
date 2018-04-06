@@ -18,14 +18,13 @@ export class ExitosInvComponent implements OnInit {
   datos:boolean=false;
   exitos(){
 
-     if (this.id == 'borrar') {
-      this.dato = true;
-    }else if(this.id == "editar"){
-      this.dato=false;
-    }else{
-       this.datos = true;
+   if(this.id == "editar"){
+      this.dato=true;
     }
-   }
+    if(this.id== 'add'){
+      this.datos = true;
+    }
+  }
   back(){
     this.ruta.navigate(['../inventario']);
   }

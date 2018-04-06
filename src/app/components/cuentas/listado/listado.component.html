@@ -1,0 +1,150 @@
+<div class="container to animated fadeIn" >
+  <nav aria-label="breadcrumb to">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page"> <i class="fa fa-list"></i> Listado de Cuentas Corrientes por Clientes</li>
+  </ol>
+  </nav>
+
+  <hr>
+
+      <form #forma="ngForm" (ngSubmit)="cli(forma)" *ngIf="formu == false">
+        <div class="row">
+
+          <div class="col-md-3">
+            <input type="date" name="fechaInicial"  ngModel class="form-control" >
+          </div>
+          <div class="col-md-3">
+            <input type="date" name="fechaFinal"  ngModel class="form-control">
+            </div>
+        <div class="col-md-6 to" >
+          <div class="input-group">
+           <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"> </i> </span>
+           </div>
+           <input (keypress)="dataToggle1()" type="text" name="nombreCliente" [(ngModel)]="nombreCliente" autocomplete="off" class="form-control" placeholder="Elija un Cliente" aria-label="Username" aria-describedby="basic-addon1"  autocomplete="off">
+           <input  type="hidden" name="idCliente" [(ngModel)]="idCliente" autocomplete="off" class="form-control" placeholder="Elija un Cliente" aria-label="Username" aria-describedby="basic-addon1"  autocomplete="off" required>
+        </div>
+
+        <div class="product" *ngIf="toggle1">
+            <div class="alert alert-primary text-capitalize">
+             <div (click)="selectCli(item)" class="data" *ngFor="let item of datas | dataFilter : nombreCliente">
+               {{ item.nombreCliente }}
+             </div>
+             </div>
+        </div>
+       </div>
+       <div class="col-md-4"></div>
+       <div class="col-md-4 to">
+            <button [disabled]="forma.invalid"
+            type="submit" class="btn btn-outline-success verifi">Aceptar</button>
+       </div>
+     </div>
+      </form>
+
+      <div class=" to  animated fadeIn" *ngIf="formu == true">
+        <div>
+          <button type="button" (click)="salir()" class="btn btn-outline-success">Nueva Busqueda</button>
+            <br><br>
+          <div id="imprimir">
+               <div class="card hiden" id="hiden">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <h4>{{ todp }}</h4>
+
+                      </div>
+                      <div class="col-md-2"></div>
+                      <div class="col-md-4">
+                        <img src="assets/img/logo.jpg" alt="" width="150">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+          <div class="card">
+            <div class="card-body border border-dark">
+              <h3 class="text-center to">Resumen de Cuentas Corrientes</h3>
+              <div class="row to">
+                <div class="col-md-4">
+                  <h5>Cliente: <span class="text-dark text-capitalize">{{ nombreCliente }} </span></h5>
+
+                </div>
+                <div class="col-md-4">
+                  <h5>Saldo Inicial: <span class="text-dark"> ${{ saldoActual }}</span> </h5>
+
+                </div>
+                <div class="col-md-4">
+                  <h5>Saldo Actual: <span class="text-dark"> ${{ saldoFinal }}</span> </h5>
+
+                </div>
+              </div>
+              <h5 *ngIf="fe == false">Fecha Contable:  <span class="text-dark"> {{ fechaInicial | date: 'dd-MM-yyy' }} al {{ fechaFinal | date: 'dd-MM-yyy'}}</span> </h5>
+              <h5>Saldo Anterior : <span class="text-dark">$ {{toSal}}</span> </h5>
+            </div>
+          </div>
+          <div class="table-responsive " >
+            <table class="table table-bordered table-hover">
+              <thead class="bg-primary text-white ">
+                <tr>
+                  <td scope="col">Fecha</td>
+                  <td scope="col">Comprobante</td>
+                  <td scope="col">Compras</td>
+                  <td scope="col">Pagos</td>
+                  <td scope="col">Saldos</td>
+                  <td scope="col">Cobrador</td>
+
+                </tr>
+              </thead>
+              <tbody *ngIf="sinData == false">
+
+                <tr *ngFor="let cli of tot" >
+
+                  <td>{{ cli.fecha | date: 'dd/MM/yyyy'}}</td>
+                  <td>{{ cli.comprobante }}</td>
+                  <td>{{ cli.entrada  | number}}</td>
+                  <td>{{ cli.pagos  | number}}</td>
+                  <td>{{cli.saldo | number}}</td>
+                  <td>{{cli.nombreVendedor}}</td>     
+                </tr>
+                <tr class="table-warning ">
+                  <td colspan="2"><strong>Movimientos Totales de Cuentas</strong></td>
+                  <td class=""><strong>$ {{ entrada | number }}</strong></td>
+                  <td class=""><strong>$ {{ pagos | number }}</strong></td>
+                  <!-- <td class=""><strong>$ {{ saldo | number }}</strong></td> -->
+                </tr>
+              </tbody>
+              <tr class="table-warning " *ngIf="sinData == true">
+                  <td colspan="5"><strong>Sin movimientos en la de cuentas corriente en el rango de fechas seleccionadas</strong></td>
+                </tr>
+            </table>
+
+            <table class="table table-bordered" *ngIf="sinData == false">
+              <tr class="bg-info text-white">
+                <td>Total Compras</td>
+                <td>Total de Pagos</td>
+                <td>Saldo compras/ pagos</td>
+                <td>Saldo Inicial</td>
+                <td>Saldo Final</td>
+                <td>Variación del Saldo</td>
+              </tr>
+              <tr>
+                <td> ${{ entrada | number}} </td>
+                <td> ${{ pagos | number}}</td>
+                <td>  ${{ entrada - pagos  | number}}</td>
+                <td>  ${{ saldoActual | number }}</td>
+                <td>  ${{ entrada - pagos + saldoActual  | number}}</td>
+                <td class="text-center text-danger">  ${{ entrada - pagos  | number }}</td>
+              </tr>
+            </table>
+
+          </div>
+
+
+        </div>
+        <div class="row" *ngIf="sinData == false">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <button (click)="imprimirCuenta('imprimir')" class="btn btn-outline-danger">Imprimir</button>
+          </div>
+        </div>
+      </div>
+    </div>

@@ -57,7 +57,7 @@
 </tbody>
 <tfoot>
   <td colspan="6">
-    <mfBootstrapPaginator [rowsOnPageSet]="[2,3,5,10,25]"></mfBootstrapPaginator>
+    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
     <span class="alert alert-info"> Cantidad de Medias: {{ data.length }}</span>
     <span class="alert alert-info"> Medias para Vender: {{ totalMedia }}</span>
     <span class="alert alert-info">Kilos disponibles: {{ total }}</span>
@@ -127,7 +127,7 @@
               <td>{{ tropa.kiloMedia }}</td>
               <td>{{tropa.cantKilos}}</td>
               <td>{{tropa.fechaFaena | date : "dd/MM/yyyy"}}</td>
-              <td [ngClass]="{'text-success' : tropa.estado == 'Disponible', 'text-danger' : tropa.estado == 'Vendida'}">{{tropa.estado}}</td>
+              <td [ngClass]="{'text-success' : tropa.estado == 'Disponible', 'text-danger' : tropa.estado == 'Vendida' , 'text-danger' : tropa.estado == 'Cuarteo'}">{{tropa.estado}}</td>
             </tr>
           </tbody>
        </table>
