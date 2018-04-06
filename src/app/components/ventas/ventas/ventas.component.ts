@@ -60,6 +60,8 @@ dataToggle1(){
    this.idInventario = value.idInventario;
    this.toggle =false;
    this.pro = true
+   console.log(this.nroTropa);
+   
  }
 
 
@@ -80,7 +82,7 @@ idCliente:any
     .subscribe(res=>{
       // this.loader = true;
       this.data= res;
-      console.log(this.data);
+      // console.log(this.data);
       
 
     })
@@ -145,7 +147,7 @@ idCliente:any
         this.precio = forma.value.precio;
         this.idInventario = forma.value.idInventario;
 
-        this.serviceInv.temporal1(this.medias, this.precio, this.idInventario)
+        this.serviceInv.temporal1(this.medias,this.nroTropa,  this.precio, this.idInventario)
         .subscribe(res=>{
 
           this.flag = false;

@@ -25,16 +25,12 @@ export class EditarClientesComponent implements OnInit {
   idCliente= this.parametro.snapshot.params['idCliente'];
   cli:any;
   getClienteId(){
-        // $(window).keydown(function(event){
-        //       if(event.keyCode == 13) {
-        //           return false;
-        //         }
-        // });
+       
      this.servicio.getClienteId(this.idCliente)
      .subscribe(res=>{
        this.loader = true;
        this.cli = res
-       // console.log(res)
+        // console.log(res)
      })
 
   }

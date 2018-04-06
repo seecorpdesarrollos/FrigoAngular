@@ -50,6 +50,9 @@ import {GenerarPagosComponent} from './components/cuentas/generar-pagos/generar-
 import { ListadoSaldosComponent } from './components/cuentas/listado-saldos/listado-saldos.component';
 import { CobrosComponent } from './components/cuentas/cobros/cobros.component';
 import { ListaPagosComponent } from './components/cuentas/lista-pagos/lista-pagos.component';
+import { ClientesReportesComponent } from './components/ventas/carrito/clientes-reportes.component';
+import { FechasComponent } from './components/ventas/carrito/fechas.component';
+import { TropasComponent } from './components/ventas/carrito/tropas.component';
 
 const APP_ROUTES: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [LogoutGuard] },
@@ -67,7 +70,16 @@ const APP_ROUTES: Routes = [
   { path: 'ventas', component: VentasComponent, canActivate:[LoginGuard],
    children:[
     { path: 'ventas1', component: VentasVComponent },
-    { path: 'reportes', component: CarritoComponent },
+    { path: 'reportes', component: CarritoComponent,
+    children:[
+
+      { path: 'reportesCli', component: ClientesReportesComponent },
+      { path: 'reportesFechas', component: FechasComponent },
+      { path: 'reportesTropas', component: TropasComponent },   
+      { path: '**', pathMatch: 'full', redirectTo: 'reportesCli'}
+    ]
+  
+  }, 
     { path: 'facturas', component: FacturasComponent },
     { path: '**', pathMatch: 'full', redirectTo: 'ventas1'}
    ]

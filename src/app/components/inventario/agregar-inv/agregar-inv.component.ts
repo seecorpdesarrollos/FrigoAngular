@@ -63,9 +63,11 @@ export class AgregarInvComponent implements OnInit {
 
     // console.log(forma.value.nombreCategoria)
     this.nroTropaComprobar = forma.value.nroTropa
-      // console.log(this.nroTropaComprobar);
+      //  console.log(this.nroTropaComprobar);
       this.servicio.comprobarInv(this.nroTropaComprobar)
       .subscribe( res =>{
+        // console.log(res);
+        
         if (res == 1) {
             this.comprobarInv = true;
         }else{

@@ -71,6 +71,9 @@ import { CuentasService } from './servicios/cuentas.service';
 import { CobrosComponent } from './components/cuentas/cobros/cobros.component';
 import { ListaPagosComponent } from './components/cuentas/lista-pagos/lista-pagos.component';
 import { ConsultasService } from './servicios/consultas.service';
+import { FechasComponent } from './components/ventas/carrito/fechas.component';
+import { TropasComponent } from './components/ventas/carrito/tropas.component';
+import { ClientesReportesComponent } from './components/ventas/carrito/clientes-reportes.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -118,7 +121,10 @@ import { ConsultasService } from './servicios/consultas.service';
     GenerarPagosComponent,
     ListadoSaldosComponent,
     CobrosComponent,
-    ListaPagosComponent
+    ListaPagosComponent,
+    FechasComponent,
+    TropasComponent,
+    ClientesReportesComponent
   ],
   imports: [
     BrowserModule,

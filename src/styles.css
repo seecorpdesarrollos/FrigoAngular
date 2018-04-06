@@ -12,6 +12,9 @@ body{
   margin:20px;
   width: 95%;
 }
+.tops{
+ margin-top: 70px;
+}
 .hiden{
   display: none;
 }

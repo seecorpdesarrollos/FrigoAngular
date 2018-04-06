@@ -29,6 +29,17 @@ export class ClientesService {
       })
   }
 
+  vendedors:any;
+  getClientesTodos() {
+  return this.http.get("http://localhost/Frigorifico/controllers/clienteController.php?id=getCliTodos")
+    .map(resultado => {
+      this.vendedors = resultado;
+      if (this.vendedors._body !== '') {
+        return resultado.json();
+      }
+    })
+}
+
   inactivos:any;
     getClientesInactivos() {
     return this.http.get("http://localhost/Frigorifico/controllers/clienteController.php?id=getCliInactivo")
@@ -45,9 +56,11 @@ export class ClientesService {
 
   getCli: any;
 getClienteId(idCliente) {
- return this.http.post("http://localhost/Frigorifico/controllers/clienteController.php?id=getCliId", { 'idCliente': idCliente })
+ return this.http.post("http://localhost/Frigorifico/controllers/clienteController.php?id=getCliId",
+  { 'idCliente': idCliente })
    .map(res => {
      this.getCli = res;
+    //  console.log(this.getCli);
      return this.getCli.json();
    });
 }

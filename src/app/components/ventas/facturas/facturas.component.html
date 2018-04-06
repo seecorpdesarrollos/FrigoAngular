@@ -127,12 +127,14 @@
           <tr class="text">
 
             <th>Descripción</th>
+            <th>Nro.Tropa</th>
             <th>Kilos</th>
             <th>Precio</th>
             <th>Sub Total</th>
           </tr>
           <tr class="text1"  *ngFor="let datos of todoData">
             <td>  {{ datos.descripcion}}</td>
+            <td>  {{ datos.nroTropa}}</td>
             <td>   {{ datos.kilo}}</td>
             <td>  $ {{ datos.precio | number}}</td>
             <td>  $ {{ datos.precio * datos.kilo | number}}</td>
@@ -145,7 +147,7 @@
           </tr>
           <tr>
              <th scope="row"></th>
-             <td colspan="2">TOTAL</td>
+             <td colspan="3">TOTAL</td>
              <td class="text1">$ {{ totalVenta | number }}</td>
            </tr>
           </table>

@@ -71,7 +71,7 @@ this.todp = diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMo
    public rowsOnPage = 2;
   nada:boolean=false;
     getClientes(){
-      this.service.getClientes()
+      this.service.getClientesTodos()
       .subscribe(res=>{
         this.loader = true;
         this.datas= res;

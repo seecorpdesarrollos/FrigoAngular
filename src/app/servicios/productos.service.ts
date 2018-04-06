@@ -43,10 +43,22 @@ deleteCategoria(idProductos){
 
   getPros: any;
 getProductosId(idProductos) {
- return this.http.post("http://localhost/Frigorifico/controllers/productosControllers.php?id=editarProdId", { 'idProductos': idProductos })
+ return this.http.post("http://localhost/Frigorifico/controllers/productosControllers.php?id=editarProdId", 
+ { 'idProductos': idProductos })
    .map(res => {
      this.getPros = res;
      return this.getPros.json();
+   });
+}
+
+
+getTropa: any;
+getTropas(nroTropa) {
+ return this.http.post("http://localhost/Frigorifico/controllers/reportesController.php?id=getTropa", 
+ { 'nroTropa': nroTropa })
+   .map(res => {
+     this.getTropa = res;
+     return this.getTropa.json();
    });
 }
 

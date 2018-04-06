@@ -165,9 +165,9 @@ temporal(pesoCuarto,idCuarto,descripcion,precio) {
     .map(res=>res.json())
 }
 
-temporal1(medias, precio, idInventario) {
+temporal1(medias, nroTropa, precio, idInventario) {
   return this.http.post("http://localhost/Frigorifico/controllers/inventarioController.php?id=temporal1",
-    {'medias': medias, 'precio': precio, 'idInventario':idInventario })
+    {'medias': medias, 'nroTropa':nroTropa , 'precio': precio, 'idInventario':idInventario })
     .map(res=>res.json())
 }
 

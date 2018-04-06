@@ -62,7 +62,7 @@
                 </div>
           <div class="card">
             <div class="card-body border border-dark">
-              <h3 class="text-center to">Resumen de Cuentas Corrientes</h3>
+              <h3 class="text-center to"><u>Resumen de Cuentas Corrientes</u></h3>
               <div class="row to">
                 <div class="col-md-4">
                   <h5>Cliente: <span class="text-dark text-capitalize">{{ nombreCliente }} </span></h5>
@@ -73,12 +73,12 @@
 
                 </div>
                 <div class="col-md-4">
-                  <h5>Saldo Actual: <span class="text-dark"> ${{ saldoFinal }}</span> </h5>
+                  <h5 class="border-primary border text-center  ">Saldo Actual: <span class="text-dark"> ${{ saldoFinal }}</span> </h5>
 
                 </div>
               </div>
               <h5 *ngIf="fe == false">Fecha Contable:  <span class="text-dark"> {{ fechaInicial | date: 'dd-MM-yyy' }} al {{ fechaFinal | date: 'dd-MM-yyy'}}</span> </h5>
-              <h5>Saldo Anterior : <span class="text-dark">$ {{toSal}}</span> </h5>
+              <h5 >Saldo Anterior : <span class="text-dark">$ {{toSal}}</span> </h5>
             </div>
           </div>
           <div class="table-responsive " >
