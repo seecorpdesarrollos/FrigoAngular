@@ -33,13 +33,20 @@
              </div>
         </div>
        </div>
-       <div class="col-md-4"></div>
+       <div class="col-md-4">
+          <div class="custom-control custom-checkbox">
+              <input type="checkbox" name="detalles" ngModel class="custom-control-input" id="customCheck1">
+              <label class="custom-control-label text-info" for="customCheck1">Detalles de Facturas</label>
+          </div>
+       </div>
        <div class="col-md-4 to">
             <button [disabled]="forma.invalid"
             type="submit" class="btn btn-outline-success verifi">Aceptar</button>
        </div>
      </div>
       </form>
+
+      <!-- comienza la tabla de las cuentas -->
 
       <div class=" to  animated fadeIn" *ngIf="formu == true">
         <div>
@@ -91,15 +98,13 @@
                   <td scope="col">Pagos</td>
                   <td scope="col">Saldos</td>
                   <td scope="col">Cobrador</td>
-
                 </tr>
               </thead>
               <tbody *ngIf="sinData == false">
 
                 <tr *ngFor="let cli of tot" >
-
                   <td>{{ cli.fecha | date: 'dd/MM/yyyy'}}</td>
-                  <td>{{ cli.comprobante }}</td>
+                  <td> {{ cli.comprobante }} </td>
                   <td>{{ cli.entrada  | number}}</td>
                   <td>{{ cli.pagos  | number}}</td>
                   <td>{{cli.saldo | number}}</td>
@@ -113,9 +118,26 @@
                 </tr>
               </tbody>
               <tr class="table-warning " *ngIf="sinData == true">
-                  <td colspan="5"><strong>Sin movimientos en la de cuentas corriente en el rango de fechas seleccionadas</strong></td>
-                </tr>
+                <td colspan="5"><strong>Sin movimientos en la de cuentas corriente en el rango de fechas seleccionadas</strong></td>
+              </tr>
             </table>
+            <table class="table table-bordered" *ngIf="fes">
+              <tr class="bg-dark">
+                  <td class="text-white">Fecha</td>
+                 <td class="text-white">Nro Factura</td>
+                 <td class="text-white">Descripción</td>
+                 <td class="text-white">Kilo</td>
+                 <td class="text-white">Precio</td>              
+               </tr>
+               <tr *ngFor=" let detalle of det">
+                 <td>{{detalle.fecha | date: 'dd/MM/yyyy'}}</td>
+                 <td>{{detalle.nroFactura}}</td>
+                 <td>{{detalle.descripcion}}</td>
+                 <td>{{ detalle.kilo}}</td>
+                 <td>{{detalle.precio}}</td>              
+               </tr>
+            </table>
+       
 
             <table class="table table-bordered" *ngIf="sinData == false">
               <tr class="bg-info text-white">

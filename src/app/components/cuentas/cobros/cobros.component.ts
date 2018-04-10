@@ -30,33 +30,55 @@ export class CobrosComponent implements OnInit {
   }
 
 
-ven:any;
-getVendedores(){
-  this.vendedor.getVendedores()
-  .subscribe(res=>{
-    this.ven = res;
+  
+  
+  toggle1:boolean=false;
+  dataToggle1(){
+    this.toggle1 =true;
+    
   }
-  );
-}
+  
+  public nombreCliente:any;
+  idCliente:any
+  selectCli(value){
+    
+    this.nombreCliente = value.nombreCliente;
+    this.idCliente = value.idCliente;
+    this.toggle1 =false;
+    // this.pro = true
+  }
+  
+  
+  toggle:boolean=false;
+  dataToggle(){
+    this.toggle =true;
+    
+  }
+  
+  nombreVendedor:any;
+  idVendedor:any
+  selectVendedor(values){
+    
+    this.nombreVendedor = values.nombreVendedor;
+    this.idVendedor = values.idVendedor;
+    this.toggle =false;
+    // this.pro = true
+  }
+  
+  
+  
+  
+  loader:boolean = false;
+  ven:any;
+  getVendedores(){
+    this.vendedor.getVendedores()
+    .subscribe(res=>{
+      this.ven = res;
+    }
+    );
+  }
 
-
- toggle1:boolean=false;
-dataToggle1(){
-  this.toggle1 =true;
-
-}
-
-public nombreCliente:any;
- idCliente:any
- selectCli(value){
-
-   this.nombreCliente = value.nombreCliente;
-   this.idCliente = value.idCliente;
-   this.toggle1 =false;
-   // this.pro = true
- }
-
- loader:boolean = false;
+  
   inventario:any;
   total:any=0;
    public datas: any;
@@ -64,7 +86,7 @@ public nombreCliente:any;
    public rowsOnPage = 2;
   nada:boolean=false;
     getClientes(){
-      this.service.getClientes()
+      this.service.getClientesTodos()
       .subscribe(res=>{
         this.loader = true;
         this.datas= res;
@@ -99,6 +121,7 @@ public nombreCliente:any;
       this.nroCheque= forma.value.nroCheque;
       this.banco= forma.value.banco;
       this.propietario= forma.value.propietario;
+      this.idVendedor= forma.value.idVendedor;
    
        this.suma = this.efectivo + this.cheque;
       if( this.monto != this.suma){
@@ -114,6 +137,7 @@ public nombreCliente:any;
           this.nroCheque,
           this.banco,
           this.propietario,  
+          this.idVendedor
           )
           .subscribe(res=>{
    
@@ -132,49 +156,47 @@ public nombreCliente:any;
     }
 
 
-    cobros(forma:NgForm){
+    // cobros(forma:NgForm){
 
-      this.idCliente= forma.value.idCliente;
-      this.comprobante= forma.value.comprobante;
-      this.monto= forma.value.monto;
-      this.efectivo= forma.value.efectivo;
-      this.cheque= forma.value.cheque;
-      this.nroCheque= forma.value.nroCheque;
-      this.banco= forma.value.banco;
-      this.propietario= forma.value.propietario;
+    //   this.idCliente= forma.value.idCliente;
+    //   this.comprobante= forma.value.comprobante;
+    //   this.monto= forma.value.monto;
+    //   this.efectivo= forma.value.efectivo;
+    //   this.cheque= forma.value.cheque;
+    //   this.nroCheque= forma.value.nroCheque;
+    //   this.banco= forma.value.banco;
+    //   this.propietario= forma.value.propietario;
    
-       this.suma = this.efectivo + this.cheque;
-      if( this.monto != this.suma){
-       alert('Los importes  estan equivocado..')
-      }else{
+    //    this.suma = this.efectivo + this.cheque;
+    //   if( this.monto != this.suma){
+    //    alert('Los importes  estan equivocado..')
+    //   }else{
 
-          this.cuentas.addPagoss(
-            this.idCliente,
-            this.comprobante,
-          this.monto,
-          this.efectivo,
-          this.cheque,
-          this.nroCheque,
-          this.banco,
-          this.propietario,  
-          )
-          .subscribe(res=>{
+    //       this.cuentas.addPagoss(
+    //         this.idCliente,
+    //         this.comprobante,
+    //       this.monto,
+    //       this.efectivo,
+    //       this.cheque,
+    //       this.nroCheque,
+    //       this.banco,
+    //       this.propietario,  
+    //       )
+    //       .subscribe(res=>{
    
-            this.noGeneradoPago = res;
-            if(this.noGeneradoPago == 'noCliente'){
-              $('#noGeneradoPago').modal('show');
-            }else{
-              $('#largo').modal('hide');
-              this.ruta.navigate(['cuentas/listadoSaldos']);
-            }
+    //         this.noGeneradoPago = res;
+    //         if(this.noGeneradoPago == 'noCliente'){
+    //           $('#noGeneradoPago').modal('show');
+    //         }else{
+    //           $('#largo').modal('hide');
+    //           this.ruta.navigate(['cuentas/listadoSaldos']);
+    //         }
             
             
-          })
-      }
+    //       })
+    //   }
 
-    }
-
-
+    // }
 
 
 

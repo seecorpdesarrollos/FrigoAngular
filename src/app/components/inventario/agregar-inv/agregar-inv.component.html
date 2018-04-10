@@ -1,4 +1,4 @@
-<form #forma="ngForm" (ngSubmit)="agregarInv(forma)">
+<form #forma="ngForm">
 <div class="container to animated fadeIn">
    <div class="row">
       <div class="col-md-12">
@@ -16,17 +16,27 @@
         <input type="number" name="kiloMedia" ngModel class="form-control" placeholder="Peso de la Media" aria-label="Username" aria-describedby="basic-addon1" required autocomplete="off">
      </div>
      </div>
-     <div class="col-md-6 to">
-       <div class="input-group mb-3">
-        <div class="input-group-prepend">
-         <span class="input-group-text" id="basic-addon1"><i class="fa fa-edit"> </i> </span>
-        </div>
-        <input type="number" (change)="comprobarInventario(forma)" name="nroTropa" ngModel class="form-control" placeholder="Número de tropa" aria-label="Username" aria-describedby="basic-addon1" required autocomplete="off">
-     </div>
-     </div>
+     <div class="col-md-6 to" >
+      <div class="input-group">
+       <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"> </i> </span>
+       </div>
+       <input (keypress)="dataToggle()"  type="text" name="nroTropa" [(ngModel)]="nroTropa" autocomplete="off" class="form-control" placeholder="Elija una Tropa" aria-label="Username" aria-describedby="basic-addon1"  autocomplete="off">
+       <input  type="hidden"  name="nroTropa" [(ngModel)]="nroTropa" autocomplete="off" class="form-control" placeholder="Eligir un Cliente" aria-label="Username" aria-describedby="basic-addon1"  autocomplete="off" required>
+    </div>
+
+    <div class="product" *ngIf="toggle">
+        <div class="alert alert-primary">
+         <div (click)="select(item)" class="data" *ngFor="let item of nroTropas | dataFilter : nroTropa">
+           {{ item.nroTropa }}
+         </div>
+         </div>
+    </div>
+   </div>
 
       <div class="col-md-12 to" *ngIf="comprobarInv">
         <button [disabled]="forma.invalid"
+        (click)="comprobarInventario(forma)"
         type="submit" class="btn btn-primary btn-block btn-lg">Agregar Inventario</button>
       </div>
 
@@ -38,7 +48,7 @@
      <br><br>
  <div *ngIf="!comprobarInv">
    <div class="col-md-12">
-     <span class="alert alert-info">Modifique el Nro. de tropa de las media res y has click en cualquier parte de la pantalla.</span>
+      <button class="btn btn-warning" (click)="reset()">Resetear</button>
    </div>
  </div>
    </div>

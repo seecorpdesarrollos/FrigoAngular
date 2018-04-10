@@ -46,7 +46,6 @@ import { InactivosClientesComponent } from './components/clientes/inactivos-clie
 // cuentas
 import {CuentasComponent} from './components/cuentas/cuentas.component';
 import {ListadoCuentasComponent} from './components/cuentas/listado/listado.component';
-import {GenerarPagosComponent} from './components/cuentas/generar-pagos/generar-pagos.component';
 import { ListadoSaldosComponent } from './components/cuentas/listado-saldos/listado-saldos.component';
 import { CobrosComponent } from './components/cuentas/cobros/cobros.component';
 import { ListaPagosComponent } from './components/cuentas/lista-pagos/lista-pagos.component';
@@ -60,7 +59,6 @@ const APP_ROUTES: Routes = [
   { path: 'cuentas', component: CuentasComponent, canActivate:[LoginGuard],
   children:[
     { path: 'listadoCuentas', component: ListadoCuentasComponent },
-    { path: 'pagos', component: GenerarPagosComponent },
     { path: 'listaPagos', component: ListaPagosComponent },
     { path: 'cobros', component: CobrosComponent },
     { path: 'listadoSaldos', component: ListadoSaldosComponent },

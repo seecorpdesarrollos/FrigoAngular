@@ -60,7 +60,7 @@ dataToggle1(){
    this.idInventario = value.idInventario;
    this.toggle =false;
    this.pro = true
-   console.log(this.nroTropa);
+  //  console.log(this.nroTropa);
    
  }
 
@@ -278,18 +278,6 @@ totales:any=0;
                 this.getTemp1()
               })
             }
-
-            // inprimirTropa(impresion){
-            //  location.reload();
-            //  var contenido= document.getElementById(impresion).innerHTML;
-            //  var contenidoOriginal= document.body.innerHTML;
-            //
-            //  document.body.innerHTML = contenido;
-            //
-            //  window.print();
-            //
-            //  document.body.innerHTML = contenidoOriginal;
-            // }
 
              cli:any;
              idCli:any

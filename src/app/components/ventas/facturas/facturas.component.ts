@@ -61,7 +61,7 @@ loader:boolean = false;
     .subscribe(res=>{
       this.todoData = res;
       // console.log(res)
-      console.log(this.factura)
+      // console.log(this.factura)
     })
   }
 

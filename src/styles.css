@@ -7,6 +7,9 @@ body{
 .verifi{
   margin-left: 120px;
 }
+.cursor{
+  cursor: pointer;
+}
 
 .main{
   margin:20px;
@@ -118,3 +121,4 @@ margin-top: 50px;
 .modal {
   background: rgba(0,0,0,0.5);
 }
+

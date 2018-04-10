@@ -65,7 +65,6 @@ import { AgregarCuarteoComponent } from './components/inventario/agregar-cuarteo
 import { InventarioCuarteoComponent } from './components/inventario/inventario-cuarteo/inventario-cuarteo.component';
 import { CuentasComponent } from './components/cuentas/cuentas.component';
 import {ListadoCuentasComponent} from './components/cuentas/listado/listado.component';
-import { GenerarPagosComponent } from './components/cuentas/generar-pagos/generar-pagos.component';
 import { ListadoSaldosComponent } from './components/cuentas/listado-saldos/listado-saldos.component';
 import { CuentasService } from './servicios/cuentas.service';
 import { CobrosComponent } from './components/cuentas/cobros/cobros.component';
@@ -118,7 +117,6 @@ import { ClientesReportesComponent } from './components/ventas/carrito/clientes-
     InventarioCuarteoComponent,
     CuentasComponent,
     ListadoCuentasComponent,
-    GenerarPagosComponent,
     ListadoSaldosComponent,
     CobrosComponent,
     ListaPagosComponent,

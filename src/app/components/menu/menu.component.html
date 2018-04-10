@@ -4,8 +4,9 @@
     <div class="avatar"><img src="assets/img/logo.jpg" alt="..." class="img-fluid rounded-circle"></div>
        <div class="title">
           <h1 class="h4">Sistema</h1>
-              <p> Versión : 1.0</p>
-               <small class="text-warning">Bienvenido: {{ nombreAdmin | uppercase }}</small>
+              <p>Miembro desde:  {{fechaCreado | date: 'yyyy'}}</p>
+              <p>Tipo:  {{rol }}</p>
+               <small class="text-danger">Bienvenido: {{ nombreAdmin | uppercase }}</small>
         </div>
   </div>
   <!-- Sidebar Navidation Menus-->
@@ -51,8 +52,8 @@
     <div class="avatar"><img src="assets/img/logo.jpg" alt="..." class="img-fluid rounded-circle"></div>
        <div class="title">
           <h1 class="h4">Sistema</h1>
-              <p> Versión : 1.0</p>
-               <small class="text-warning">Bienvenido: {{ nombreAdmin | uppercase }}</small>
+              <p> Miembro desde : {{ fechaCreado }}</p>
+               <small class="text-danger">Bienvenido: {{ nombreAdmin | uppercase }}</small>
         </div>
   </div>
   <!-- Sidebar Navidation Menus-->

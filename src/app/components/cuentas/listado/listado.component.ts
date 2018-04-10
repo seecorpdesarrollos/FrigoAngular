@@ -107,16 +107,29 @@ public saldo:number=0;
 public pa:number=0;
 public co:number=0;
 public toSal:number=0;
+public detalles:boolean;
+public det:any[];
 fe:boolean=false;
+fes:boolean=false;
 cli(forma:NgForm){ 
   this.idCliente = forma.value.idCliente;
   this.fechaInicial = forma.value.fechaInicial;
   this.fechaFinal = forma.value.fechaFinal;
-  
+  this.detalles = forma.value.detalles;
 
-  // if(this.fechaInicial > this.fechaFinal ){
-  //   alert ('Error de fechas')
-  // } 
+   if( this.detalles == true){
+     this.cuenta.getFacturaDetalles(this.idCliente,this.fechaInicial, this.fechaFinal)
+     .subscribe(res=>{
+       this.fes=true;
+       this.det = res
+      //  console.log(res);
+       
+     })  
+     
+   }
+
+
+
    if (this.fechaInicial.length ==0 && this.fechaFinal.length == 0) {
     this.fe = true;
   }if(this.fechaInicial > this.fechaFinal ){
@@ -125,7 +138,7 @@ cli(forma:NgForm){
     this.formu = true;
     
     this.cuenta.getCuentaCorriente(this.idCliente ,this.fechaInicial, this.fechaFinal)
-    .subscribe (res=>{
+    .subscribe (res=>{  
       this.tot = res;
       
         if(this.tot[0].entrada == null){
@@ -138,13 +151,6 @@ cli(forma:NgForm){
           this.co  =   parseFloat(this.tot[0].entrada);
           this.toSal = this.saldo - this.co;
         }
-        // //  this.co  =   this.tot[0].entrada;
-        //  console.log(this.tot[0].pagos);
-        //  console.log(this.co);
-
-        // console.log(this.tot);
-      
-       
         
         if(res.length == 0){
           this.sinData = true;
@@ -177,7 +183,24 @@ cli(forma:NgForm){
   }
 }
 
+// facturas:any;
+// numeroFactura:any;
+// mostrar:boolean=false;
+// todoDetalle:any[];
+// a(factura){
+//   this.facturas = factura.split(" "); 
+//   if(this.facturas[0] == 'Factura'){
+//     this.numeroFactura = this.facturas[2] 
+//     // alert(this.numeroFactura)
+//     this.cuenta.getFacturaDetalles(this.numeroFactura)
+//     .subscribe(respuesta=>{
+//       this.mostrar = true;
+//         this.todoDetalle = respuesta;
+      
+//     })
 
+//   }
+// }
 
 salir(){
   // this.subtotal=0;

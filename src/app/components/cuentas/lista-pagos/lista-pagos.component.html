@@ -67,7 +67,7 @@
     <td colspan="6" >
       <mfBootstrapPaginator [rowsOnPageSet]="[2,3,5,10,25]"></mfBootstrapPaginator>
       <span class="alert alert-info" *ngIf="nada"> Cantidad de Pagos  : {{ data.length}}</span>
-      <span class="alert alert-info"> Cantidad de Saldos: $ {{ total }}</span>
+      <span class="alert alert-info"> Importe total cobrado : $ {{ total | number}}</span>
     </td>
 
   </tfoot>
@@ -96,8 +96,9 @@
               <div class="col-md-4">
                 <div class="modal-header to">
                   <h5 class="modal-title text-danger " id="exampleModalLabel">Listado de Saldos</h5>
-
                 </div>
+                <h6>   <span class="alert alert-info" *ngIf="nada"> Cantidad de Pagos  : {{ data.length}}</span>
+                  <span class="alert alert-info"> Importe total cobrado : $ {{ total | number}}</span></h6>
               </div>
             </div>
 
