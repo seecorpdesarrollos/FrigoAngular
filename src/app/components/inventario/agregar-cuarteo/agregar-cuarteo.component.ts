@@ -61,15 +61,11 @@ export class AgregarCuarteoComponent implements OnInit {
     .subscribe(()=>{
       this.ruta.navigate(['inventario/exitosInv/add']);
       setTimeout(()=>{
-        this.ruta.navigate(['inventario/cuarteoList']);
+        this.ruta.navigate(['cuarteo/cuarteoList']);
 
       },3000);
     })
   }
-
-   listado(){
-       this.ruta.navigate(['inventario/cuarteoList']);
-   }
 
 
 }

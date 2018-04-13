@@ -27,8 +27,9 @@ export class InventarioCuarteoComponent implements OnInit {
   totalMedia:any=0;
    public data: any[];
    public filterQuery = "";
-   public rowsOnPage = 2;
+   public rowsOnPage = 20;
 nada:boolean;
+menor:boolean=false;
   getCuarteo(){
     this.service.getCuarteoServicioInventario()
     .subscribe(res=>{
@@ -45,9 +46,11 @@ nada:boolean;
   }
 
 idCuarteo:any;
+cantidad:any;
   eliminar(idCuarteo , cantidad){
     this.idCuarteo = idCuarteo;
-    if (cantidad == 0) {
+    this.cantidad = cantidad;
+    if (cantidad  < 3 ) {
       $('#cuarteoVendido').modal('show');  
     }else{
 

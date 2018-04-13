@@ -112,14 +112,14 @@
                 <th>Teléfono del Cliente</th>
                 <th>Saldo Actual</th>
                 <th>Fecha del Saldo</th>
-                <th>Nombre del Vendedor</th>
+                <!-- <th>Nombre del Vendedor</th> -->
               </tr>
               <tr *ngFor=" let cli of data">
                 <td>{{ cli.nombreCliente }}</td>
                 <td>{{ cli.telefonoCliente }}</td>
                 <td>{{ cli.saldoActual | number }}</td>
                 <td>{{ cli.fechaSaldo | date: 'dd/MM/yyyy' }}</td>
-                <td>{{ cli.nombreVendedor }}</td>
+                <!-- <td>{{ cli.nombreVendedor }}</td> -->
               </tr>
             </table>
           </div>

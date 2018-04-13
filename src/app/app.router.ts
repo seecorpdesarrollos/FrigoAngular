@@ -52,10 +52,39 @@ import { ListaPagosComponent } from './components/cuentas/lista-pagos/lista-pago
 import { ClientesReportesComponent } from './components/ventas/carrito/clientes-reportes.component';
 import { FechasComponent } from './components/ventas/carrito/fechas.component';
 import { TropasComponent } from './components/ventas/carrito/tropas.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { SuccessComponent } from './components/admin/success.component';
+import { NotacreditoComponent } from './components/notacredito/notacredito.component';
+import { NotadebitoComponent } from './components/notadebito/notadebito.component';
+import { ListadocreditoComponent } from './components/notacredito/listadocredito/listadocredito.component';
+import { AgregarcreditoComponent } from './components/notacredito/agregarcredito/agregarcredito.component';
+import { EditarcreditoComponent } from './components/notacredito/editarcredito/editarcredito.component';
+import { ListadodebitoComponent } from './components/notadebito/listadodebito/listadodebito.component';
+import { AgregardebitoComponent } from './components/notadebito/agregardebito/agregardebito.component';
+import { EditardebitoComponent } from './components/notadebito/editardebito/editardebito.component';
 
 const APP_ROUTES: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [LogoutGuard] },
   { path: 'principal', component: PrincipalComponent, canActivate:[LoginGuard] },
+   { path: 'notaCredito', component: NotacreditoComponent, canActivate:[LoginGuard],
+ children:[
+  { path: 'listadoCredito', component: ListadocreditoComponent },
+  { path: 'agregarCredito', component: AgregarcreditoComponent },
+  { path: 'editarCredito/:id', component: EditarcreditoComponent },
+  { path: '**', pathMatch: 'full', redirectTo: 'listadoCredito'}
+ ]
+
+},
+  { path: 'notaDebito', component: NotadebitoComponent, canActivate:[LoginGuard],
+children:[
+  { path: 'listadoDebito', component: ListadodebitoComponent },
+  { path: 'agregarDebito', component: AgregardebitoComponent },
+  { path: 'editarDebito/:id', component: EditardebitoComponent },
+  { path: '**', pathMatch: 'full', redirectTo: 'listadoDebito'}
+]
+},
+  { path: 'admin', component: AdminComponent, canActivate:[LoginGuard], },
+  { path: 'success', component: SuccessComponent, canActivate:[LoginGuard] },
   { path: 'cuentas', component: CuentasComponent, canActivate:[LoginGuard],
   children:[
     { path: 'listadoCuentas', component: ListadoCuentasComponent },

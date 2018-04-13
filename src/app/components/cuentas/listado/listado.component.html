@@ -120,24 +120,52 @@
               <tr class="table-warning " *ngIf="sinData == true">
                 <td colspan="5"><strong>Sin movimientos en la de cuentas corriente en el rango de fechas seleccionadas</strong></td>
               </tr>
+              <tr>
+                <td class="text-center bg-danger text-white ">Saldo final a   pagar</td>
+                <td class="text-center bg-danger text-white ">Total de kilos comprados</td>
+              </tr>
+              <tr>
+                <td class="text-center ">  ${{ entrada - pagos + saldoActual  | number}}</td>
+                <td class="text-center "> {{ totalKilos | number}}</td>
+              </tr>
             </table>
-            <table class="table table-bordered" *ngIf="fes">
-              <tr class="bg-dark">
-                  <td class="text-white">Fecha</td>
-                 <td class="text-white">Nro Factura</td>
-                 <td class="text-white">Descripción</td>
-                 <td class="text-white">Kilo</td>
-                 <td class="text-white">Precio</td>              
-               </tr>
-               <tr *ngFor=" let detalle of det">
-                 <td>{{detalle.fecha | date: 'dd/MM/yyyy'}}</td>
-                 <td>{{detalle.nroFactura}}</td>
-                 <td>{{detalle.descripcion}}</td>
-                 <td>{{ detalle.kilo}}</td>
-                 <td>{{detalle.precio}}</td>              
-               </tr>
-            </table>
-       
+          </div>
+            <div class="row" *ngIf="fes">
+              <div class="col-md-3"></div>
+              <div class="col-md-9">
+                <h2 class="text-warning">Detalles de las facturas</h2>
+
+              </div>
+              <div class="table-responsive col-md-12">
+                
+                <table class="table table-bordered table-sm table-hover tabla">
+                  <tr class="bg-dark">
+                    <td class="text-white">Fecha</td>
+                    <td class="text-white">Descripción</td>
+                    <td class="text-white">Kilo</td>
+                    <td class="text-white">Precio</td>              
+                    <td class="text-white">Sub Total</td>              
+                    <td class="text-white">Total Factura</td>              
+                  </tr>
+                  <tr *ngFor=" let detalle of det">
+                    <td>{{detalle.fecha | date: 'dd/MM/yyyy'}}</td>
+                    <td>{{detalle.descripcion}}</td>
+                    <td>{{ detalle.kilo}}</td>
+                    <td>{{detalle.precio}}</td>              
+                    <td>{{detalle.kilo * detalle.precio}}</td>  
+                    <td class="text-center text-info" width="30">{{detalle.totalVenta}}</td>  
+                    
+                  </tr>
+                  
+                </table>
+              </div>
+            </div>
+              
+              
+            
+            
+          </div>
+          <div class="table-responsive">
 
             <table class="table table-bordered" *ngIf="sinData == false">
               <tr class="bg-info text-white">
@@ -157,16 +185,12 @@
                 <td class="text-center text-danger">  ${{ entrada - pagos  | number }}</td>
               </tr>
             </table>
-
           </div>
-
-
-        </div>
-        <div class="row" *ngIf="sinData == false">
-          <div class="col-md-4"></div>
-          <div class="col-md-4">
-            <button (click)="imprimirCuenta('imprimir')" class="btn btn-outline-danger">Imprimir</button>
-          </div>
-        </div>
+            <div class="row" *ngIf="sinData == false">
+              <div class="col-md-4"></div>
+              <div class="col-md-4">
+                <button (click)="imprimirCuenta('imprimir')" class="btn btn-outline-danger">Imprimir</button>
+              </div>
+            </div>
       </div>
     </div>

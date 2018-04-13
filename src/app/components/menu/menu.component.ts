@@ -23,16 +23,16 @@ export class MenuComponent implements OnInit {
   rol:string;
   fechaCreado:any;
   idAdmin:any;
-  tipoMenu:boolean = true;
+
   datosAdmin(){
     this.nombreAdmin = localStorage.getItem('nombreAdmin');
     this.rol = localStorage.getItem('rol');
     if (this.rol == 'A') {
-      this.tipoMenu = true;
+     
         this.rol = 'Administrador';
     }else{
       this.rol = 'Usuario';
-      this.tipoMenu = false;
+    
 
     }
     this.fechaCreado = localStorage.getItem('fechaCreado');

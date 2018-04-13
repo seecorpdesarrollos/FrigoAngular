@@ -73,6 +73,17 @@ import { ConsultasService } from './servicios/consultas.service';
 import { FechasComponent } from './components/ventas/carrito/fechas.component';
 import { TropasComponent } from './components/ventas/carrito/tropas.component';
 import { ClientesReportesComponent } from './components/ventas/carrito/clientes-reportes.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { SuccessComponent } from './components/admin/success.component';
+import { NotacreditoComponent } from './components/notacredito/notacredito.component';
+import { NotadebitoComponent } from './components/notadebito/notadebito.component';
+import { AgregardebitoComponent } from './components/notadebito/agregardebito/agregardebito.component';
+import { EditardebitoComponent } from './components/notadebito/editardebito/editardebito.component';
+import { AgregarcreditoComponent } from './components/notacredito/agregarcredito/agregarcredito.component';
+import { EditarcreditoComponent } from './components/notacredito/editarcredito/editarcredito.component';
+import { ListadocreditoComponent } from './components/notacredito/listadocredito/listadocredito.component';
+import { ListadodebitoComponent } from './components/notadebito/listadodebito/listadodebito.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -122,7 +133,17 @@ import { ClientesReportesComponent } from './components/ventas/carrito/clientes-
     ListaPagosComponent,
     FechasComponent,
     TropasComponent,
-    ClientesReportesComponent
+    ClientesReportesComponent,
+    AdminComponent,
+    SuccessComponent,
+    NotacreditoComponent,
+    NotadebitoComponent,
+    AgregardebitoComponent,
+    EditardebitoComponent,
+    AgregarcreditoComponent,
+    ListadocreditoComponent,
+    ListadodebitoComponent,
+    EditarcreditoComponent
   ],
   imports: [
     BrowserModule,

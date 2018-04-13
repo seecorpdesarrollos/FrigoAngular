@@ -25,9 +25,9 @@ export class SalirComponent implements OnInit {
 
     this.idAdmin = localStorage.getItem('idAdmin');
 
-   this.servicio.updateUsuario(this.idAdmin)
-   .subscribe(res=>{
-   })
+  //  this.servicio.updateUsuario(this.idAdmin)
+  //  .subscribe(res=>{
+  //  })
    localStorage.removeItem('nombreAdmin' );
    localStorage.removeItem('idAdmin' );
    localStorage.removeItem('rol' );

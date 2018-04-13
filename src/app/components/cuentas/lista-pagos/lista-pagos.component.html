@@ -95,7 +95,7 @@
               <div class="col-md-4"></div>
               <div class="col-md-4">
                 <div class="modal-header to">
-                  <h5 class="modal-title text-danger " id="exampleModalLabel">Listado de Saldos</h5>
+                  <h5 class="modal-title text-danger " id="exampleModalLabel">Listado de Pagos</h5>
                 </div>
                 <h6>   <span class="alert alert-info" *ngIf="nada"> Cantidad de Pagos  : {{ data.length}}</span>
                   <span class="alert alert-info"> Importe total cobrado : $ {{ total | number}}</span></h6>
@@ -112,6 +112,7 @@
                   <th class="text-dark" scope="col">Nro Cheque</th>
                   <th class="text-dark" scope="col">Banco</th>
                   <th class="text-dark" scope="col">Fecha Pago</th>
+                  <th class="text-dark" scope="col">Vendedor</th>
                 </tr>
                 <tr *ngFor=" let item of data">
                     <td>{{ item.nombreCliente }}</td>
@@ -122,6 +123,7 @@
                     <td> {{ item.nroCheque  }}</td>
                     <td>{{ item.banco }}</td>
                     <td>{{ item.fechaPago | date: 'dd/MM/yyyy'}}</td>
+                    <td>{{ item.nombreVendedor}}</td>
 
                 </tr>
               </table>

@@ -28,7 +28,7 @@ export class CuarteoListComponent implements OnInit {
   totalMedia:any=0;
    public data: any[];
    public filterQuery = "";
-   public rowsOnPage = 2;
+   public rowsOnPage = 15;
 nada:boolean;
   getCuarteo(){
     this.service.getCuarteoServicio()
@@ -61,9 +61,9 @@ if (estadoCuarteo == 0) {
     .subscribe(()=>{
       this.ruta.navigate(['inventario/exitosCuarteo/eliminar']);
       setTimeout(()=>{
-        this.ruta.navigate(['inventario/cuarteoList']);
+        this.ruta.navigate(['cuarteo/cuarteoList']);
 
-      },3000);
+      },100);
     })
 
   }
@@ -92,7 +92,7 @@ if (estadoCuarteo == 0) {
   bifes:any=0;
   asado:any=0;
   totalPeso:any=0;
-  agregarCuarteo(forma){
+  agregarCuarteo(forma:NgForm){
 
     this.pecho = forma.value.pecho;
     this.mocho = forma.value.mocho;
@@ -120,13 +120,13 @@ if (estadoCuarteo == 0) {
         this.ruta.navigate(['cuarteo/exitosCuarteo/add']);
         setTimeout(()=>{
 
-          this.ruta.navigate(['cuarteo/inventarioCuerteo']);
+          this.ruta.navigate(['cuarteo/cuarteoList']);
 
         },3000);
       })
 
     }else{
-        alert(this.totalPeso +   ' No esEstan en el promedio')
+        alert(this.totalPeso +   ' No Esta en el promedio fijado')
     }
 
 

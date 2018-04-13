@@ -53,8 +53,8 @@
   <!-- <td *ngIf="item.cantidad == 1 " class="text-success"> Disponible</td>
   <td *ngIf="item.cantidad == 0 " class="text-danger"> Vendido</td> -->
    <td class="text-center">
-     <a data-toggle="modal" data-target=".mediaTropa"  title="Mas Informacion" class="btn btn-outline-success btn-sm" (click)="masInfo(item.idCuarteoInventario)"><i class="fa fa-plus fa-1x  btn-outline-success"></i></a>
-     <a  title="Eliminar Cuarteo" class="btn btn-outline-danger btn-sm" (click)="eliminar(item.idCuarteo, item.cantidad)"><i class="fa fa-trash fa-1x  btn-outline-danger"></i></a>
+     <a data-toggle="modal" data-target=".mediaTropa"  title="Mas Informacion" class="btn btn-outline-success btn-sm" (click)="masInfo(item.idCuarteoInventario, item.idCuarteo)"><i class="fa fa-plus fa-1x  btn-outline-success"></i></a>
+     <a   title="Eliminar Cuarteo" class="btn btn-outline-danger btn-sm" (click)="eliminar(item.idCuarteo, item.cantidad)"><i class="fa fa-trash fa-1x  btn-outline-danger"></i></a>
    </td>
 </tr>
 </tbody>
@@ -116,7 +116,8 @@
         </button>
       </div>
       <div class="modal-body">
-        <p class="alert alert-danger">No puede eliminar este cuarteo , porque ya fue vendido.</p>
+        <p class="alert alert-danger">No puede eliminar este cuarteo , 
+          porque algunos cuartos ya fueron vendido.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">SALIR</button>
@@ -145,19 +146,27 @@
               <tr class="bg-info text-white">
                 <td>Kilo de Media</td>
                 <td>Nro. Tropa</td>
-                <td>Fecha Faena</td>
-                <td>Kilos Cuarteados</td>
-                <td>Dueño  Hacienda</td>
-                <td>Estado</td>
+                <!-- <td>Kilos Cuarteados</td> -->
+                <td>Pecho</td>
+                <td>Mocho</td>
+                <td>Parrillero</td>
+                <td>Completo</td>
+                <td>Largos</td>
+                <td>Bifes</td>
+                <td>Asado</td>
               </tr>
               <tr *ngFor="let item of datos">
                 <td> {{ item.kiloMedia  }}</td>
                  <td> {{ item.nroTropa  }}</td>
-                 <td> {{ item.fechaFaena | date :  "dd/MM/yyyy" }}</td>
-                 <td> {{ item.totalPeso  }}</td>
-                 <td> {{ item.dueHacienda  }}</td>
-                 <td *ngIf="item.cantidad == 1 " class="text-success"> Disponible</td>
-                 <td *ngIf="item.cantidad == 0 " class="text-danger"> Vendido</td>
+                 <td> {{ item.pecho  }}</td>
+                 <td> {{ item.mocho  }}</td>
+                 <td> {{ item.parrillero  }}</td>
+                 <td> {{ item.completos}}</td>
+                 <td> {{ item.largos}}</td>
+                 <td> {{ item.bifes}}</td>
+                 <td> {{ item.asado}}</td>
+                 <!-- <td *ngIf="item.cantidad == 1 " class="text-success"> Disponible</td>
+                 <td *ngIf="item.cantidad == 0 " class="text-danger"> Vendido</td> -->
 
               </tr>
            </table>

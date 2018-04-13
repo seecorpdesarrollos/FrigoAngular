@@ -38,9 +38,7 @@ loader:boolean = false;
     })
   }
 
-  getDetalle(){
-  }
-
+  
 
   factura:any;
   todoData:any;

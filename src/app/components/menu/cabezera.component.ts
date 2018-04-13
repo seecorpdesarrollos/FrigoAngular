@@ -16,8 +16,24 @@ export class CabezeraComponent implements OnInit {
 
   ngOnInit() {
 
+    this.admin();
   }
 
+
+
+  role:any
+  public cabezera:boolean=false;
+  admin(){
+   this.role = localStorage.getItem('rol');
+
+      if (this.role == 'A') {
+        this.cabezera = true;
+      }else{
+        this.cabezera= false;
+      }
+      // console.log(this.cabezera);
+  }
+  
 
   panel(){
     $(document).ready(function(){
@@ -54,9 +70,9 @@ export class CabezeraComponent implements OnInit {
 
     this.idAdmin = localStorage.getItem('idAdmin');
 
-   this.servicio.updateUsuario(this.idAdmin)
-   .subscribe(res=>{
-   })
+  //  this.servicio.updateUsuario(this.idAdmin)
+  //  .subscribe(res=>{
+  //  })
    localStorage.removeItem('nombreAdmin' );
    localStorage.removeItem('idAdmin' );
    localStorage.removeItem('rol' );

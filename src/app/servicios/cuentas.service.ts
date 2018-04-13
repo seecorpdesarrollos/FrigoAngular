@@ -47,6 +47,15 @@ sakdo:any
       });
    }
 
+
+   getKilos(idCliente, fechaInicial, fechaFinal){
+    return this.http.post("http://localhost/Frigorifico/controllers/cuentasControllers.php?id=totalKilos",
+    { 'idCliente': idCliente , 'fechaInicial':fechaInicial , 'fechaFinal':fechaFinal})
+      .map(res => {
+        return res.json();
+      });
+   }
+
    totalEntradaId(idCliente) {
     return this.http.post("http://localhost/Frigorifico/controllers/cuentasControllers.php?id=totalEntradaId",
     { 'idCliente': idCliente })
