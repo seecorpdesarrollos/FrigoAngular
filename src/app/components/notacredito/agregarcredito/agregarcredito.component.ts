@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientesService } from '../../../servicios/clientes.service';
 import { NgForm } from '@angular/forms';
+import { NotasService } from '../../../servicios/notas.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-agregarcredito',
@@ -9,7 +11,11 @@ import { NgForm } from '@angular/forms';
 })
 export class AgregarcreditoComponent implements OnInit {
 
-  constructor( private service:ClientesService  ) { }
+  constructor( 
+    private service:ClientesService,
+    private notas:NotasService,
+    private ruta:Router
+    ) { }
 
   ngOnInit() {
     this.getClientes();  
@@ -46,6 +52,7 @@ idCliente:any
     })
   }
 
+ 
 
 
    descripcionCredito:any;
@@ -58,10 +65,19 @@ idCliente:any
      this.importeCredito = forma.value.importeCredito;
      this.idCliente = forma.value.idCliente;
 
-     console.log(this.descripcionCredito);
-     console.log(this.cantidadCredito);
-     console.log(this.importeCredito);
-     console.log(this.idCliente);
+      this.notas.addNotaCredito(
+        this.descripcionCredito,this.cantidadCredito,this.importeCredito,this.idCliente
+      ).subscribe(res=>{
+        
+        if (res == "noSaldo") {
+          alert('El cliente no tiene saldos pendiente para generar una nota de crédito');
+        }else{
+          this.ruta.navigate(['/notaCredito/listadoCredito']);
+
+        }
+        
+        
+      })
      
   }
  

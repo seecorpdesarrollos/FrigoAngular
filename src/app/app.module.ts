@@ -83,6 +83,7 @@ import { AgregarcreditoComponent } from './components/notacredito/agregarcredito
 import { EditarcreditoComponent } from './components/notacredito/editarcredito/editarcredito.component';
 import { ListadocreditoComponent } from './components/notacredito/listadocredito/listadocredito.component';
 import { ListadodebitoComponent } from './components/notadebito/listadodebito/listadodebito.component';
+import { NotasService } from './servicios/notas.service';
 
 @NgModule({
   declarations: [
@@ -162,7 +163,8 @@ import { ListadodebitoComponent } from './components/notadebito/listadodebito/li
    VendedoresService,
    ClientesService,
    CuentasService,
-   ConsultasService
+   ConsultasService,
+   NotasService
   ],
   bootstrap: [AppComponent],
   schemas: [ NO_ERRORS_SCHEMA ],

@@ -32,6 +32,8 @@ sakdo:any
       });
    }
 
+
+
    getSaldoId(idCliente) {
     return this.http.post("http://localhost/Frigorifico/controllers/cuentasControllers.php?id=getSaldosId",
     { 'idCliente': idCliente })
@@ -94,16 +96,61 @@ sakdo:any
    }
    
 
+// comienza principal
 
-  //  addPagoss(idCliente,comprobante,monto,efectivo,cheque, nroCheque,banco,propietario) {
-  //   return this.http.post("http://localhost/Frigorifico/controllers/cuentasControllers.php?id=addPagoss",
-  //   { 'idCliente': idCliente, 'comprobante':comprobante , 
-  //   'monto':monto,'efectivo':efectivo, 'cheque':cheque, 'nroCheque':nroCheque , 
-  //   'banco':banco, 'propietario':propietario})
-  //     .map(res => {
-  //       return res.json();
-  //     });
-  //  }
-   
+
+inventa:any
+getInventaTropa() {
+  return this.http.get("http://localhost/Frigorifico/controllers/cuentasControllers.php?id=getInventarioTropa")
+    .map(res => {
+      this.inventa= res;
+      if (this.inventa._body !== '') {
+        return res.json();
+        
+      }
+    });
+ }
+
+
+
+disponible:any
+getInventaTropaDisponible() {
+  return this.http.get("http://localhost/Frigorifico/controllers/cuentasControllers.php?id=getInventarioTropaDisponible")
+    .map(res => {
+      this.disponible= res;
+      if (this.disponible._body !== '') {
+        return res.json();
+        
+      }
+    });
+ }
+
+ vendiso:any
+getInventaTropaVendido() {
+  return this.http.get("http://localhost/Frigorifico/controllers/cuentasControllers.php?id=getInventarioTropaVendido")
+    .map(res => {
+      this.vendiso= res;
+      if (this.vendiso._body !== '') {
+        return res.json();
+        
+      }
+    });
+ }
+
+
+ cant:any
+ getCant() {
+   return this.http.get("http://localhost/Frigorifico/controllers/cuentasControllers.php?id=getCant")
+     .map(res => {
+       this.cant= res;
+       if (this.cant._body !== '') {
+         return res.json();
+         
+       }
+     });
+  }
+ 
+
+
 
 }

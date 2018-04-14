@@ -17,215 +17,121 @@
           <section class="dashboard-counts no-padding-bottom animated fadeIn">
                      <div class="container-fluid">
                          <div class="row bg-white has-shadow">
-                             <!-- Item -->
-                             <div class="col-xl-3 col-sm-6">
-                                 <div class="item d-flex align-items-center">
-                                     <div class="icon bg-violet">
-                                         <i class="icon-user"  data-toggle="tooltip" data-placement="top" title="Cantidad de Recordatorios Pendientes">
-                                         </i>
-                                     </div>
-                                     <div class="title" data-toggle="tooltip" data-placement="top" title="Cantidad de Recordatorios Pendientes">
-                                         <span>
-                                             Nuevos
-                                             <br/>
-                                             Recor.
-                                         </span>
-                                         <div class="progress">
-                                             <div role="progressbar" style="width: 25%; height: 4px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-violet">
-                                             </div>
-                                         </div>
-                                     </div>
-                                     <div class="number" data-toggle="tooltip" data-placement="top" title="Cantidad de Recordatorios Pendientes">
-                                         <strong>
-                                             25
-                                         </strong>
-                                     </div>
-                                 </div>
-                             </div>
-                             <!-- Item -->
-                             <div class="col-xl-3 col-sm-6">
-                                 <div class="item d-flex align-items-center">
-                                     <div class="icon bg-red">
-                                         <i class="icon-padnote" data-toggle="tooltip" data-placement="top" title="Cantidad de Archivos Subidos">
-                                         </i>
-                                     </div>
-                                     <div class="title" data-toggle="tooltip" data-placement="top" title="Cantidad de Archivos Subidos">
-                                         <span>
-                                             Archivos
-                                             <br/>
-                                             Nube
-                                         </span>
-                                         <div class="progress">
-                                             <div role="progressbar" style="width: 25%; height: 4px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-red">
-                                             </div>
-                                         </div>
-                                     </div>
-                                     <div class="number" data-toggle="tooltip" data-placement="top" title="Cantidad de Archivos Subidos">
-                                         <strong>
-                                             70
-                                         </strong>
-                                     </div>
-                                 </div>
-                             </div>
-                             <!-- Item -->
-                             <div class="col-xl-3 col-sm-6">
-                                 <div class="item d-flex align-items-center">
-                                     <div class="icon bg-green">
-                                         <i class="icon-bill">
-                                         </i>
-                                     </div>
-                                     <div class="title">
-                                         <span>
-                                             New
-                                             <br/>
-                                             Invoices
-                                         </span>
-                                         <div class="progress">
-                                             <div role="progressbar" style="width: 25%; height: 4px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-green">
-                                             </div>
-                                         </div>
-                                     </div>
-                                     <div class="number">
-                                         <strong>
-                                             44
-                                         </strong>
-                                     </div>
-                                 </div>
-                             </div>
-                             <!-- Item -->
-                             <div class="col-xl-3 col-sm-6">
-                                 <div class="item d-flex align-items-center">
-                                     <div class="icon bg-orange">
-                                         <i class="icon-check">
-                                         </i>
-                                     </div>
-                                     <div class="title">
-                                         <span>
-                                             Open
-                                             <br/>
-                                             Cases
-                                         </span>
-                                         <div class="progress">
-                                             <div role="progressbar" style="width: 25%; height: 4px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-orange">
-                                             </div>
-                                         </div>
-                                     </div>
-                                     <div class="number">
-                                         <strong>
-                                             35
-                         <div id="number"></div>
-                                         </strong>
-                                     </div>
-                                 </div>
-                             </div>
+                             <div class="col-md-12">
+
+                                 <div class="card">
+                                     <div class="card-header bg-primary text-white text-center">
+                                         Estadistica de ventas por Tropas
+                                        </div>
+                                        <div class="card-body">
+                                            <hr class="hr">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <table class="table table-hover table-sm">
+                                                            <thead class="bg-primary">
+                                                            <tr>
+                                                                <th class="text-center text-white">Nro. Tropa</th>
+                                                                <th class="text-center text-white">Cantidad Medias</th>                                             
+                                                            </tr>
+                                                            </thead>
+                                                       <tr *ngFor="let cantidad of cant">
+                                                            <th class="text-center">{{ cantidad.nroTropa}}</th>
+                                                            <td class="text-center">{{cantidad.cantMedia}}</td>
+                                                            
+                                                        </tr>
+                                                    </table>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <table class="table table-hover table-sm">
+                                                        <thead class="bg-success">
+                                                            <tr>
+                                                                <th class="text-white">Nro. Tropa</th>
+                                                                <th class="text-white">Cantidad</th>
+                                                                <th class="text-white">Estado</th>
+                                                                
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr *ngFor="let ven of vendido">
+                                                                <th class="">{{ ven.nroTropa}}</th>
+                                                                <td class="text-center">{{ven.total}}</td>
+                                                                <td>{{ven.estado}}</td>
+                                                                
+                                                            </tr>
+                                                            
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <table class="table table-hover table-sm">
+                                                        <thead class="bg-success">
+                                                            <tr>
+                                                                <th class="text-white">Nro. Tropa</th>
+                                                                <th class="text-white">Cantidad</th>
+                                                                <th class="text-white">Estado</th>
+                                                                
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr *ngFor="let dispo of disponible">
+                                                                <th class="">{{ dispo.nroTropa}}</th>
+                                                                <td class="text-center">{{dispo.total}}</td>
+                                                                <td>{{dispo.estado}}</td>
+                                                                
+                                                            </tr>
+                                                            
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <table class="table table-hover table-sm">
+                                                        <thead class="bg-success">
+                                                            <tr>
+                                                                <th class="text-white">Nro. Tropa</th>
+                                                                <th class="text-white">Cantidad</th>
+                                                                <th class="text-white">Estado</th>
+                                                                
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                            <tr *ngFor="let cuar of cuarteo">
+                                                            <th scope="row">{{ cuar.nroTropa}}</th>
+                                                            <td class="text-center">{{cuar.total}}</td>
+                                                            <td>{{cuar.estado}}</td>
+                                                            
+                                                          </tr>
+                                                          
+                                                        </tbody>
+                                                    </table>
+                                                    
+                                                </div>
+                                            </div>
+                                                <hr class="hr">
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <!-- <div class="card">
+                                        <div class="card-header bg-primary text-white">
+                                  Estadistica de ventas por Tropas
+                                </div>
+                                <div class="card-body">
+                                  <h5 class="card-title">Special title treatment</h5>
+                                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                              </div> -->
                          </div>
                      </div>
                  </section>
 
-                 <section class="dashboard-counts no-padding-bottom animated fadeIn">
+                         <section class="dashboard-counts no-padding-bottom animated fadeIn">
                             <div class="container-fluid">
                                 <div class="row bg-white has-shadow">
-                                    <!-- Item -->
-                                    <div class="col-xl-3 col-sm-6">
-                                        <div class="item d-flex align-items-center">
-                                            <div class="icon bg-violet">
-                                                <i class="icon-user"  data-toggle="tooltip" data-placement="top" title="Cantidad de Recordatorios Pendientes">
-                                                </i>
-                                            </div>
-                                            <div class="title" data-toggle="tooltip" data-placement="top" title="Cantidad de Recordatorios Pendientes">
-                                                <span>
-                                                    Nuevos
-                                                    <br/>
-                                                    Recor.
-                                                </span>
-                                                <div class="progress">
-                                                    <div role="progressbar" style="width: 25%; height: 4px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-violet">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="number" data-toggle="tooltip" data-placement="top" title="Cantidad de Recordatorios Pendientes">
-                                                <strong>
-                                                    25
-                                                </strong>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Item -->
-                                    <div class="col-xl-3 col-sm-6">
-                                        <div class="item d-flex align-items-center">
-                                            <div class="icon bg-red">
-                                                <i class="icon-padnote" data-toggle="tooltip" data-placement="top" title="Cantidad de Archivos Subidos">
-                                                </i>
-                                            </div>
-                                            <div class="title" data-toggle="tooltip" data-placement="top" title="Cantidad de Archivos Subidos">
-                                                <span>
-                                                    Archivos
-                                                    <br/>
-                                                    Nube
-                                                </span>
-                                                <div class="progress">
-                                                    <div role="progressbar" style="width: 25%; height: 4px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-red">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="number" data-toggle="tooltip" data-placement="top" title="Cantidad de Archivos Subidos">
-                                                <strong>
-                                                    70
-                                                </strong>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Item -->
-                                    <div class="col-xl-3 col-sm-6">
-                                        <div class="item d-flex align-items-center">
-                                            <div class="icon bg-green">
-                                                <i class="icon-bill">
-                                                </i>
-                                            </div>
-                                            <div class="title">
-                                                <span>
-                                                    New
-                                                    <br/>
-                                                    Invoices
-                                                </span>
-                                                <div class="progress">
-                                                    <div role="progressbar" style="width: 25%; height: 4px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-green">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="number">
-                                                <strong>
-                                                    44
-                                                </strong>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Item -->
-                                    <div class="col-xl-3 col-sm-6">
-                                        <div class="item d-flex align-items-center">
-                                            <div class="icon bg-orange">
-                                                <i class="icon-check">
-                                                </i>
-                                            </div>
-                                            <div class="title">
-                                                <span>
-                                                    Open
-                                                    <br/>
-                                                    Cases
-                                                </span>
-                                                <div class="progress">
-                                                    <div role="progressbar" style="width: 25%; height: 4px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-orange">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="number">
-                                                <strong>
-                                                    35
-                                <div id="number"></div>
-                                                </strong>
-                                            </div>
-                                        </div>
-                                    </div>
+                                   
+                                       
                                 </div>
                             </div>
                         </section>
