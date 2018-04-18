@@ -201,6 +201,8 @@ temporal:any
         this.serviceInv.getTemp()
         .subscribe(res=>{
           this.temporal = res;
+       
+          
         })
       }
 
@@ -240,6 +242,7 @@ totales:any=0;
               this.serviceInv.getTemp1()
               .subscribe(res=>{
                 this.temporal1 = res;
+               
 
               })
             }
@@ -284,17 +287,24 @@ totales:any=0;
              nroFactura:any
              to:any;
              admin:any;
-            vender(forma:NgForm){
+            vender(forma:NgForm, nombreCliente){
+            //  let a = confirm('Esta seguro de facturarle al cliente ' + nombreCliente);
+            let a = $('#confirm').modal('show');
             this.admin = localStorage.getItem('idAdmin');
-              this.cli = forma.value.nombreCliente;
-              this.idCli = forma.value.idCliente;
-              this.nroFactura = forma.value.fac;
-              this.to = forma.value.su;
-              this.serviceInv.venta(this.idCli ,this.nroFactura, this.to, this.admin)
-              .subscribe(res=>{
-                  this.ruta.navigate(['ventas/facturas']);
-              })
+                  
 
+            }
+
+            si(forma:NgForm){
+              $('#confirm').modal('hide');
+              this.cli = forma.value.nombreCliente;
+                this.idCli = forma.value.idCliente;
+                this.nroFactura = forma.value.fac;
+                this.to = forma.value.su;
+                this.serviceInv.venta(this.idCli ,this.nroFactura, this.to, this.admin)
+                .subscribe(res=>{
+                    this.ruta.navigate(['ventas/facturas']);
+                })
             }
 
   fac:any
@@ -305,4 +315,7 @@ totales:any=0;
          // console.log(this.fac)
        })
      }
+     
+
+  
 }

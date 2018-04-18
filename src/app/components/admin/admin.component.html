@@ -19,7 +19,7 @@
                 <!-- " *ngIf="loader"> -->
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
-                    <li class="breadcrumb-item active " aria-current="page"> <i class="fa fa-list"></i> Listado de usuarios del istema </li>
+                    <li class="breadcrumb-item active " aria-current="page"> <i class="fa fa-list"></i> Listado de usuarios del sistema </li>
                   </ol>
                 </nav>
                 
@@ -31,7 +31,7 @@
                 </div>
                <div class="row to">
                  <div class="col-md-12 table-responsive">
-                  <table class="table table-bordered">
+                  <table class="table table-bordered table-hover table-sm">
                     <thead class="bg-primary">
                       <tr>
                         <th class="text-white">Nombre </th>
@@ -39,6 +39,7 @@
                         <th class="text-white">Rol</th>
                         <th class="text-white">Fecha de Alta</th>
                         <th class="text-white">Editar</th>
+                        <th class="text-white">Borrar</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -47,7 +48,8 @@
                         <td>{{item.password}}</td>
                         <td>{{item.rol}}</td>
                         <td>{{item.fechaCreado | date: 'dd/MM/yyyy'}}</td>
-                        <td> <i class="fa fa-edit btn btn-primary" (click)="change(item.idAdmin, item.nombreAdmin)" ></i></td>
+                        <td> <i class="fa fa-edit btn btn-outline-primary fa-2x" (click)="change(item.idAdmin, item.nombreAdmin)" ></i></td>
+                        <td> <i class="fa fa-trash btn btn-outline-danger fa-2x" (click)="borrar(item.idAdmin, item.nombreAdmin)" ></i></td>
                       </tr>
 
                     </tbody>
@@ -108,7 +110,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-plus"></i> Agregar Usuario</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -135,7 +137,7 @@
                 </div>
                 
                 <button [disabled]="forma.invalid"
-                type="submit" class="btn btn-primary btn-raised">Cambiar</button>
+                type="submit" class="btn btn-primary btn-raised">Agregar</button>
               </form>
         </div>
         <div class="modal-footer">
@@ -148,7 +150,25 @@
 
 
 
-
+  <div class="modal" tabindex="-1" role="dialog" id="eliminar">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Eliminar usuario</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p class="alert alert-danger">Esta seguro de eliminar el usuario?.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="deleteAdmin(idAdmin)" >Si  borrar</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No salir</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
         

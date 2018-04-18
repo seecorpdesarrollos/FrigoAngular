@@ -133,7 +133,7 @@
                          </table>
                        </div>
 
-                         <form #forma="ngForm" (ngSubmit)="vender(forma)">
+                         <form #forma="ngForm"  *ngIf=" totales > 0 || totales1 > 0">
                          <div class="row">
                            <div class="col-md-7 to" >
                              <div class="input-group">
@@ -154,7 +154,7 @@
                           </div>
                            <div class="col-md-3">
                              <button [disabled]="forma.invalid"
-                             type="submit" class="btn btn-primary">$ Vender</button>
+                             type="submit" class="btn btn-primary" (click)="vender(forma ,nombreCliente)" >$ Vender</button>
                            </div>
                          </div>
                          <br>
@@ -164,11 +164,34 @@
                              <div class="col-md-5">
                               <p class="alert alert-danger"> Factura Nro: {{ fac}}</p>
                            </div>
-                           <input type="hidden" name="fac" [(ngModel)]="fac" value="">
-                           <input type="hidden" name="su" [(ngModel)]="su" value="">
+                           <input type="hidden" name="fac" [(ngModel)]="fac" value="" required>
+                           <input type="hidden" name="su" [(ngModel)]="su" value="" required>
                        </div>
+                       
+                                  <!-- confirmar el cliente -->
+                       
+                                  <div class="modal" tabindex="-1" role="dialog" id="confirm">
+                                   <div class="modal-dialog" role="document">
+                                     <div class="modal-content">
+                                       <div class="modal-header">
+                                         <h4 class="modal-title">Confirmar el Cliente: <span class="text-danger">{{ nombreCliente | uppercase}}</span></h4> 
+                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                           <span aria-hidden="true">&times;</span>
+                                         </button>
+                                       </div>
+                                       <div class="modal-body">
+                                         <p class="alert alert-info ">Esta seguro de venderle al cliente . {{ nombreCliente }}</p>
+                                       </div>
+                                       <div class="modal-footer">
+                                         <button type="button" class="btn btn-primary" (click)="si(forma)">Si Confirmar</button>
+                                         <button type="button" class="btn btn-secondary" data-dismiss="modal" >No </button>
+                                       </div>
+                                     </div>
+                                   </div>
+                                 </div>
                        </form>
                      </div>
                    </div>
               </div>
            </div>
+

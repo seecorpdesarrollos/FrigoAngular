@@ -34,7 +34,7 @@
           <th class="text-white">Cantidad</th>
           <th class="text-white">Importe</th>
           <th class="text-white">Total</th>
-          <th class="text-white">Acciones</th>
+          <!-- <th class="text-white">Acciones</th> -->
         </tr>
       </thead>
       <tbody>
@@ -45,11 +45,11 @@
             <td>{{ item.cantidadCredito }}</td>
             <td>{{ item.importeCredito }}</td>
             <td>{{ item.totalCredito }}</td>    
-             <td class="text-center">
+             <!-- <td class="text-center"> -->
                <!-- <a  title="Editar Nota de Credito" class="btn btn-outline-primary btn-sm" [routerLink]="['../editarCredito',item.idNotaCredito,item.idCliente,item.nombreCliente,item.descripcionCredito,item.cantidadCredito,item.importeCredito,item.totalCredito]"><i class="fa fa-edit fa-1x  btn-outline-primary"></i></a> -->
-              <span  class="btn btn-outline-danger btn-sm" title="Eliminar Vendedor" 
+              <!-- <span  class="btn btn-outline-danger btn-sm" title="Eliminar Vendedor" 
                 (click)="eliminar(item.idNotaCredito , item.idCliente, item.totalCredito)"><i class="fa fa-trash fa-1x  btn-outline-danger"></i></span>
-             </td>
+             </td> -->
           </tr>
              <tr *ngIf="!nada">
                <td colspan="6" class="text-center" >

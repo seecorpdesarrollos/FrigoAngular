@@ -59,7 +59,7 @@ export class PrincipalComponent implements OnInit {
  this.cuentas.getCant()
    .subscribe(res=>{
      this.cant = res;
-     console.log(this.cant);
+    //  console.log(this.cant);
   
    })
   }

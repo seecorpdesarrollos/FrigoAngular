@@ -1,0 +1,47 @@
+[33mcommit 0ba365f01407f8d19d9f787463c659deee9db071[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Diego Pennisi <diegopennisi@outlook.es>
+Date:   Sat Apr 14 20:12:38 2018 -0300
+
+    nota de credito terminada con estadisticas
+
+[33mcommit ddcc515a4c9fd195d3877e8810b5f9b8bdd14111[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: Diego Pennisi <diegopennisi@outlook.es>
+Date:   Fri Apr 13 14:28:13 2018 -0300
+
+    comenzando las notas
+
+[33mcommit 9b0466c779efc706e0edc81252cfc6e78e274845[m
+Author: Diego Pennisi <diegopennisi@outlook.es>
+Date:   Tue Apr 10 15:19:22 2018 -0300
+
+    detalle en cuenta corriente termnado
+
+[33mcommit 0be5895d3a2ca1ab5891f9f3ac7a57288219bb1e[m
+Author: Diego Pennisi <diegopennisi@outlook.es>
+Date:   Fri Apr 6 20:39:37 2018 -0300
+
+    Termine el punto numero 8
+
+[33mcommit 4da74aaf73cf3b86f96bd859f939a93bf453022f[m
+Author: Diego Pennisi <diegopennisi@outlook.es>
+Date:   Fri Apr 6 13:02:17 2018 -0300
+
+    Finalizando el panel de cuentas corrientes
+
+[33mcommit 2ae30f5109c8eca298b8796952c72956b4e0c210[m
+Author: Diego Pennisi <diegopennisi@outlook.es>
+Date:   Thu Mar 15 15:37:30 2018 -0300
+
+    teminado los clientes
+
+[33mcommit f48f840566cfddc21475f6b6ae19883340b2842e[m
+Author: Diego Pennisi <diegopennisi@outlook.es>
+Date:   Tue Mar 13 18:50:27 2018 -0300
+
+    Comienzo en github
+
+[33mcommit ada0b0c15ede6a2af9d54317dbf5e2dee16d52b8[m
+Author: Angular CLI <angular-cli@angular.io>
+Date:   Wed Feb 28 22:03:50 2018 -0300
+
+    chore: initial commit from @angular/cli

@@ -21,7 +21,7 @@ export class ListadoComponent implements OnInit {
 
   public data: any[];
   public filterQuery = "";
-  public rowsOnPage = 2;
+  public rowsOnPage = 18;
 loader:boolean = false;
   getProductos(){
     this.service.getProductos()

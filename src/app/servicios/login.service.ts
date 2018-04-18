@@ -37,6 +37,10 @@ export class LoginService {
       .map(()=>"")
   }
 
-
+  deleteUsuarioActual(idAdmin) {
+    return this.http.post("http://localhost/Frigorifico/controllers/loginController.php?id=delete",
+      {'idAdmin': idAdmin})
+      .map(res=>res.json())
+  }
 
 }

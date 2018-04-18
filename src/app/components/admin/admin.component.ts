@@ -29,6 +29,8 @@ export class AdminComponent implements OnInit {
       this.admin.getUsuarios()
       .subscribe(response =>{
         this.data = response;
+        // console.log(this.data);
+        
       })
   }
 
@@ -78,5 +80,28 @@ agregar(forma:NgForm){
   });
 }
 
+
+borrar(idAdmin){
+  
+  $('#eliminar').modal('show')
+  this.idAdmin = idAdmin;
+}
+
+deleteAdmin(idAdmin){
+
+  if (idAdmin == 1) {
+    return  alert('Este es el usuario admin. por lo tanto no se puede borrar');
+  }else{
+    $('#eliminar').modal('hide');
+    this.admin.deleteUsuarioActual(idAdmin)
+    .subscribe(()=>{
+      this.ruta.navigate(['success']);
+    setTimeout(()=>{
+      this.ruta.navigate(['admin']);
+    },2500)
+    })
+  }
+ 
+}
 
 }

@@ -34,4 +34,37 @@ export class NotasService {
   }
 
 
+  // debitos
+
+
+  addNotaDebito(descripcionDebito,cantidadDebito,importeDebito,nroCheque,idCliente) {
+    return this.http.post("http://localhost/Frigorifico/controllers/notasController.php?id=addNotaDebito",
+      {'descripcionDebito': descripcionDebito, 'cantidadDebito': cantidadDebito,
+      'importeDebito': importeDebito,  'nroCheque': nroCheque, 'idCliente': idCliente })
+      .map(res=>res.json());
+  }
+
+
+  addNotaDebitoSinCheque(descripcionDebito,cantidadDebito,importeDebito ,idCliente) {
+    return this.http.post("http://localhost/Frigorifico/controllers/notasController.php?id=addNotaDebitoSinCheque",
+      {'descripcionDebito': descripcionDebito, 'cantidadDebito': cantidadDebito,
+      'importeDebito': importeDebito, 'idCliente': idCliente })
+      .map(res=>{console.log(res);
+      });
+  }
+
+
+  notaDebito:any;
+  getnotaDebito() {
+  return this.http.get("http://localhost/Frigorifico/controllers/notasController.php?id=getNotaDebito")
+    .map(resultado => {
+      this.notaDebito = resultado;
+      if (this.notaDebito._body !== '') {
+        return resultado.json();
+      }
+    })
+}
+
+
+
 }

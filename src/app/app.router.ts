@@ -79,7 +79,7 @@ const APP_ROUTES: Routes = [
 children:[
   { path: 'listadoDebito', component: ListadodebitoComponent },
   { path: 'agregarDebito', component: AgregardebitoComponent },
-  { path: 'editarDebito/:id', component: EditardebitoComponent },
+  { path: 'editarDebito', component: EditardebitoComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'listadoDebito'}
 ]
 },
