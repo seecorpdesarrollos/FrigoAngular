@@ -22,12 +22,13 @@ export class AdminComponent implements OnInit {
   this.getAdmin();
   }
 
-
+  loader:boolean=false;
    data:any[];
   getAdmin(){
     
       this.admin.getUsuarios()
       .subscribe(response =>{
+        this.loader= true;
         this.data = response;
         // console.log(this.data);
         
@@ -90,11 +91,15 @@ borrar(idAdmin){
 deleteAdmin(idAdmin){
 
   if (idAdmin == 1) {
+
     return  alert('Este es el usuario admin. por lo tanto no se puede borrar');
   }else{
     $('#eliminar').modal('hide');
-    this.admin.deleteUsuarioActual(idAdmin)
-    .subscribe(()=>{
+
+    this.admin.deleteUsuarioActual(this.idAdmin)
+    .subscribe(res=>{
+      // console.log(res);
+      
       this.ruta.navigate(['success']);
     setTimeout(()=>{
       this.ruta.navigate(['admin']);

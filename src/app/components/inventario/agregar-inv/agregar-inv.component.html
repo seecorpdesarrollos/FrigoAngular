@@ -34,11 +34,16 @@
     </div>
    </div>
 
-      <div class="col-md-12 to" *ngIf="comprobarInv">
+      <div class="col-md-12 to" *ngIf="!loader ">
         <button [disabled]="forma.invalid"
         (click)="comprobarInventario(forma)"
         type="submit" class="btn btn-primary btn-block btn-lg">Agregar Inventario</button>
       </div>
+
+        <div class="col-md-12 to" *ngIf="loader">
+          <button 
+          type="submit" class="btn btn-primary btn-block btn-lg"><i class="fa fa-spinner fa-spin"></i> Guardando ......</button>
+        </div>
 
       <div  *ngIf="!comprobarInv">
         <div class="col-md-12">
@@ -72,7 +77,7 @@
         <p class="alert alert-primary">Por favor revisar la sección de productos.</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="reset()">Salir</button>
 
       </div>
     </div>

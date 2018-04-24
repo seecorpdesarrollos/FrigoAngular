@@ -20,10 +20,14 @@
               </div>
          </div>
               <div class="col-md-3"></div>
-                  <div class="col-md-3">
+                <div class="col-md-3" *ngIf="!cambio" >
                 <button [disabled]="forma.invalid"
                 type="submit" class="btn btn-primary"> Consultar</button>
               </div>
+                <div class="col-md-3" *ngIf="cambio" >
+                  <button 
+                  type="submit" class="btn btn-primary"> <i class="fa fa-spinner fa-spin"></i> Buscando ....</button>
+                </div>
             </div>
            
           </form>

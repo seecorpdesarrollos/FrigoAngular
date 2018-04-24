@@ -16,7 +16,7 @@ export class FechasComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.fe);
+    // console.log(this.fe);
     
   }
 
@@ -26,8 +26,11 @@ export class FechasComponent implements OnInit {
   fecha2:any;
   getFecha:any[];
   fe:boolean=false;
+  cambio:boolean=false;
   totals:number=0;
+  nada:boolean=false;
   fecha(forma:NgForm){
+    this.cambio = true;
    this.fecha1= forma.value.fechaInicial;
    this.fecha2 = forma.value.fechaFinal;
    if (this.fecha1 > this.fecha2) {
@@ -36,6 +39,11 @@ export class FechasComponent implements OnInit {
      
      this.consulta.getVentasFecha(this.fecha1, this.fecha2)
      .subscribe(resp=>{
+      //  console.log(resp);
+       if(resp == 0){
+        //  alert('nada')
+         this.nada = true;
+       }
      this.getFecha = resp;
      for (let i = 0; i < this.getFecha.length; i++) {
       

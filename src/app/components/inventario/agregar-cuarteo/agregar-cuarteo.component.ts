@@ -16,44 +16,45 @@ export class AgregarCuarteoComponent implements OnInit {
   ) { }
 
 
-
-    ngOnInit() {
-      this.getInventario();
-    }
-
-    loader:boolean = false;
-    public data: any[];
-    getInventario(){
-      this.service.getInventario()
-      .subscribe(res=>{
-        this.loader = true;
-        this.data= res;
-        })
-    }
-
-    toggle:boolean=false;
-
-   dataToggle(){
-
-     this.toggle =true;
-
-   }
-
-   kiloMedia:any
-   nroTropa:any
-   idInventario:any
-   pro:boolean = false;
-   select(value){
-
-     this.kiloMedia = value.kiloMedia;
-     this.nroTropa = value.nroTropa;
-     this.idInventario = value.idInventario;
-     this.toggle =false;
-     this.pro = true
-   }
-
-
-     agregarCuarteo(forma:NgForm){
+  ngOnInit() {
+    this.getInventario();
+  }
+  
+  loader:boolean = false;
+  public data: any[];
+  getInventario(){
+    this.service.getInventario()
+    .subscribe(res=>{
+      this.loader = true;
+      this.data= res;
+    })
+  }
+  
+  toggle:boolean=false;
+  
+  dataToggle(){
+    
+    this.toggle =true;
+    
+  }
+  
+  kiloMedia:any
+  nroTropa:any
+  idInventario:any
+  pro:boolean = false;
+  select(value){
+    
+    this.kiloMedia = value.kiloMedia;
+    this.nroTropa = value.nroTropa;
+    this.idInventario = value.idInventario;
+    this.toggle =false;
+    this.pro = true
+  }
+  
+  
+  cambio:boolean=false;
+  agregarCuarteo(forma:NgForm){
+    this.cambio=true;
         this.kiloMedia= forma.value.kiloMedia;
         this.nroTropa = forma.value.nroTropa;
         this.idInventario = forma.value.idInventario;

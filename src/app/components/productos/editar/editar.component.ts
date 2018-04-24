@@ -38,6 +38,7 @@ export class EditarComponent implements OnInit {
   fechaFaena:any;
   cantKilos:number;
   nroTropa:any;
+  spinner:boolean=false;
   editarPro(forma:NgForm){
 
     this.dueHacienda = forma.value.dueHacienda;
@@ -50,6 +51,7 @@ export class EditarComponent implements OnInit {
     if (this.cantKilos <=0 || this.cantCabeza <=0 || this.cantMedia <=0) {
         alert ('El valor tiene que ser mayor a cero');
     }else{
+      this.spinner = true;
     this.servicio.editProducto(
     this.dueHacienda,
     this.cantCabeza,

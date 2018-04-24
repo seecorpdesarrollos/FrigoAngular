@@ -21,11 +21,13 @@ export class PrincipalComponent implements OnInit {
     this.invantarioCant();
   }
 
-
+loader:boolean=false;
   cuarteo:any[];
    invantario(){ 
   this.cuentas.getInventaTropa()
     .subscribe(res=>{
+
+      this.loader=true;
       this.cuarteo = res;
       // console.log(this.cuarteo);
    
@@ -37,6 +39,7 @@ export class PrincipalComponent implements OnInit {
   invantarioDisponible(){ 
  this.cuentas.getInventaTropaDisponible()
    .subscribe(res=>{
+    this.loader=true;
      this.disponible = res;
     //  console.log(this.disponible);
   
@@ -48,6 +51,7 @@ export class PrincipalComponent implements OnInit {
   invantarioVendido(){ 
  this.cuentas.getInventaTropaVendido()
    .subscribe(res=>{
+    this.loader=true;
      this.vendido = res;
     //  console.log(this.vendido);
   
@@ -58,6 +62,7 @@ export class PrincipalComponent implements OnInit {
   invantarioCant(){ 
  this.cuentas.getCant()
    .subscribe(res=>{
+    this.loader=true;
      this.cant = res;
     //  console.log(this.cant);
   

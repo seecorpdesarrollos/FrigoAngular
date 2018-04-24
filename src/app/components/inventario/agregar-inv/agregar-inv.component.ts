@@ -62,8 +62,10 @@ export class AgregarInvComponent implements OnInit {
 
   comprobarInv:boolean = true;
   nroTropaComprobar:any;
+  loader:boolean=false;
   comprobarInventario(forma:NgForm){
-    this.toggle =true;
+    this.loader = true;
+    // this.toggle =true;
     // console.log(forma.value.nombreCategoria)
     this.nroTropaComprobar =forma.value.nroTropa;
         // console.log(this.nroTropaComprobar);
@@ -93,6 +95,7 @@ export class AgregarInvComponent implements OnInit {
             }
         }else{
           this.comprobarInv = false;
+          this.loader = false;
           this.toggle =false;
         }
       })

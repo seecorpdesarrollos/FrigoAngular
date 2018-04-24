@@ -52,9 +52,12 @@ export class ListaInvComponent implements OnInit {
    totalTropaLength:any=0;
    restante:any=0;
     masInfo(nroTropa){
+      this.loader=false;
+      
       // alert('la tropas es :' + nroTropa);
       this.service.getInventarioTropa(nroTropa)
       .subscribe( resTropa=>{
+     
         this.tropa = nroTropa;
         this.dataTropa= resTropa;
         for (let i = 0; i < this.dataTropa.length; i++) {

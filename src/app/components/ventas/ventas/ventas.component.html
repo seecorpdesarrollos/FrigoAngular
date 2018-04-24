@@ -49,10 +49,14 @@
                             </div>
                         </div>
                         <div class="col-md-4"></div>
-                        <div class="col-md-7">
+                        <div class="col-md-7" *ngIf="!cambio" >
                             <button [disabled]="forma.invalid"
                             type="submit" class="btn btn-info">Aceptar</button>
                         </div>
+                        <div class="col-md-7" *ngIf="cambio" >
+                          <button 
+                    type="submit" class="btn btn-info"><i class="fa fa-spinner fa-spin"></i> Guardando...</button>
+                      </div>
                       </div>
                     </div>
                   </form>
@@ -79,14 +83,19 @@
                                   <div class="input-group-prepend">
                                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-usd"> </i> </span>
                                   </div>
-                                  <input type="number" class="form-control" id="inputPassword" name="precio" ngModel autocomplete="off" placeholder="Precio Media" required>
+                                  <input type="number" class="form-control" id="inputPassword" name="precio" ngModel autocomplete="off" placeholder="Precio Cuarteo" required>
                                 </div>
                           </div>
                           <div class="col-md-4"></div>
-                          <div class="col-md-6">
+                          <div class="col-md-6" *ngIf="!cambio1">
                               <button [disabled]="forma.invalid"
                               type="submit" class="btn btn-info">Aceptar</button>
                           </div>
+
+                          <div class="col-md-6" *ngIf="cambio1" >
+                            <button 
+                            type="submit" class="btn btn-info"><i class="fa fa-spinner fa-spin"></i> Guardando...</button>
+                        </div>
                         </div>
                       </div>
                     </form>
@@ -97,10 +106,11 @@
               <div class="col-md-7">
                 <div class="card">
                  <p class="alert alert-info"><i class="fa fa-edit"></i>  Detalle Fectura</p>
-                     <div class="card-body"  >
+                     <div class="card-body" class="animated fadeIn" >
                         <div id="impresion">
 
-                         <table class="table table-striped table-hover table-sm">
+                         
+                         <table class="table table-striped table-hover table-sm" >
                            <thead class="bg-dark text-white">
                              <tr>
                                <td>Descripción</td>
@@ -109,22 +119,27 @@
                                <td>Sub Total</td>
                                <td>Eliminar</td>
                              </tr>
-                           </thead>
-                           <tr *ngFor="let temp of temporal">
+                           </thead> 
+                           <tr *ngFor="let temp of temporal" class="animated fadeIn">
                              <td>{{ temp.descripcion }}</td>
                              <td>{{ temp.kiloMedia}}</td>
                              <td>{{ temp.precioMedia}}</td>
                              <td>{{temp.precioMedia * temp.kiloMedia}}</td>
-                             <td class="text-center"><a  (click)="borrarItem(temp.idTemp, temp.descripcion,temp.kiloMedia, temp.id )"><i class="fa fa-trash-o  btn-outline-danger btn-sm"></i></a></td>
+                             <td class="text-center" *ngIf="borra" ><i class="fa fa-spinner fa-spin btn-sm"></i> Borrando..</td>
+                             <td class="text-center" *ngIf="!borra"><a  (click)="borrarItem(temp.idTemp, temp.descripcion,temp.kiloMedia, temp.id )"><i class="fa fa-trash-o  btn-outline-danger btn-sm"></i></a></td>
                            </tr>
-                           <tr *ngFor="let temp1 of temporal1">
-                             <td>{{ temp1.descripcionMedia }}</td>
-                             <td>{{ temp1.kilo}}</td>
-                             <td>{{ temp1.precio}}</td>
-                             <td>{{temp1.precio * temp1.kilo}}</td>
-                             <td class="text-center"><a  (click)="borrarItem1( temp1.idInventario )"><i class="fa fa-trash-o  btn-outline-danger btn-sm"></i></a></td>
-                           </tr>
-                           <tr>
+                        
+                              
+                             <tr  *ngFor="let temp1 of temporal1" class="animated fadeIn" >
+                               <td>{{ temp1.descripcionMedia }}</td>
+                               <td>{{ temp1.kilo}}</td>
+                               <td>{{ temp1.precio}}</td>
+                               <td>{{temp1.precio * temp1.kilo}}</td>
+                               <td class="text-center" *ngIf="!borr" ><a  (click)="borrarItem1( temp1.idInventario )"><i class="fa fa-trash-o  btn-outline-danger btn-sm"></i></a></td>
+                               <td class="text-center" *ngIf="borr" ><i class="fa fa-spinner fa-spin btn-sm"></i> Borrando..</td>
+                              </tr>
+                            
+                              <tr class="animated fadeIn">
                              <td></td>
                              <td colspan="2">Total</td>
                              <td>$ {{ totales + totales1 }}</td>
@@ -133,7 +148,7 @@
                          </table>
                        </div>
 
-                         <form #forma="ngForm"  *ngIf=" totales > 0 || totales1 > 0">
+                         <form #forma="ngForm">
                          <div class="row">
                            <div class="col-md-7 to" >
                              <div class="input-group">

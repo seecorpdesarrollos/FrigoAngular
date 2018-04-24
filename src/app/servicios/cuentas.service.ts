@@ -10,7 +10,7 @@ export class CuentasService {
 
 sakdo:any
   getSaldo() {
-    return this.http.get("http://localhost/Frigorifico/controllers/cuentasControllers.php?id=getSaldos")
+    return this.http.get("https://seecorpdesarrollos.com/Frigorifico/controllers/cuentasControllers.php?id=getSaldos")
       .map(res => {
         this.sakdo= res;
         if (this.sakdo._body !== '') {
@@ -22,7 +22,7 @@ sakdo:any
 
    pagos:any
   getPagos() {
-    return this.http.get("http://localhost/Frigorifico/controllers/cuentasControllers.php?id=getPagos")
+    return this.http.get("https://seecorpdesarrollos.com/Frigorifico/controllers/cuentasControllers.php?id=getPagos")
       .map(res => {
         this.pagos= res;
         if (this.pagos._body !== '') {
@@ -35,14 +35,14 @@ sakdo:any
 
 
    getSaldoId(idCliente) {
-    return this.http.post("http://localhost/Frigorifico/controllers/cuentasControllers.php?id=getSaldosId",
+    return this.http.post("https://seecorpdesarrollos.com/Frigorifico/controllers/cuentasControllers.php?id=getSaldosId",
     { 'idCliente': idCliente })
       .map(res => {
         return res.json();
       });
    }
    getFacturaDetalles(idCliente, fechaInicial, fechaFinal){
-    return this.http.post("http://localhost/Frigorifico/controllers/cuentasControllers.php?id=getDetallesFac",
+    return this.http.post("https://seecorpdesarrollos.com/Frigorifico/controllers/cuentasControllers.php?id=getDetallesFac",
     { 'idCliente': idCliente , 'fechaInicial':fechaInicial , 'fechaFinal':fechaFinal})
       .map(res => {
         return res.json();
@@ -51,7 +51,7 @@ sakdo:any
 
 
    getKilos(idCliente, fechaInicial, fechaFinal){
-    return this.http.post("http://localhost/Frigorifico/controllers/cuentasControllers.php?id=totalKilos",
+    return this.http.post("https://seecorpdesarrollos.com/Frigorifico/controllers/cuentasControllers.php?id=totalKilos",
     { 'idCliente': idCliente , 'fechaInicial':fechaInicial , 'fechaFinal':fechaFinal})
       .map(res => {
         return res.json();
@@ -59,7 +59,7 @@ sakdo:any
    }
 
    totalEntradaId(idCliente) {
-    return this.http.post("http://localhost/Frigorifico/controllers/cuentasControllers.php?id=totalEntradaId",
+    return this.http.post("https://seecorpdesarrollos.com/Frigorifico/controllers/cuentasControllers.php?id=totalEntradaId",
     { 'idCliente': idCliente })
       .map(res => {
         
@@ -68,7 +68,7 @@ sakdo:any
    }
 
    totalSalidaId(idCliente) {
-    return this.http.post("http://localhost/Frigorifico/controllers/cuentasControllers.php?id=totalSalidaId",
+    return this.http.post("https://seecorpdesarrollos.com/Frigorifico/controllers/cuentasControllers.php?id=totalSalidaId",
     { 'idCliente': idCliente })
       .map(res => {
         return res.json();
@@ -77,7 +77,7 @@ sakdo:any
 
 
    getCuentaCorriente(idCliente, fechaInicial, fechaFinal){
-    return this.http.post("http://localhost/Frigorifico/controllers/cuentasControllers.php?id=todo",
+    return this.http.post("https://seecorpdesarrollos.com/Frigorifico/controllers/cuentasControllers.php?id=todo",
     { 'idCliente': idCliente , 'fechaInicial':fechaInicial , 'fechaFinal':fechaFinal})
       .map(res => {
         return res.json();
@@ -86,7 +86,7 @@ sakdo:any
 
 
    addPagos(idCliente,comprobante,monto,efectivo,cheque, nroCheque,banco,propietario,idVendedor) {
-    return this.http.post("http://localhost/Frigorifico/controllers/cuentasControllers.php?id=addPagos",
+    return this.http.post("https://seecorpdesarrollos.com/Frigorifico/controllers/cuentasControllers.php?id=addPagos",
     { 'idCliente': idCliente, 'comprobante':comprobante , 
     'monto':monto,'efectivo':efectivo, 'cheque':cheque, 'nroCheque':nroCheque , 
     'banco':banco, 'propietario':propietario, 'idVendedor':idVendedor})
@@ -101,7 +101,7 @@ sakdo:any
 
 inventa:any
 getInventaTropa() {
-  return this.http.get("http://localhost/Frigorifico/controllers/cuentasControllers.php?id=getInventarioTropa")
+  return this.http.get("https://seecorpdesarrollos.com/Frigorifico/controllers/cuentasControllers.php?id=getInventarioTropa")
     .map(res => {
       this.inventa= res;
       if (this.inventa._body !== '') {
@@ -115,7 +115,7 @@ getInventaTropa() {
 
 disponible:any
 getInventaTropaDisponible() {
-  return this.http.get("http://localhost/Frigorifico/controllers/cuentasControllers.php?id=getInventarioTropaDisponible")
+  return this.http.get("https://seecorpdesarrollos.com/Frigorifico/controllers/cuentasControllers.php?id=getInventarioTropaDisponible")
     .map(res => {
       this.disponible= res;
       if (this.disponible._body !== '') {
@@ -127,7 +127,7 @@ getInventaTropaDisponible() {
 
  vendiso:any
 getInventaTropaVendido() {
-  return this.http.get("http://localhost/Frigorifico/controllers/cuentasControllers.php?id=getInventarioTropaVendido")
+  return this.http.get("https://seecorpdesarrollos.com/Frigorifico/controllers/cuentasControllers.php?id=getInventarioTropaVendido")
     .map(res => {
       this.vendiso= res;
       if (this.vendiso._body !== '') {
@@ -140,7 +140,7 @@ getInventaTropaVendido() {
 
  cant:any
  getCant() {
-   return this.http.get("http://localhost/Frigorifico/controllers/cuentasControllers.php?id=getCant")
+   return this.http.get("https://seecorpdesarrollos.com/Frigorifico/controllers/cuentasControllers.php?id=getCant")
      .map(res => {
        this.cant= res;
        if (this.cant._body !== '') {

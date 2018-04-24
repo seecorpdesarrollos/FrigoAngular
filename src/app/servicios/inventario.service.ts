@@ -8,26 +8,26 @@ export class InventarioService {
 
 
   addInventarioCuarteo(pecho,  mocho , parrillero, completos , largos, bifes, asado,totalPeso, idCuarteo) {
-    return this.http.post("http://localhost/Frigorifico/controllers/inventarioController.php?id=addInventarioCuarteo",
+    return this.http.post("https://seecorpdesarrollos.com/Frigorifico/controllers/inventarioController.php?id=addInventarioCuarteo",
       {'pecho': pecho, 'mocho': mocho, 'parrillero':parrillero, 'completos':completos, 'largos':largos, 'bifes':bifes, 'asado':asado , 'totalPeso':totalPeso , 'idCuarteo':idCuarteo })
       .map(res=>res.json())
   }
 
   addInventario(kiloMedia,  nroTropa) {
-    return this.http.post("http://localhost/Frigorifico/controllers/inventarioController.php?id=addInventario",
+    return this.http.post("https://seecorpdesarrollos.com/Frigorifico/controllers/inventarioController.php?id=addInventario",
       {'kiloMedia': kiloMedia, 'nroTropa': nroTropa })
       .map(res=>res.json())
   }
 
   addCuarteo(kiloMedia,  nroTropa ,idInventario) {
-    return this.http.post("http://localhost/Frigorifico/controllers/inventarioController.php?id=addCuarteo",
+    return this.http.post("https://seecorpdesarrollos.com/Frigorifico/controllers/inventarioController.php?id=addCuarteo",
       {'kiloMedia': kiloMedia, 'nroTropa': nroTropa , 'idInventario': idInventario })
       .map(res=>res.json())
   }
 
   inventario:any;
     getInventario() {
-    return this.http.get("http://localhost/Frigorifico/controllers/inventarioController.php?id=getInv")
+    return this.http.get("https://seecorpdesarrollos.com/Frigorifico/controllers/inventarioController.php?id=getInv")
       .map(resultado => {
         this.inventario = resultado;
         if (this.inventario._body !== '') {
@@ -38,7 +38,7 @@ export class InventarioService {
 
   cuarteo:any;
     getCuarteoServicio() {
-    return this.http.get("http://localhost/Frigorifico/controllers/inventarioController.php?id=cuarteo")
+    return this.http.get("https://seecorpdesarrollos.com/Frigorifico/controllers/inventarioController.php?id=cuarteo")
       .map(resultado => {
         this.cuarteo = resultado;
         if (this.cuarteo._body !== '') {
@@ -49,7 +49,7 @@ export class InventarioService {
 
   cuarteoInventario:any;
     getCuarteoServicioInventario() {
-    return this.http.get("http://localhost/Frigorifico/controllers/inventarioController.php?id=cuarteoInventario")
+    return this.http.get("https://seecorpdesarrollos.com/Frigorifico/controllers/inventarioController.php?id=cuarteoInventario")
       .map(resultado => {
         this.cuarteoInventario = resultado;
         if (this.cuarteoInventario._body !== '') {
@@ -60,7 +60,7 @@ export class InventarioService {
 
   inventarioTotal:any;
     getInventarioTotal() {
-    return this.http.get("http://localhost/Frigorifico/controllers/inventarioController.php?id=getInvTotal")
+    return this.http.get("https://seecorpdesarrollos.com/Frigorifico/controllers/inventarioController.php?id=getInvTotal")
       .map(resultado => {
         this.inventarioTotal = resultado;
         if (this.inventarioTotal._body !== '') {
@@ -71,7 +71,7 @@ export class InventarioService {
 
   inventarioTropa:any;
     getInventarioTropa(nroTropa) {
-    return this.http.post("http://localhost/Frigorifico/controllers/inventarioController.php?id=getInvTropa",
+    return this.http.post("https://seecorpdesarrollos.com/Frigorifico/controllers/inventarioController.php?id=getInvTropa",
       { 'nroTropa' :nroTropa })
       .map(resultado => {
         this.inventarioTropa = resultado;
@@ -83,7 +83,7 @@ export class InventarioService {
 
   masinfo:any;
     masInfo(idCuarteoInventario) {
-    return this.http.post("http://localhost/Frigorifico/controllers/inventarioController.php?id=idCuarteoInventario",
+    return this.http.post("https://seecorpdesarrollos.com/Frigorifico/controllers/inventarioController.php?id=idCuarteoInventario",
       { 'idCuarteoInventario' :idCuarteoInventario })
       .map(resultado => {
         this.masinfo = resultado;
@@ -95,7 +95,7 @@ export class InventarioService {
 
   borrar:any;
     borrarCuarteo(idInventario) {
-    return this.http.post("http://localhost/Frigorifico/controllers/inventarioController.php?id=borrarCuarteo",
+    return this.http.post("https://seecorpdesarrollos.com/Frigorifico/controllers/inventarioController.php?id=borrarCuarteo",
       { 'idInventario' :idInventario })
       .map(resultado => {
         this.borrar = resultado;
@@ -107,7 +107,7 @@ export class InventarioService {
 
   borrarCua:any;
     borrarCuarteoId(idCuarteo) {
-    return this.http.post("http://localhost/Frigorifico/controllers/inventarioController.php?id=borrarCuarteoId",
+    return this.http.post("https://seecorpdesarrollos.com/Frigorifico/controllers/inventarioController.php?id=borrarCuarteoId",
       { 'idCuarteo' :idCuarteo })
       .map(resultado => {
         this.borrarCua = resultado;
@@ -119,7 +119,7 @@ export class InventarioService {
 
   totalKilos:any;
     getTotalTropa(nroTropa) {
-      return this.http.post("http://localhost/Frigorifico/controllers/inventarioController.php?id=getInvTropaKilos",
+      return this.http.post("https://seecorpdesarrollos.com/Frigorifico/controllers/inventarioController.php?id=getInvTropaKilos",
       { 'nroTropa' :nroTropa })
       .map(resultado => {
         this.totalKilos = resultado;
@@ -131,7 +131,7 @@ export class InventarioService {
 
   getInv: any;
 getInventarioId(idInventario) {
- return this.http.post("http://localhost/Frigorifico/controllers/inventarioController.php?id=editarInvId", { 'idInventario': idInventario })
+ return this.http.post("https://seecorpdesarrollos.com/Frigorifico/controllers/inventarioController.php?id=editarInvId", { 'idInventario': idInventario })
    .map(res => {
      this.getInv = res;
      return this.getInv.json();
@@ -139,7 +139,7 @@ getInventarioId(idInventario) {
 }
 resultados: any;
 comprobarInv(nroTropaComprobar){
-  return this.http.post("http://localhost/Frigorifico/controllers/inventarioController.php?id=comprobar",
+  return this.http.post("https://seecorpdesarrollos.com/Frigorifico/controllers/inventarioController.php?id=comprobar",
   {'nroTropaComprobar':nroTropaComprobar})
   .map( resultado =>{
      this.resultados = resultado;
@@ -153,20 +153,20 @@ comprobarInv(nroTropaComprobar){
 }
 
 editarInventario(kiloMedia,  nroTropa ,idInventario) {
-  return this.http.post("http://localhost/Frigorifico/controllers/inventarioController.php?id=editarInventario",
+  return this.http.post("https://seecorpdesarrollos.com/Frigorifico/controllers/inventarioController.php?id=editarInventario",
     {'kiloMedia': kiloMedia, 'nroTropa': nroTropa, 'idInventario':idInventario })
     .map(res=>res.json())
 }
 
 
 temporal(pesoCuarto,idCuarto,descripcion,precio) {
-  return this.http.post("http://localhost/Frigorifico/controllers/inventarioController.php?id=temporal",
+  return this.http.post("https://seecorpdesarrollos.com/Frigorifico/controllers/inventarioController.php?id=temporal",
     {'pesoCuarto': pesoCuarto, 'idCuarto': idCuarto, 'descripcion':descripcion, 'precio':precio })
     .map(res=>res.json())
 }
 
 temporal1(medias, nroTropa, precio, idInventario) {
-  return this.http.post("http://localhost/Frigorifico/controllers/inventarioController.php?id=temporal1",
+  return this.http.post("https://seecorpdesarrollos.com/Frigorifico/controllers/inventarioController.php?id=temporal1",
     {'medias': medias, 'nroTropa':nroTropa , 'precio': precio, 'idInventario':idInventario })
     .map(res=>res.json())
 }
@@ -174,7 +174,7 @@ temporal1(medias, nroTropa, precio, idInventario) {
 
 temp:any;
   getTemp() {
-  return this.http.get("http://localhost/Frigorifico/controllers/inventarioController.php?id=getTemp")
+  return this.http.get("https://seecorpdesarrollos.com/Frigorifico/controllers/inventarioController.php?id=getTemp")
     .map(resultado => {
       this.temp = resultado;
       if (this.temp._body !== '') {
@@ -186,7 +186,7 @@ temp:any;
 
 temp1:any;
   getTemp1() {
-  return this.http.get("http://localhost/Frigorifico/controllers/inventarioController.php?id=getTemp1")
+  return this.http.get("https://seecorpdesarrollos.com/Frigorifico/controllers/inventarioController.php?id=getTemp1")
     .map(resultado => {
       this.temp1 = resultado;
       if (this.temp1._body !== '') {
@@ -199,7 +199,7 @@ temp1:any;
 
 total:any;
   getTotalTemp() {
-  return this.http.get("http://localhost/Frigorifico/controllers/inventarioController.php?id=getTotalTemp")
+  return this.http.get("https://seecorpdesarrollos.com/Frigorifico/controllers/inventarioController.php?id=getTotalTemp")
     .map(resultado => {
       this.total = resultado;
       if (this.total._body !== '') {
@@ -210,7 +210,7 @@ total:any;
 
 total1:any;
   getTotalTemp1() {
-  return this.http.get("http://localhost/Frigorifico/controllers/inventarioController.php?id=getTotalTemp1")
+  return this.http.get("https://seecorpdesarrollos.com/Frigorifico/controllers/inventarioController.php?id=getTotalTemp1")
     .map(resultado => {
       this.total1 = resultado;
       if (this.total1._body !== '') {
@@ -221,7 +221,7 @@ total1:any;
 
 borra:any;
   borrarTempId(idTemp ,descripcion,peso,  id) {
-  return this.http.post("http://localhost/Frigorifico/controllers/inventarioController.php?id=borrarTemp",
+  return this.http.post("https://seecorpdesarrollos.com/Frigorifico/controllers/inventarioController.php?id=borrarTemp",
     { 'idTemp' :idTemp , 'descripcion' :descripcion , 'peso': peso,  'id' :id })
     .map(resultado => {
       this.borra = resultado;
@@ -233,7 +233,7 @@ borra:any;
 
 borra1:any;
   borrarTempId1(idInventario) {
-  return this.http.post("http://localhost/Frigorifico/controllers/inventarioController.php?id=borrarTemp1",
+  return this.http.post("https://seecorpdesarrollos.com/Frigorifico/controllers/inventarioController.php?id=borrarTemp1",
     { 'idInventario' :idInventario  })
     .map(resultado => {
       this.borra1 = resultado;
@@ -245,7 +245,7 @@ borra1:any;
 
 factura:any
 getFactura() {
-return this.http.get("http://localhost/Frigorifico/controllers/inventarioController.php?id=getFactura")
+return this.http.get("https://seecorpdesarrollos.com/Frigorifico/controllers/inventarioController.php?id=getFactura")
   .map(resultado => {
     this.factura = resultado;
     if (this.factura._body !== '') {
@@ -257,7 +257,7 @@ return this.http.get("http://localhost/Frigorifico/controllers/inventarioControl
 
 ventas:any;
   venta(idCliente , nroFactura, total, idAdmin) {
-  return this.http.post("http://localhost/Frigorifico/controllers/inventarioController.php?id=ventas",
+  return this.http.post("https://seecorpdesarrollos.com/Frigorifico/controllers/inventarioController.php?id=ventas",
     { 'idCliente' :idCliente , 'nroFactura' : nroFactura, 'total':total , 'idAdmin':idAdmin })
     .map(resultado => {
       this.ventas = resultado;
@@ -270,7 +270,7 @@ ventas:any;
 
 facturas:any
 getFacturas() {
-return this.http.get("http://localhost/Frigorifico/controllers/inventarioController.php?id=getFacturas")
+return this.http.get("https://seecorpdesarrollos.com/Frigorifico/controllers/inventarioController.php?id=getFacturas")
   .map(resultado => {
     this.facturas = resultado;
     if (this.facturas._body !== '') {
@@ -282,7 +282,7 @@ return this.http.get("http://localhost/Frigorifico/controllers/inventarioControl
 
 getDet:any;
 getDetalles(nroFactura){
-  return this.http.post("http://localhost/Frigorifico/controllers/inventarioController.php?id=getDetalles",
+  return this.http.post("https://seecorpdesarrollos.com/Frigorifico/controllers/inventarioController.php?id=getDetalles",
     { 'nroFactura' : nroFactura })
     .map(resultado => {
       this.getDet = resultado;

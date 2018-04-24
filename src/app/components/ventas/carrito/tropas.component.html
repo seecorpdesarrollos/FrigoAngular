@@ -19,10 +19,14 @@
           </div>
      </div>
           <div class="col-md-3"></div>
-              <div class="col-md-3">
+              <div class="col-md-3" *ngIf="!cambio" >
             <button [disabled]="forma.invalid"
             type="submit" class="btn btn-primary"> Consultar</button>
           </div>
+          <div class="col-md-3" *ngIf="cambio" >
+           <button 
+              type="submit" class="btn btn-primary"> <i class="fa fa-spinner fa-spin"></i> Buscando ....</button>
+            </div>
         </div>
        
       </form>
@@ -44,7 +48,7 @@
               <th class="text-white" scope="col">Kilos</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody *ngIf="nada == false">
             <tr *ngFor="let todo of tTropa">
               <th scope="row">{{ todo.dueHacienda}}</th>
               <th scope="row">{{ todo.fecha | date: 'dd/MM/yyyy'}}</th>
@@ -55,8 +59,13 @@
               <td>{{ todo.kilo}}</td>
             </tr>
             
-          </tbody>
-          <tfoot>
+          </tbody >
+         
+            <tr *ngIf="nada">
+              <td colspan="6"> No hay datos para este Nro. de tropa</td>
+            </tr>
+          
+          <tfoot *ngIf="nada == false">
               <td colspan="6">
                 <mfBootstrapPaginator [rowsOnPageSet]="[10,25,100,200]"></mfBootstrapPaginator>
                 <span class="alert alert-info"> Cantidad de medias vendidas:  {{ tTropa.length }}</span>

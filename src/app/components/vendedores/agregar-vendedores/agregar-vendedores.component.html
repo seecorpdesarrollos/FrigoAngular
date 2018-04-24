@@ -25,9 +25,13 @@
      </div>
      </div>
 
-      <div class="col-md-12 to">
+      <div class="col-md-12 to" *ngIf="!al">
         <button [disabled]="forma.invalid"
         type="submit" class="btn btn-primary btn-block btn-lg">Agregar Vendedor</button>
+      </div>
+      <div class="col-md-12 to" *ngIf="al">
+        <button [disabled]="forma.invalid"
+        type="submit" class="btn btn-primary btn-block btn-lg"><i class="fa fa-save fa-spin"></i> Guardando datos...</button>
       </div>
    </div>
 </div>

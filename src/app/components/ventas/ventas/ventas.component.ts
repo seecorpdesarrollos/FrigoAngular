@@ -141,30 +141,31 @@ idCliente:any
       pesoCuarto:any
       descripcion:any
       precio:any
+      cambio:boolean=false;
       temp(forma:NgForm){
-
+       this.cambio = true;
         this.medias = forma.value.kiloMedia;
         this.precio = forma.value.precio;
         this.idInventario = forma.value.idInventario;
 
         this.serviceInv.temporal1(this.medias,this.nroTropa,  this.precio, this.idInventario)
         .subscribe(res=>{
-
           this.flag = false;
           this.flag1 = false;
+          this.getTemp();
           this.ruta.navigate(['ventas/reportes']);
           setTimeout(()=>{
             this.ruta.navigate(['ventas']);
 
-          },5);
+          },50);
           // console.log(res)
         })
 
       }
 
-
+  cambio1:boolean=false;
       temp1(forma:NgForm){
-
+   this.cambio1 = true;
         // this.medias = forma.value.kiloMedia;
         this.cuarto = forma.value.cuartos.split('/');
         this.pesoCuarto = this.cuarto[0];
@@ -178,28 +179,30 @@ idCliente:any
 
 
          this.serviceInv.temporal(this.pesoCuarto, this.idCuarto, this.descripcion, this.precio)
-         .subscribe(res=>{
+         .subscribe(()=>{
+           this.getTemp1();
            this.flag = false;
            this.flag1 = false;
            this.ruta.navigate(['ventas/reportes']);
            setTimeout(()=>{
              this.ruta.navigate(['ventas']);
 
-           },5);
+           },50);
            // console.log(res)
-         })
+         })  
 
 
        }
       }
 
 
-
+loaders:boolean=false;
 temporal:any
       getTemp(){
-
         this.serviceInv.getTemp()
         .subscribe(res=>{
+        //  this.getTemp1();
+          this.loaders = true;
           this.temporal = res;
        
           
@@ -223,14 +226,17 @@ totales:any=0;
         })
       }
 
+      borra:boolean = false;
       borrarItem(idTemp, descripcion,peso,  idCuarteo){
+        this.borra = true;
         this.serviceInv.borrarTempId(idTemp, descripcion, peso, idCuarteo)
         .subscribe(()=>{
+          this.borra = false;
           this.ruta.navigate(['ventas/reportes']);
           setTimeout(()=>{
             this.ruta.navigate(['ventas']);
 
-          },5);
+          },50);
           this.getTemp();
           this.getTotalTemp();
         })
@@ -238,9 +244,12 @@ totales:any=0;
 
 
       temporal1:any
+        te1:boolean = false;
             getTemp1(){
+              this.te1 = true;
               this.serviceInv.getTemp1()
               .subscribe(res=>{
+              // this.getTemp();
                 this.temporal1 = res;
                
 
@@ -266,15 +275,18 @@ totales:any=0;
               this.su= this.totales+this.totales1;
               // console.log(this.su)
             }
-
+         
+            borr:boolean = false;
             borrarItem1(idInventario){
+              this.borr = true;
               this.serviceInv.borrarTempId1(idInventario)
               .subscribe(()=>{
+                this.borr = false;
                 this.ruta.navigate(['ventas/reportes']);
                 setTimeout(()=>{
                   this.ruta.navigate(['ventas']);
 
-                },5);
+                },50);
                 this.getTemp();
                 this.getTotalTemp();
                 this.getTotalTemp1()
@@ -288,10 +300,15 @@ totales:any=0;
              to:any;
              admin:any;
             vender(forma:NgForm, nombreCliente){
+              this.to = forma.value.su;
             //  let a = confirm('Esta seguro de facturarle al cliente ' + nombreCliente);
-            let a = $('#confirm').modal('show');
-            this.admin = localStorage.getItem('idAdmin');
-                  
+            if (this.to <= 0 ) {
+               alert('nada en el carrito'); 
+            }else{
+
+              let a = $('#confirm').modal('show');
+              this.admin = localStorage.getItem('idAdmin');
+            }
 
             }
 

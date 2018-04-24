@@ -31,16 +31,21 @@
         <div class="input-group-prepend">
          <span class="input-group-text" id="basic-addon1"><i class="fa fa-edit"> </i> </span>
         </div>
-        <input type="number" (change)="comprobarInventario(forma)" name="nroTropa" [(ngModel)]="inv.nroTropa" class="form-control" placeholder="Número de tropa" aria-label="Username" aria-describedby="basic-addon1" required autocomplete="off">
+        <input type="number" (keyup)="comprobarInventario(forma)" name="nroTropa" [(ngModel)]="inv.nroTropa" class="form-control" placeholder="Número de tropa" aria-label="Username" aria-describedby="basic-addon1" required autocomplete="off">
      </div>
      <small>(número de tropa)</small>
      </div>
 
-      <div class="col-md-6 to" *ngIf="comprobarInv">
+      <div class="col-md-6 to" *ngIf="!cambio && comprobarInv">
         <button [disabled]="forma.invalid"
         type="submit" class="btn btn-primary btn-block btn-lg">Editar Inventario</button>
       </div>
-      <div class="col-md-6 to" *ngIf="comprobarInv">
+
+      <div class="col-md-6 to" *ngIf="cambio">
+          <button 
+          type="submit" class="btn btn-primary btn-block btn-lg"><i class="fa fa-spinner fa-spin"></i> Guardando ......</button>
+        </div>
+      <div class="col-md-6 to" *ngIf="!cambio && comprobarInv">
         <button (click)="back()"
         type="submit" class="btn btn-success btn-block btn-lg">Salir sin editar </button>
       </div>

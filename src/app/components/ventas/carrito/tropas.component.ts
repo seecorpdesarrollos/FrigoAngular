@@ -50,13 +50,21 @@ export class TropasComponent implements OnInit {
   }
 
   tTropa:any;
+  cambio:boolean=false;
+  nada:boolean=false;
   consultarTropa(forma:NgForm){   
    this.tropa = forma.value.nroTropa;
+   this.cambio = true;
        this.produ.getTropas(this.tropa)
        .subscribe(resp=>{
          this.tTropa = resp;
+        //  console.log(this.tTropa);
+         
          this.tro= true;
-         // console.log(this.tTropa);
+        if (this.tTropa == 'nada') {
+          this.nada = true;
+        }
+        //  console.log(this.nada);
          
        })
   }

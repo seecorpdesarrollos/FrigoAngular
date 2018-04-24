@@ -22,6 +22,7 @@ export class CuarteoListComponent implements OnInit {
 
 
   loader:boolean = false;
+  cambio:boolean = false;
   inventario:any;
   total:any=0;
   totales:any=0;
@@ -77,7 +78,7 @@ if (estadoCuarteo == 0) {
       $('#cuarteos').modal('show');
 
     }else{
-
+    
       $('#cuarteo').modal('show');
       this.idCuarteo = idCuarteo;
       this.kiloMedia = kiloMedia;
@@ -93,7 +94,9 @@ if (estadoCuarteo == 0) {
   asado:any=0;
   totalPeso:any=0;
   agregarCuarteo(forma:NgForm){
-
+    this.cambio = true;
+    console.log(this.cambio);
+    
     this.pecho = forma.value.pecho;
     this.mocho = forma.value.mocho;
     this.parrillero = forma.value.parrillero;

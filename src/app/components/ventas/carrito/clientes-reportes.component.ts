@@ -63,9 +63,11 @@ public data: any[];
 public filterQuery = "";
 public rowsOnPage = 10;
 nada:boolean=false;
+cambio:boolean=false;
 public total:number=0;
 cant:any;
 vender(forma:NgForm){
+  this.cambio= true;
   this.consulta.getVentas(this.idCliente)
   .subscribe(res=>{
     this.pro = true;

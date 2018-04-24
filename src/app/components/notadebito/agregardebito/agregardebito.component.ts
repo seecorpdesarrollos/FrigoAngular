@@ -61,8 +61,9 @@ idCliente:any
    importeDebito:any;
    nroCheque:any;
    public totalDebito:any;
+   cambio:boolean=false;
   agregarDeb(forma:NgForm){
-    
+    this.cambio=true;
      this.descripcionDebito = forma.value.descripcionDebito;
      this.cantidadDebito = forma.value.cantidadDebito;
      this.importeDebito = forma.value.importeDebito;

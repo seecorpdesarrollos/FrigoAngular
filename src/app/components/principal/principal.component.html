@@ -19,7 +19,15 @@
                          <div class="row bg-white has-shadow">
                              <div class="col-md-12">
 
-                                 <div class="card">
+                                      <div class="row">
+                                         <div class="col-md-5"></div>
+                                         <div class="col-md-7">
+                                           <div class="spiner" *ngIf="loader == false">
+                                             <img src="assets/img/cargando.gif" alt="" width="120">
+                                           </div>
+                                         </div>
+                                       </div>
+                                 <div class="card" *ngIf="loader == true">
                                      <div class="card-header bg-primary text-white text-center">
                                          Estadistica de ventas por Tropas
                                         </div>
@@ -127,14 +135,14 @@
                      </div>
                  </section>
 
-                         <section class="dashboard-counts no-padding-bottom animated fadeIn">
+                         <!-- <section class="dashboard-counts no-padding-bottom animated fadeIn">
                             <div class="container-fluid">
                                 <div class="row bg-white has-shadow">
                                    
                                        
                                 </div>
                             </div>
-                        </section>
+                        </section> -->
 
           <!-- Page Footer-->
          <app-footer></app-footer>

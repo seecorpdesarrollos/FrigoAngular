@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   }
 
 
-  nombreAdmin:string;
+  nombreAdmin:any;
   password:any;
   error:boolean = false;
   mostrarError:string;

@@ -19,17 +19,21 @@ export class EditarInvComponent implements OnInit {
 
   ngOnInit() {
     this.getProductosId();
+    
   }
 
   loader:boolean = false;
   idInventario= this.parametro.snapshot.params['idInventario'];
   inv:any;
   getProductosId(){
-        $(window).keydown(function(event){
-              if(event.keyCode == 13) {
-                  return false;
-                }
-        });
+    $(document).ready(function(){
+      $(window).keydown(function(event){
+            if(event.keyCode == 13) {
+                return false;
+              }
+      });
+
+    })
     this.servicio.getInventarioId(this.idInventario)
     .subscribe(respuesta=>{
       this.loader = true;
@@ -47,6 +51,7 @@ export class EditarInvComponent implements OnInit {
 
  kiloMedia:number;
  tropa:any;
+cambio:boolean=false;
   editarInv(forma:NgForm){
 
     this.kiloMedia = forma.value.kiloMedia;
@@ -54,7 +59,7 @@ export class EditarInvComponent implements OnInit {
         alert('El peso de la media res tiene que ser mayor a 0');
     }else{
 
-
+  this.cambio=true;
       this.tropa = forma.value.nroTropa;
       this.servicio.editarInventario(this.kiloMedia, this.tropa, this.idInventario)
       .subscribe(()=>{
@@ -68,18 +73,21 @@ export class EditarInvComponent implements OnInit {
 
   }
 
-comprobarInv:boolean = true;
+comprobarInv:boolean=true;
 nroTropaComprobar:string;
 comprobarInventario(forma:NgForm){
 
   // console.log(forma.value.nombreCategoria)
   this.nroTropaComprobar = forma.value.nroTropa
-    // console.log(this.nroTropaComprobar);
+    // console.log(this.comprobarInv);
     this.servicio.comprobarInv(this.nroTropaComprobar)
     .subscribe( res =>{
-      if (res == 1) {
+      // console.log(res);
+      
+      if (res == 1) {    
           this.comprobarInv = true;
       }else{
+        // alert('Error en el númeri de tropa.')
         this.comprobarInv = false;
 
       }

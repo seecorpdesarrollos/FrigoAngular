@@ -36,7 +36,7 @@ export class ListadoSaldosComponent implements OnInit {
       .subscribe(res=>{
         this.loader = true;
         this.data= res;
-        // console.log(this.data);
+        console.log(this.data);
         
         if(this.data == undefined){
           this.nada= false;

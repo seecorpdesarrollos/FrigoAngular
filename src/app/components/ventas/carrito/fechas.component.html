@@ -2,8 +2,8 @@
   <div class="tab-pane tops"  role="tabpanel" aria-labelledby="profile-tab">
      
       <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-10" *ngIf="fe==false">
+        <!-- <div class="col-md-2"></div> -->
+        <div class="col-md-12 mx-auto" *ngIf="fe==false">
            <form #forma="ngForm" (ngSubmit)="fecha(forma)">
                <div class="row">
                  <div class="col">
@@ -12,9 +12,13 @@
                  <div class="col">
                    <input type="date" name="fechaFinal" ngModel class="form-control" placeholder="Last name" required>
                  </div>
-                 <div class="col">
+                 <div class="col" *ngIf="!cambio">
                      <input [disabled]="forma.invalid"
                      type="submit" class="btn btn-primary mb-2" placeholder="Last name" value="Consultar">
+                   </div>
+                   <div class="col" *ngIf="cambio">
+                      <button 
+                  type="submit" class="btn btn-primary"> <i class="fa fa-spinner fa-spin"></i> Buscando ....</button>
                    </div>
                </div>
              </form>
@@ -33,7 +37,7 @@
                    <th class="text-white">Precio</th>
                  </tr>
                </thead>
-               <tbody>
+               <tbody *ngIf="nada == false">
                  <tr *ngFor=" let item of getFecha">
                    <th scope="row">{{item.fecha | date: 'dd/MM/yyyy'}}</th>
                    <td>{{item.descripcion}}</td>
@@ -43,7 +47,14 @@
                  </tr>
                
                </tbody>
-               <tfoot>
+
+               <tbody *ngIf="nada == true">
+                  <tr>
+                   <td colspan="6"><h2>No hay datos en las fechas seleccionadas</h2></td>
+                  </tr>
+                
+                </tbody>
+               <tfoot *ngIf="nada == false">
                    <td colspan="6">
                      <mfBootstrapPaginator [rowsOnPageSet]="[10,25,100,200]"></mfBootstrapPaginator>
                      <span class="alert alert-info"> Cantidad de productos comprados : {{ getFecha.length}}</span>

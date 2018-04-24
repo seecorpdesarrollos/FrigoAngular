@@ -25,6 +25,7 @@ export class AgregarComponent implements OnInit {
  fechaFaena:any;
  cantKilos:number;
  nroTropa:any;
+ spiner:boolean=false;
  agregarPro(forma:NgForm){
    this.dueHacienda = forma.value.dueHacienda;
    this.cantCabeza = forma.value.cantCabeza;
@@ -35,7 +36,8 @@ export class AgregarComponent implements OnInit {
    if (this.cantKilos <=0 || this.cantCabeza <=0 || this.cantMedia <=0) {
        alert ('El valor tiene que ser mayor a cero');
    }else{
-
+   
+     this.spiner=true;
      this.service.addProducto(
        this.dueHacienda,
        this.cantCabeza,

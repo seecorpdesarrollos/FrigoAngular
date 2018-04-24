@@ -58,8 +58,9 @@ idCliente:any
    descripcionCredito:any;
    cantidadCredito:any;
    importeCredito:any;
+   cambio:boolean= false;
   agregarCre(forma:NgForm){
-    
+    this.cambio = true;
      this.descripcionCredito = forma.value.descripcionCredito;
      this.cantidadCredito = forma.value.cantidadCredito;
      this.importeCredito = forma.value.importeCredito;

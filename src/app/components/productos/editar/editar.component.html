@@ -73,10 +73,14 @@
      </div>
       <small>(número de tropa)</small>
      </div>
-      <div class="col-md-6 to">
+      <div class="col-md-6 to" *ngIf="spinner == false">
         <button [disabled]="forma.invalid"
         type="submit" class="btn btn-success btn-block">Editar Producto</button>
       </div>
+      <div class="col-md-6 to"  *ngIf="spinner == true">
+          <button 
+          type="submit" class="btn btn-success btn-block"><i class="fa fa-spinner fa-spin"></i> Editando ......</button>
+        </div>
       <div class="col-md-6 to">
         <button
         type="submit" class="btn btn-primary btn-block" (click)="back()" >Salir sin editar</button>
