@@ -111,8 +111,9 @@ export class CobrosComponent implements OnInit {
     propietario:any;
     suma:number=0;
     noGeneradoPago:any;
+    cambio:boolean=false;
     cobro(forma:NgForm){
-
+    this.cambio = true;
       this.idCliente= forma.value.idCliente;
       this.comprobante= forma.value.comprobante;
       this.monto= forma.value.monto;

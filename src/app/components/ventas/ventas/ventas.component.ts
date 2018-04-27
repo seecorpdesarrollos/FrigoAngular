@@ -307,6 +307,7 @@ totales:any=0;
             }else{
 
               let a = $('#confirm').modal('show');
+              $('#confirm').appendTo("body")
               this.admin = localStorage.getItem('idAdmin');
             }
 

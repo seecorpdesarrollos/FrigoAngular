@@ -24,13 +24,14 @@ export class LoginComponent implements OnInit {
   loading:boolean = false;
   intentos:number = 0;
   maximosIntentos:string;
+  loader:boolean=false;
   ingresar(login:NgForm){
 
     this.nombreAdmin = login.value.nombreAdmin;
     this.password = login.value.password;
    this.servicio.getUsuario(this.nombreAdmin, this.password)
    .subscribe( res =>{
-
+     this.loader = true;
       if (res !== false ) {
           this.loading = true;
           this.error = false;

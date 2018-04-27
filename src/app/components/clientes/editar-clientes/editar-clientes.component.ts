@@ -39,8 +39,9 @@ export class EditarClientesComponent implements OnInit {
  nombreCliente:number;
  telefonoCliente:any;
  direccionCliente:any
+ cambio:boolean= false;
   editarCli(forma:NgForm){
-
+  this.cambio= true;
     this.nombreCliente = forma.value.nombreCliente;
     this.telefonoCliente = forma.value.telefonoCliente;
     this.direccionCliente = forma.value.direccionCliente;

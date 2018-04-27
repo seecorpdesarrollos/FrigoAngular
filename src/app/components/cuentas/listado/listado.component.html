@@ -48,9 +48,11 @@
 
       <!-- comienza la tabla de las cuentas -->
 
+
+
       <div class=" to  animated fadeIn" *ngIf="formu == true">
         <div>
-          <button type="button" (click)="salir()" class="btn btn-outline-success">Nueva Busqueda</button>
+          <button type="button" (click)="salir()" class="btn btn-outline-success">Nuevas Busqueda</button>
             <br><br>
           <div id="imprimir">
                <div class="card hiden" id="hiden">
@@ -67,8 +69,16 @@
                     </div>
                   </div>
                 </div>
-          <div class="card">
-            <div class="card-body border border-dark">
+                <div class="card">
+                  <div class="row" *ngIf="loader1 == false">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-7">
+                      <div class="spiner" >
+                        <img src="assets/img/cargando.gif" alt="" width="120">
+                      </div>
+                    </div>
+                  </div>
+            <div class="card-body border border-dark" *ngIf="loader1 == true">
               <h3 class="text-center to"><u>Resumen de Cuentas Corrientes</u></h3>
               <div class="row to">
                 <div class="col-md-4">
@@ -88,7 +98,7 @@
               <h5 >Saldo Anterior : <span class="text-dark">$ {{toSal}}</span> </h5>
             </div>
           </div>
-          <div class="table-responsive " >
+          <div class="table-responsive "  *ngIf="loader1 == true" >
             <table class="table table-bordered table-hover">
               <thead class="bg-primary text-white ">
                 <tr>
@@ -108,16 +118,16 @@
                   <td>{{ cli.entrada  | number}}</td>
                   <td>{{ cli.pagos  | number}}</td>
                   <td>{{cli.saldo | number}}</td>
-                  <td>{{cli.nombreVendedor}}</td>     
+                  <td>{{cli.nombreVendedor}}</td>
                 </tr>
                 <tr class="table-warning ">
                   <td colspan="2"><strong>Movimientos Totales de Cuentas</strong></td>
                   <td class=""><strong>$ {{ entrada | number }}</strong></td>
                   <td class=""><strong>$ {{ pagos | number }}</strong></td>
-                  <!-- <td class=""><strong>$ {{ saldo | number }}</strong></td> -->
+                  <td class=""><strong>$ {{ saldoFinal | number }}</strong></td> 
                 </tr>
               </tbody>
-              <tr class="table-warning " *ngIf="sinData == true">
+              <tr class="table-warning " *ngIf="sinData == true && loader1 == true">
                 <td colspan="5"><strong>Sin movimientos en la de cuentas corriente en el rango de fechas seleccionadas</strong></td>
               </tr>
               <tr>
@@ -130,44 +140,44 @@
               </tr>
             </table>
           </div>
-            <div class="row" *ngIf="fes">
+            <div class="row" *ngIf="fes && loader1 == true">
               <div class="col-md-3"></div>
               <div class="col-md-9">
                 <h2 class="text-warning">Detalles de las facturas</h2>
 
               </div>
               <div class="table-responsive col-md-12">
-                
+
                 <table class="table table-bordered table-sm table-hover tabla">
                   <tr class="bg-dark">
                     <td class="text-white">Fecha</td>
                     <td class="text-white">Descripción</td>
                     <td class="text-white">Kilo</td>
-                    <td class="text-white">Precio</td>              
-                    <td class="text-white">Sub Total</td>              
-                    <td class="text-white">Total Factura</td>              
+                    <td class="text-white">Precio</td>
+                    <td class="text-white">Sub Total</td>
+                    <td class="text-white">Total Factura</td>
                   </tr>
                   <tr *ngFor=" let detalle of det">
                     <td>{{detalle.fecha | date: 'dd/MM/yyyy'}}</td>
                     <td>{{detalle.descripcion}}</td>
                     <td>{{ detalle.kilo}}</td>
-                    <td>{{detalle.precio}}</td>              
-                    <td>{{detalle.kilo * detalle.precio}}</td>  
-                    <td class="text-center text-info" width="30">{{detalle.totalVenta}}</td>  
-                    
+                    <td>{{detalle.precio}}</td>
+                    <td>{{detalle.kilo * detalle.precio}}</td>
+                    <td class="text-center text-danger" width="30">{{detalle.totalVenta}}</td>
+
                   </tr>
-                  
+
                 </table>
               </div>
             </div>
-              
-              
-            
-            
+
+
+
+
           </div>
           <div class="table-responsive">
 
-            <table class="table table-bordered" *ngIf="sinData == false">
+            <table class="table table-bordered" *ngIf="sinData == false && loader1 == true">
               <tr class="bg-info text-white">
                 <td>Total Compras</td>
                 <td>Total de Pagos</td>
@@ -186,7 +196,7 @@
               </tr>
             </table>
           </div>
-            <div class="row" *ngIf="sinData == false">
+            <div class="row" *ngIf="sinData == false && loader1 == true">
               <div class="col-md-4"></div>
               <div class="col-md-4">
                 <button (click)="imprimirCuenta('imprimir')" class="btn btn-outline-danger">Imprimir</button>

@@ -68,7 +68,7 @@ this.todp = diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMo
   total:any=0;
    public datas: any;
    public filterQuery = "";
-   public rowsOnPage = 2;
+   public rowsOnPage = 5;
   nada:boolean=false;
     getClientes(){
       this.service.getClientesTodos()
@@ -113,6 +113,7 @@ public detalles:boolean;
 public det:any[];
 fe:boolean=false;
 fes:boolean=false;
+loader1:boolean=false;
 cli(forma:NgForm){ 
   this.idCliente = forma.value.idCliente;
   this.fechaInicial = forma.value.fechaInicial;
@@ -141,14 +142,16 @@ cli(forma:NgForm){
   }if(this.fechaInicial > this.fechaFinal ){
       alert ('Error de fechas')
     } else{
-    this.formu = true;
-    
-    this.cuenta.getCuentaCorriente(this.idCliente ,this.fechaInicial, this.fechaFinal)
-    .subscribe (res=>{  
-      this.cuenta.getKilos(this.idCliente,this.fechaInicial, this.fechaFinal)
-      .subscribe(respu=>{
+      this.formu = true;
+      
+      this.cuenta.getCuentaCorriente(this.idCliente ,this.fechaInicial, this.fechaFinal)
+      .subscribe (res=>{  
+        this.cuenta.getKilos(this.idCliente,this.fechaInicial, this.fechaFinal)
+        .subscribe(respu=>{
         this.totakKilos = respu;
-        this.totalKilos =this.totakKilos[0] 
+        this.totalKilos =this.totakKilos[0];
+        this.loader = true;
+        this.loader1 = true;
         // console.log(this.);
       })
       this.tot = res;

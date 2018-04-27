@@ -23,7 +23,9 @@ export class AgregarClientesComponent implements OnInit {
   nombreCliente:string;
   telefonoCliente:any;
   direccionCliente:any;
+  cambio:boolean = false;
   agregarCli(forma:NgForm){
+    this.cambio = true;
     this.nombreCliente = forma.value.nombreCliente.trim();
     this.telefonoCliente = forma.value.telefonoCliente;
     this.direccionCliente = forma.value.direccionCliente;
