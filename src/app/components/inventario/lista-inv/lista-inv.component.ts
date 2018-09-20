@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {InventarioService} from '../../../servicios/inventario.service';
+import { Router } from '@angular/router';
 
+
+declare var $;
 @Component({
   selector: 'app-lista-inv',
   templateUrl: './lista-inv.component.html',
@@ -8,11 +11,20 @@ import {InventarioService} from '../../../servicios/inventario.service';
 })
 export class ListaInvComponent implements OnInit {
 
-  constructor( private service:InventarioService) { }
+  constructor( private service:InventarioService, private ruta:Router) { }
 
 
     ngOnInit() {
       this.getInventario();
+    }
+
+    salir(){
+      $('.mediaTropa').modal('hide');
+      this.ruta.navigate(['inventario/agregarInv']);
+      setTimeout(()=>{
+      this.ruta.navigate(['inventario']);
+       
+      },300)
     }
 
 

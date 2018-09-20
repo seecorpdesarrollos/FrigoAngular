@@ -1,7 +1,7 @@
 <div class="container to animated fadeIn" >
   <nav aria-label="breadcrumb to">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item active" aria-current="page"> <i class="fa fa-list"></i> Listado de Cuentas Corrientes por Clientes</li>
+    <li class="breadcrumb-item active" aria-current="page"> <i class="fa fa-list"></i> Listados de Cuentas Corrientes por Clientes</li>
   </ol>
   </nav>
 
@@ -48,8 +48,16 @@
 
       <!-- comienza la tabla de las cuentas -->
 
+    <div class="to animated fadeIn card " *ngIf="ceroData">
+      <p class="text-center alert alert-danger">No se encontraron movimientos de cuenta en las fechas seleccionadas..</p>
+      <button type="button" (click)="salir()" class="btn btn-outline-success">Nuevas Busqueda</button>
+      <br><br>
+    </div>
 
 
+    <div class="" *ngIf="!ceroData">
+
+   
       <div class=" to  animated fadeIn" *ngIf="formu == true">
         <div>
           <button type="button" (click)="salir()" class="btn btn-outline-success">Nuevas Busqueda</button>
@@ -86,16 +94,16 @@
 
                 </div>
                 <div class="col-md-4">
-                  <h5>Saldo Inicial: <span class="text-dark"> ${{ saldoActual }}</span> </h5>
+                  <h5>Saldo Inicial: <span class="text-dark"> ${{ saldoActual | number }}</span> </h5>
 
                 </div>
                 <div class="col-md-4">
-                  <h5 class="border-primary border text-center  ">Saldo Actual: <span class="text-dark"> ${{ saldoFinal }}</span> </h5>
+                  <h5 class="border-primary border text-center  ">Saldo Actual: <span class="text-dark"> ${{ saldoFinal | number }}</span> </h5>
 
                 </div>
               </div>
               <h5 *ngIf="fe == false">Fecha Contable:  <span class="text-dark"> {{ fechaInicial | date: 'dd-MM-yyy' }} al {{ fechaFinal | date: 'dd-MM-yyy'}}</span> </h5>
-              <h5 >Saldo Anterior : <span class="text-dark">$ {{toSal}}</span> </h5>
+              <h5 >Saldo Anterior : <span class="text-dark">$ {{toSal | number}}</span> </h5>
             </div>
           </div>
           <div class="table-responsive "  *ngIf="loader1 == true" >
@@ -115,28 +123,33 @@
                 <tr *ngFor="let cli of tot" >
                   <td>{{ cli.fecha | date: 'dd/MM/yyyy'}}</td>
                   <td> {{ cli.comprobante }} </td>
-                  <td>{{ cli.entrada  | number}}</td>
-                  <td>{{ cli.pagos  | number}}</td>
-                  <td>{{cli.saldo | number}}</td>
+                  <td *ngIf="cli.entrada == 0 " > </td>
+                  <td *ngIf="cli.entrada != 0 " >$ {{  cli.entrada | number}}</td>
+                  <td *ngIf="cli.pagos == 0 " > </td>
+                  <td *ngIf="cli.pagos != 0 " >$ {{  cli.pagos | number}}</td>
+                  <td>$ {{cli.saldo | number}}</td>
                   <td>{{cli.nombreVendedor}}</td>
                 </tr>
                 <tr class="table-warning ">
                   <td colspan="2"><strong>Movimientos Totales de Cuentas</strong></td>
-                  <td class=""><strong>$ {{ entrada | number }}</strong></td>
-                  <td class=""><strong>$ {{ pagos | number }}</strong></td>
-                  <td class=""><strong>$ {{ saldoFinal | number }}</strong></td> 
+                  <td class="" ><strong>$ {{ totalCompras | number }}</strong></td>
+                  <td class=""><strong>$ {{ totalPagos | number }}</strong></td>
+                  <td class=""><strong>$ {{ toSal + totalCompras- totalPagos | number }}</strong></td> 
                 </tr>
               </tbody>
               <tr class="table-warning " *ngIf="sinData == true && loader1 == true">
-                <td colspan="5"><strong>Sin movimientos en la de cuentas corriente en el rango de fechas seleccionadas</strong></td>
+                <td colspan="6"><strong>Sin movimientos en la de cuentas corriente en el rango de fechas seleccionadas</strong></td>
               </tr>
               <tr>
-                <td class="text-center bg-danger text-white ">Saldo final a   pagar</td>
-                <td class="text-center bg-danger text-white ">Total de kilos comprados</td>
+                <td class="text-center bg-danger text-white ">Fechas seleccionadas </td>
+                <td  class="text-center bg-danger text-white ">Saldo a   pagar  </td>
+                <td class="text-center bg-danger text-white ">Total de kilos</td>
               </tr>
               <tr>
-                <td class="text-center ">  ${{ entrada - pagos + saldoActual  | number}}</td>
-                <td class="text-center "> {{ totalKilos | number}}</td>
+                <td class="text-center" *ngIf="fe ">Historial completo   </td>
+                <td class="text-center" *ngIf="!fe ">{{fechaInicial | date: 'dd-MM-yyy' }} al {{ fechaFinal | date: 'dd-MM-yyy'}}  </td>
+                <td class="text-center "> ${{ toSal + totalCompras- totalPagos | number}}</td>
+                <td class="text-center "> {{ totalKilos | number}} KG</td>
               </tr>
             </table>
           </div>
@@ -150,6 +163,7 @@
 
                 <table class="table table-bordered table-sm table-hover tabla">
                   <tr class="bg-dark">
+                    <td class="text-white">Factura</td>
                     <td class="text-white">Fecha</td>
                     <td class="text-white">Descripción</td>
                     <td class="text-white">Kilo</td>
@@ -158,6 +172,7 @@
                     <td class="text-white">Total Factura</td>
                   </tr>
                   <tr *ngFor=" let detalle of det">
+                    <td>{{detalle.nroFactura}}</td>
                     <td>{{detalle.fecha | date: 'dd/MM/yyyy'}}</td>
                     <td>{{detalle.descripcion}}</td>
                     <td>{{ detalle.kilo}}</td>
@@ -204,3 +219,4 @@
             </div>
       </div>
     </div>
+  </div>

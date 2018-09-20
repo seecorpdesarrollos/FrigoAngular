@@ -12,7 +12,7 @@ export class ConsultasService {
 
   getCli: any;
   getVentas(idCliente) {
-   return this.http.post("https://seecorpdesarrollos.com/Frigorifico/controllers/reportesController.php?id=mediasVendidas", 
+   return this.http.post("https://losmagnates.com/Frigorifico/controllers/reportesController.php?id=mediasVendidas", 
    { 'idCliente': idCliente })
      .map(res => {
        this.getCli = res;
@@ -24,7 +24,7 @@ export class ConsultasService {
 
   fe: any;
   getVentasFecha(fecha1, fecha2) {
-   return this.http.post("https://seecorpdesarrollos.com/Frigorifico/controllers/reportesController.php?id=mediasVendidasFecha", 
+   return this.http.post("https://losmagnates.com/Frigorifico/controllers/reportesController.php?id=mediasVendidasFecha", 
    { 'fecha1': fecha1 , 'fecha2': fecha2 })
      .map(res => {
        this.fe = res;

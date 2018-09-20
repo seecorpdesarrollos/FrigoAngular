@@ -29,121 +29,78 @@
                                        </div>
                                  <div class="card" *ngIf="loader == true">
                                      <div class="card-header bg-primary text-white text-center">
-                                         Estadistica de ventas por Tropas
+                                         Estadistica de existencias por Tropas
                                         </div>
                                         <div class="card-body">
                                             <hr class="hr">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <table class="table table-hover table-sm">
-                                                            <thead class="bg-primary">
-                                                            <tr>
-                                                                <th class="text-center text-white">Nro. Tropa</th>
-                                                                <th class="text-center text-white">Cantidad Medias</th>                                             
-                                                            </tr>
-                                                            </thead>
-                                                       <tr *ngFor="let cantidad of cant">
-                                                            <th class="text-center">{{ cantidad.nroTropa}}</th>
-                                                            <td class="text-center">{{cantidad.cantMedia}}</td>
-                                                            
-                                                        </tr>
-                                                    </table>
-                                                </div>
-
-                                                <div class="col-md-4">
-                                                    <table class="table table-hover table-sm">
-                                                        <thead class="bg-success">
-                                                            <tr>
-                                                                <th class="text-white">Nro. Tropa</th>
-                                                                <th class="text-white">Cantidad</th>
-                                                                <th class="text-white">Estado</th>
-                                                                
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr *ngFor="let ven of vendido">
-                                                                <th class="">{{ ven.nroTropa}}</th>
-                                                                <td class="text-center">{{ven.total}}</td>
-                                                                <td>{{ven.estado}}</td>
-                                                                
-                                                            </tr>
-                                                            
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <table class="table table-hover table-sm">
-                                                        <thead class="bg-success">
-                                                            <tr>
-                                                                <th class="text-white">Nro. Tropa</th>
-                                                                <th class="text-white">Cantidad</th>
-                                                                <th class="text-white">Estado</th>
-                                                                
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr *ngFor="let dispo of disponible">
-                                                                <th class="">{{ dispo.nroTropa}}</th>
-                                                                <td class="text-center">{{dispo.total}}</td>
-                                                                <td>{{dispo.estado}}</td>
-                                                                
-                                                            </tr>
-                                                            
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <table class="table table-hover table-sm">
-                                                        <thead class="bg-success">
-                                                            <tr>
-                                                                <th class="text-white">Nro. Tropa</th>
-                                                                <th class="text-white">Cantidad</th>
-                                                                <th class="text-white">Estado</th>
-                                                                
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-
-                                                            <tr *ngFor="let cuar of cuarteo">
-                                                            <th scope="row">{{ cuar.nroTropa}}</th>
-                                                            <td class="text-center">{{cuar.total}}</td>
-                                                            <td>{{cuar.estado}}</td>
-                                                            
-                                                          </tr>
-                                                          
-                                                        </tbody>
-                                                    </table>
+                                                    <form #action="ngForm" (ngSubmit)="getExistencias(action)"  *ngIf="!cambio"  >
+                                                        
+                                                        <div class="col-md-12 to" >
+                                                            <div class="input-group">
+                                                             <div class="input-group-prepend">
+                                                              <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"> </i> </span>
+                                                             </div>
+                                                             <input (keypress)="dataToggle2()" type="text" name="nroTropa" [(ngModel)]="nroTropa" autocomplete="off" class="form-control" placeholder="Elija una Tropa" aria-label="Username" aria-describedby="basic-addon1"  autocomplete="off">
+                                                             <input  type="hidden" name="nroTropa" [(ngModel)]="nroTropa" autocomplete="off" class="form-control" placeholder="Eligir un Cliente" aria-label="Username" aria-describedby="basic-addon1"  autocomplete="off" required>
+                                                          </div>
+                                                
+                                                          <div class="product" *ngIf="toggle2">
+                                                              <div class="alert alert-primary">
+                                                               <div (click)="selectTropa(item)" class="data" *ngFor="let item of tropa | dataFilter : nroTropa">
+                                                                 {{ item.nroTropa }}
+                                                               </div>
+                                                               </div>
+                                                          </div>
+                                                     </div>
+                                                     <br>
+                                                     <div class="col-md-3"></div>
+                                                     <div class="col-md-3">
+                                                        <button [disabled]="action.invalid"
+                                                        type="submit" class="btn btn-primary"> Consultar</button>
+                                                      </div>
+                                                    </form>
                                                     
-                                                </div>
+
+                                                    <table class="table table-bordered" *ngIf="cambio" >
+                                                        <thead>
+                                                            <tr>
+                                                                <td>Nro Tropa</td>
+                                                                <td>Dueño de hacienda</td>
+                                                                <td>Fecha Faena</td>
+                                                                <td>Cant Medias Disponibles</td>
+                                                                <td>Kilos Disponibles</td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr >
+                                                                <td class="text-center">{{nroTropa}}</td>
+                                                                <td class="text-center">{{dueHacienda}}</td>
+                                                                <td class="text-center">{{fechaFaena | date: 'd-MM-yyyy'}}</td>
+                                                                <td class="text-center">{{total}} Unidades</td>
+                                                                <td class="text-center">{{totalKilos}} KG</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <hr>
+                                                    <div class="col-md-3" *ngIf="cambio">
+                                                        <button (click)="nueva()"
+                                                        type="button" class="btn btn-primary">Nueva Consultar</button>
+                                                      </div>
                                             </div>
-                                                <hr class="hr">
+                                              
                                             </div>
                                         </div>
                                         
                                     </div>
-                                    <!-- <div class="card">
-                                        <div class="card-header bg-primary text-white">
-                                  Estadistica de ventas por Tropas
-                                </div>
-                                <div class="card-body">
-                                  <h5 class="card-title">Special title treatment</h5>
-                                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                              </div> -->
+                                  
                          </div>
+                     </div>
                      </div>
                  </section>
 
-                         <!-- <section class="dashboard-counts no-padding-bottom animated fadeIn">
-                            <div class="container-fluid">
-                                <div class="row bg-white has-shadow">
-                                   
-                                       
-                                </div>
-                            </div>
-                        </section> -->
-
+                        
           <!-- Page Footer-->
          <app-footer></app-footer>
         </div>

@@ -62,28 +62,45 @@ idCliente:any
    
    public totalDebito:any;
    cambio:boolean=false;
+   totalCredito:any;
+   fechaDebito:any;
   agregarDeb(forma:NgForm){
-    this.cambio = true;
-     this.descripcionDebito = forma.value.descripcionDebito;
-     this.cantidadDebito = forma.value.cantidadDebito;
-     this.importeDebito = forma.value.importeDebito;
-   
-     this.idCliente = forma.value.idCliente;
-
-      this.notas.addNotaDebitoSinCheque(
-        this.descripcionDebito,this.cantidadDebito,this.importeDebito, this.idCliente
-      ).subscribe(res=>{
+    this.descripcionDebito = forma.value.descripcionDebito;
+    this.cantidadDebito = forma.value.cantidadDebito;
+    this.importeDebito = forma.value.importeDebito;
+    
+    this.idCliente = forma.value.idCliente;
+    this.fechaDebito = forma.value.fechaDebito;
+       
+    this.notas.addNotaDebitoSinCheque(
+      this.descripcionDebito,this.cantidadDebito,this.importeDebito, this.idCliente, this.fechaDebito
+    ).subscribe(res=>{
+      this.cambio = true;
+      setTimeout(()=>{
         
-        // if (res == "noSaldo") {
-        //   alert('El cliente no ha realizado  ningun pago con ese numero de cheque. Por favor revisar el número de cheque');
-        // }else{
-           this.ruta.navigate(['notaDebito/listadoDebito']);
-
-        // }
+        this.ruta.navigate(['notaDebito/listadoDebito']);
         
+      }, 2000)
         
+         
       })
      
+  }
+
+  mostrarTotal:boolean= false
+  totalesCredito(forma){
+    
+    this.cantidadDebito = forma.value.cantidadDebito;
+    this.importeDebito = forma.value.importeDebito;
+    this.totalCredito = this.cantidadDebito* this.importeDebito
+    
+    if (this.totalCredito >0 ) {
+      
+      this.mostrarTotal = true
+    } else {
+      this.mostrarTotal = false;
+      
+    }
   }
 
 }

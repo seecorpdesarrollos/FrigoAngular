@@ -36,7 +36,7 @@
 <tr>
 
  <th class="text-white" scope="col"> Nombre del Cliente</th>
- <th class="text-white" scope="col">Nombre del Vendedor</th>
+ <th class="text-white" scope="col">Saldo Inicial</th>
  <th class="text-white" scope="col">Saldo Actual</th>
  <th class="text-white" scope="col">Fecha del Saldo</th>
  
@@ -46,7 +46,7 @@
 <tbody>
 <tr *ngFor="let item of mf.data" >
   <td>{{ item.nombreCliente }}</td>
-  <td>{{ item.nombreVendedor }}</td>
+  <td>$ {{ item.saldoInicial | number }}</td>
   <td>$ {{ item.saldoActual | number }}</td>
   <td>{{ item.fechaSaldo | date: 'dd/MM/yyyy'}}</td>
   

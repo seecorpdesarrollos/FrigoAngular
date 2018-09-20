@@ -112,8 +112,8 @@ export class CobrosComponent implements OnInit {
     suma:number=0;
     noGeneradoPago:any;
     cambio:boolean=false;
+    fechaCobro:any;
     cobro(forma:NgForm){
-    this.cambio = true;
       this.idCliente= forma.value.idCliente;
       this.comprobante= forma.value.comprobante;
       this.monto= forma.value.monto;
@@ -123,43 +123,49 @@ export class CobrosComponent implements OnInit {
       this.banco= forma.value.banco;
       this.propietario= forma.value.propietario;
       this.idVendedor= forma.value.idVendedor;
-   
-       this.suma = this.efectivo + this.cheque;
+      this.fechaCobro= forma.value.fechaCobro;
+      
+      this.suma = this.efectivo + this.cheque;
       if( this.monto != this.suma){
-       alert('Impirtes estan equivocado..')
+        alert(' Los importes estan equivocado..')
       }else{
-
-          this.cuentas.addPagos(
-            this.idCliente,
-            this.comprobante,
+        
+        this.cuentas.addPagos(
+          this.idCliente,
+          this.comprobante,
           this.monto,
           this.efectivo,
           this.cheque,
           this.nroCheque,
           this.banco,
           this.propietario,  
-          this.idVendedor
-          )
-          .subscribe(res=>{
-   
-            this.noGeneradoPago = res;
-            if(this.noGeneradoPago == 'noCliente'){
-              $('#noGeneradoPago').modal('show');
-            }else{
+          this.idVendedor,
+          this.fechaCobro
+        )
+        .subscribe(res=>{
+          
+          this.noGeneradoPago = res;
+          if(this.noGeneradoPago == 'noCliente'){
+            $('#noGeneradoPago').modal('show');
+          }else{
+            this.cambio = true;
+            
+            setTimeout(()=>{
 
               this.ruta.navigate(['cuentas']);
-            }
-            
-            
-          })
+            }, 2000)
+          }
+          
+          
+        })
       }
-
+      
     }
-
-
+    
+    
     // cobros(forma:NgForm){
-
-    //   this.idCliente= forma.value.idCliente;
+      
+      //   this.idCliente= forma.value.idCliente;
     //   this.comprobante= forma.value.comprobante;
     //   this.monto= forma.value.monto;
     //   this.efectivo= forma.value.efectivo;

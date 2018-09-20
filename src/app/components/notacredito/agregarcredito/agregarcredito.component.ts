@@ -58,29 +58,54 @@ idCliente:any
    descripcionCredito:any;
    cantidadCredito:any;
    importeCredito:any;
+   fechaCredito:any;
    cambio:boolean= false;
+   totalCredito:any;
   agregarCre(forma:NgForm){
-    this.cambio = true;
-     this.descripcionCredito = forma.value.descripcionCredito;
-     this.cantidadCredito = forma.value.cantidadCredito;
-     this.importeCredito = forma.value.importeCredito;
-     this.idCliente = forma.value.idCliente;
+    this.descripcionCredito = forma.value.descripcionCredito;
+    this.cantidadCredito = forma.value.cantidadCredito;
+    this.importeCredito = forma.value.importeCredito;
+    this.idCliente = forma.value.idCliente;
+    this.fechaCredito = forma.value.fechaCredito;
+    
+    this.notas.addNotaCredito(
+      this.descripcionCredito,this.cantidadCredito,this.importeCredito,
+      this.idCliente, this.fechaCredito
+    ).subscribe(res=>{
+      
 
-      this.notas.addNotaCredito(
-        this.descripcionCredito,this.cantidadCredito,this.importeCredito,this.idCliente
-      ).subscribe(res=>{
-        
-        if (res == "noSaldo") {
-          alert('El cliente no tiene saldos pendiente para generar una nota de crédito');
-        }else{
+      this.cambio = true;
+      if (res == "noSaldo") {
+        alert('El cliente no tiene saldos pendiente para generar una nota de crédito');
+      }else{
+        setTimeout(()=>{
           this.ruta.navigate(['/notaCredito/listadoCredito']);
-
-        }
+          
+        }, 2000)
         
-        
-      })
-     
+      }
+      
+    })
+    
   }
- 
+  
 
+  mostrarTotal:boolean= false
+  totalesCredito(forma){
+    
+    this.cantidadCredito = forma.value.cantidadCredito;
+    this.importeCredito = forma.value.importeCredito;
+    this.totalCredito = this.cantidadCredito* this.importeCredito
+    
+    if (this.totalCredito >0 ) {
+      
+      this.mostrarTotal = true
+    } else {
+      this.mostrarTotal = false;
+      
+    }
+  }
+  
+  
 }
+

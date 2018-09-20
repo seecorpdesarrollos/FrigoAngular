@@ -77,12 +77,10 @@
       </div>
       <div class="modal-body" id="facturas" #facturas>
         <hr>
-        <br><br><br>
+        <br>
         <div class="row">
           <div class="col-md-4"></div>
-            <div class="col-md-4">
-            <img src="assets/img/logo.jpg" alt="" width="330">
-          </div>
+           
           <br><br>
           <div class="col-md-4">
             <p></p>
@@ -96,19 +94,15 @@
           <table class="table table-hover table-striped table-sm">
             <tr>
               <td>
-                <h3><u>Empresa</u></h3>
+                <h3><u>Cliente: </u></h3>
                 <br>
-                 <p class="display-5">Provincia: Santa Fe - Localidad: Arroyo Seco</p>
-                 <p class="display-5">IVA: Iva Inscripto</p>
-                <p class="display-5"> CUIT: 20-30590206-4</p>
               </td>
               <td></td>
               <td>
-                  <h3><u> Cliente</u></h3>
+                  <h3>{{ nombreCliente | uppercase}}</h3>
                 <br>
-                <p class="display-5">Cliente: {{ nombreCliente }}</p>
-                <p class="display-5">Teléfono: {{ telefonoCliente }}</p>
-                <p class="display-5">Dirección: {{ direccionCliente }}</p>
+                <p class="display-5">Dirección: {{ direccionCliente | uppercase}}</p>
+                <p class="display-5">Teléfono: {{ telefonoCliente | uppercase}}</p>
               </td>
              <td></td>
              <td></td>
@@ -128,14 +122,14 @@
           <tr class="text">
 
             <th>Descripción</th>
-            <th>Nro.Tropa</th>
+            <th></th>
             <th>Kilos</th>
             <th>Precio</th>
             <th>Sub Total</th>
           </tr>
           <tr class="text1"  *ngFor="let datos of todoData">
             <td>  {{ datos.descripcion}}</td>
-            <td>  {{ datos.nroTropa}}</td>
+            <td> </td>
             <td>   {{ datos.kilo}}</td>
             <td>  $ {{ datos.precio | number}}</td>
             <td>  $ {{ datos.precio * datos.kilo | number}}</td>

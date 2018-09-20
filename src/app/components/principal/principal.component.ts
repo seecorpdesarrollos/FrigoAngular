@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+
 import { CuentasService } from '../../servicios/cuentas.service';
+import { ProductosService } from '../../servicios/productos.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-principal',
@@ -10,64 +12,75 @@ import { CuentasService } from '../../servicios/cuentas.service';
 export class PrincipalComponent implements OnInit {
 
   constructor(
-     private rura:Router,
-     private cuentas:CuentasService
+    
+     private cuentas:CuentasService,
+     private produ:ProductosService
     ) { }
 
   ngOnInit() {
-    this.invantario();
-    this. invantarioDisponible();
-    this.invantarioVendido();
-    this.invantarioCant();
+  this.getTropa();
   }
 
-loader:boolean=false;
-  cuarteo:any[];
-   invantario(){ 
-  this.cuentas.getInventaTropa()
-    .subscribe(res=>{
-
-      this.loader=true;
-      this.cuarteo = res;
-      // console.log(this.cuarteo);
-   
-    })
+  toggle2:boolean=false;
+  dataToggle2(){
+    this.toggle2 =true;
+  
+  }
+ 
+ 
+  nroTropa:any;
+  selectTropa(value){
+   this.nroTropa = value.nroTropa;
+   this.toggle2 =false;
+  //  this.pro = true
+ }
+ 
+ 
+ 
+ 
+    tro:boolean=false;
+    tropa:any
+    getTropa(){
+     this.produ.getProductos()
+     .subscribe(res=>{
+       this.tropa= res;
+      
+       // console.log(this.datas)
+     })
    }
 
-
-  disponible:any[];
-  invantarioDisponible(){ 
- this.cuentas.getInventaTropaDisponible()
-   .subscribe(res=>{
-    this.loader=true;
-     this.disponible = res;
-    //  console.log(this.disponible);
+loader:boolean=true;
+cambio:boolean=false;
+ dueHacienda:any
+ fechaFaena:any
+tot:any
+total:any;
+totalKilos:any;
+getExistencias(forma:NgForm){
+   
+  this.nroTropa = forma.value.nroTropa;
   
-   })
-  }
+  this.cuentas.getExistencias(this.nroTropa)
+  .subscribe(res=>{
+    this.tot = res;
+    console.log(this.tot);
+    
+   this.cambio= true
 
-
-  vendido:any[];
-  invantarioVendido(){ 
- this.cuentas.getInventaTropaVendido()
-   .subscribe(res=>{
-    this.loader=true;
-     this.vendido = res;
-    //  console.log(this.vendido);
+   for (let i = 0; i < this.tot.length; i++) {
+     this.dueHacienda = this.tot[i].dueHacienda;
+     this.fechaFaena = this.tot[i].fechaFaena;
+     this.total = this.tot[i].total;
+     this.totalKilos = this.tot[i].totalKilos;
+     
+   }
+  })
   
-   })
-  }
+}
 
-  cant:any[];
-  invantarioCant(){ 
- this.cuentas.getCant()
-   .subscribe(res=>{
-    this.loader=true;
-     this.cant = res;
-    //  console.log(this.cant);
-  
-   })
-  }
-
+nueva(){
+  this.cambio = false;
+  this.nroTropa ="";
+}
 
 }

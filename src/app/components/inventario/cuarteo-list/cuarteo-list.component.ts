@@ -106,7 +106,7 @@ if (estadoCuarteo == 0) {
     this.asado = forma.value.asado;
 
     this.totalPeso = this.pecho+ this.mocho+ this.parrillero+this.completos+this.largos+this.bifes+this.asado
-    if (this.totalPeso <= this.kiloMedia - 2 &&  this.totalPeso >= this.kiloMedia -7  ) {
+    if (this.totalPeso <= this.kiloMedia - 0 &&  this.totalPeso >= this.kiloMedia -7  ) {
 
       this.service.addInventarioCuarteo(
         this.pecho,

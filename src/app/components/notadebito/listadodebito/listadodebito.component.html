@@ -11,7 +11,7 @@
 <div   *ngIf="loader == true">
 <nav aria-label="breadcrumb to">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item active" aria-current="page"><i class="fa fa-list"></i> Notas de Crédito  </li>
+      <li class="breadcrumb-item active" aria-current="page"><i class="fa fa-list"></i> Notas de Débito  </li>
     </ol>
   </nav>
   <div class="input-group mb-3">
@@ -29,6 +29,7 @@
         <tr>
           
           <th class="text-white">Fecha</th>
+          <th class="text-white">id Nota</th>
           <th class="text-white">Cliente</th>
           <th class="text-white">Descripción</th>
           <th class="text-white">Cantidad</th>
@@ -40,6 +41,7 @@
       <tbody>
           <tr *ngFor="let item of mf.data">
             <td>{{ item.fechaDebito | date: 'dd/MM/yyyy' }}</td>
+            <td>{{ item.idNotaDebito  }}</td>
             <td>{{ item.nombreCliente }}</td>
             <td>{{ item.descripcionDebito }}</td>
             <td>{{ item.cantidadDebito }}</td>

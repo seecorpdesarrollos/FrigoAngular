@@ -9,7 +9,7 @@ export class ProductosService {
   constructor(private http:Http) { }
 
   addProducto(dueHacienda,cantCabeza,cantMedia,fechaFaena,cantKilos,  nroTropa) {
-    return this.http.post("https://seecorpdesarrollos.com/Frigorifico/controllers/productosControllers.php?id=add",
+    return this.http.post("https://losmagnates.com/Frigorifico/controllers/productosControllers.php?id=add",
       {'dueHacienda': dueHacienda, 'cantCabeza': cantCabeza,
       'cantMedia': cantMedia, 'fechaFaena': fechaFaena,
       'cantKilos': cantKilos, 'nroTropa': nroTropa })
@@ -17,7 +17,7 @@ export class ProductosService {
   }
 
   editProducto(dueHacienda,cantCabeza,cantMedia,fechaFaena,cantKilos,  nroTropa ,idProductos) {
-    return this.http.post("https://seecorpdesarrollos.com/Frigorifico/controllers/productosControllers.php?id=edit",
+    return this.http.post("https://losmagnates.com/Frigorifico/controllers/productosControllers.php?id=edit",
       {'dueHacienda': dueHacienda, 'cantCabeza': cantCabeza,
       'cantMedia': cantMedia, 'fechaFaena': fechaFaena,
       'cantKilos': cantKilos, 'nroTropa': nroTropa , 'idProductos':idProductos })
@@ -27,7 +27,7 @@ export class ProductosService {
 
 productos:any;
   getProductos() {
-  return this.http.get("https://seecorpdesarrollos.com/Frigorifico/controllers/productosControllers.php?id=getProd")
+  return this.http.get("https://losmagnates.com/Frigorifico/controllers/productosControllers.php?id=getProd")
     .map(resultado => {
       this.productos = resultado;
       if (this.productos._body !== '') {
@@ -37,13 +37,13 @@ productos:any;
 }
 
 deleteCategoria(idProductos){
-    return this.http.post("https://seecorpdesarrollos.com/Frigorifico/controllers/productosControllers.php?id=delete", { 'idProductos': idProductos })
+    return this.http.post("https://losmagnates.com/Frigorifico/controllers/productosControllers.php?id=delete", { 'idProductos': idProductos })
      .map(()=>this.getProductos());
   }
 
   getPros: any;
 getProductosId(idProductos) {
- return this.http.post("https://seecorpdesarrollos.com/Frigorifico/controllers/productosControllers.php?id=editarProdId", 
+ return this.http.post("https://losmagnates.com/Frigorifico/controllers/productosControllers.php?id=editarProdId", 
  { 'idProductos': idProductos })
    .map(res => {
      this.getPros = res;
@@ -54,7 +54,7 @@ getProductosId(idProductos) {
 
 getTropa: any;
 getTropas(nroTropa) {
- return this.http.post("https://seecorpdesarrollos.com/Frigorifico/controllers/reportesController.php?id=getTropa", 
+ return this.http.post("https://losmagnates.com/Frigorifico/controllers/reportesController.php?id=getTropa", 
  { 'nroTropa': nroTropa })
    .map(res => {
      this.getTropa = res;

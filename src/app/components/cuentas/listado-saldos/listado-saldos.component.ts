@@ -29,7 +29,7 @@ export class ListadoSaldosComponent implements OnInit {
   total:any=0;
    public data: any[];
    public filterQuery = "";
-   public rowsOnPage = 2;
+   public rowsOnPage = 10;
   nada:boolean=false;
     getSaldos(){
      this.servicios.getSaldo()

@@ -42,9 +42,9 @@
             <td>{{ item.fechaCredito | date: 'dd/MM/yyyy' }}</td>
             <td>{{ item.nombreCliente }}</td>
             <td>{{ item.descripcionCredito }}</td>
-            <td>{{ item.cantidadCredito }}</td>
-            <td>{{ item.importeCredito }}</td>
-            <td>{{ item.totalCredito }}</td>    
+            <td>$ {{ item.cantidadCredito }}</td>
+            <td>$ {{ item.importeCredito }}</td>
+            <td>$ {{ item.totalCredito }}</td>    
              <!-- <td class="text-center"> -->
                <!-- <a  title="Editar Nota de Credito" class="btn btn-outline-primary btn-sm" [routerLink]="['../editarCredito',item.idNotaCredito,item.idCliente,item.nombreCliente,item.descripcionCredito,item.cantidadCredito,item.importeCredito,item.totalCredito]"><i class="fa fa-edit fa-1x  btn-outline-primary"></i></a> -->
               <!-- <span  class="btn btn-outline-danger btn-sm" title="Eliminar Vendedor" 

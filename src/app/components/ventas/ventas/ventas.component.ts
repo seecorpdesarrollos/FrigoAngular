@@ -3,6 +3,7 @@ import {ClientesService} from '../../../servicios/clientes.service';
 import { Router , ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import {InventarioService} from '../../../servicios/inventario.service';
+import { FechasComponent } from '../carrito/fechas.component';
 
 declare var $;
 
@@ -60,7 +61,7 @@ dataToggle1(){
    this.idInventario = value.idInventario;
    this.toggle =false;
    this.pro = true
-  //  console.log(this.nroTropa);
+    // console.log(this.nroTropa);
    
  }
 
@@ -299,8 +300,11 @@ totales:any=0;
              nroFactura:any
              to:any;
              admin:any;
+             fechaVenta:any
             vender(forma:NgForm, nombreCliente){
               this.to = forma.value.su;
+              this.fechaVenta= forma.value.fechaVenta;
+             
             //  let a = confirm('Esta seguro de facturarle al cliente ' + nombreCliente);
             if (this.to <= 0 ) {
                alert('nada en el carrito'); 
@@ -314,15 +318,15 @@ totales:any=0;
             }
 
             si(forma:NgForm){
-              $('#confirm').modal('hide');
               this.cli = forma.value.nombreCliente;
-                this.idCli = forma.value.idCliente;
-                this.nroFactura = forma.value.fac;
-                this.to = forma.value.su;
-                this.serviceInv.venta(this.idCli ,this.nroFactura, this.to, this.admin)
-                .subscribe(res=>{
-                    this.ruta.navigate(['ventas/facturas']);
-                })
+              this.idCli = forma.value.idCliente;
+              this.nroFactura = forma.value.fac;
+              this.to = forma.value.su;
+              this.serviceInv.venta(this.idCli ,this.nroFactura, this.to, this.admin, this.fechaVenta)
+              .subscribe(()=>{
+                this.ruta.navigate(['ventas/facturas']);
+                
+              })
             }
 
   fac:any

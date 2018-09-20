@@ -97,7 +97,7 @@ entrada :any;
 entradas :any;
 pagos :number=0;
 cobros:any;
-totalCompra:number=0;
+s:number=0;
 dif:number=0;
 saldoFinal:number=0
 fechaInicial:any;
@@ -114,6 +114,10 @@ public det:any[];
 fe:boolean=false;
 fes:boolean=false;
 loader1:boolean=false;
+ceroData:boolean=false;
+totalCompras:number=0;
+totalPagos:number=0;
+totalSaldos:number=0;
 cli(forma:NgForm){ 
   this.idCliente = forma.value.idCliente;
   this.fechaInicial = forma.value.fechaInicial;
@@ -152,24 +156,53 @@ cli(forma:NgForm){
         this.totalKilos =this.totakKilos[0];
         this.loader = true;
         this.loader1 = true;
-        // console.log(this.);
       })
-      this.tot = res;
       
-        if(this.tot[0].entrada == null){
-          this.saldo = parseFloat(this.tot[0].saldo);
-          this.pa  =   parseFloat(this.tot[0].pagos);
-          this.toSal = this.saldo + this.pa;
-        } 
-         if(this.tot[0].pagos == null){
-          this.saldo = parseFloat(this.tot[0].saldo);
-          this.co  =   parseFloat(this.tot[0].entrada);
-          this.toSal = this.saldo - this.co;
-        }
+      this.tot = res;
+
+      // console.log(this.tot.length);
+      // console.log(this.tot);
+
+      if (this.tot.length == 0) {
+        this.ceroData = true;
+      }else{
+        this.ceroData = false;
+      }
+                if(this.tot[0].entrada == 0){
+                  this.saldo = parseFloat(this.tot[0].saldo);
+                  this.pa  =   parseFloat(this.tot[0].pagos);
+                  this.toSal = this.saldo + this.pa;
+                 
+                  
+                } 
+                 if(this.tot[0].pagos == 0){
+                  this.saldo = parseFloat(this.tot[0].saldo);
+                  this.co  =   parseFloat(this.tot[0].entrada);
+                  this.toSal = this.saldo - this.co;
+               
+          
+                }
+                
+                if(res.length == 0){
+                  this.sinData = true;
+                }
+      
+                
+                
+            // this.totalSaldos =  this.toSal;
+                
+           for (let i = 0; i < this.tot.length; i++) {
+                  
+           this.totalCompras = this.totalCompras +  parseFloat(this.tot[i].entrada) ;
+           this.totalPagos = this.totalPagos +  parseFloat(this.tot[i].pagos) ;
+            
+          // this.totalSaldos = this.totalSaldos + this.totalCompras - this.totalPagos;
+          // console.log(this.totalSaldos);
+          
+      
         
-        if(res.length == 0){
-          this.sinData = true;
-        }
+      }
+      
      
           this.cuenta.totalEntradaId(this.idCliente).
           subscribe(resp=>{

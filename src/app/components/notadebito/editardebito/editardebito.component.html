@@ -21,7 +21,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1"><i class="fa fa-edit"> </i> </span>
           </div>
-          <input type="text" name="cantidadDebito" ngModel class="form-control" placeholder="Cantidad" aria-label="Username" aria-describedby="basic-addon1" required autocomplete="off">
+          <input type="text" name="cantidadDebito" (keyup)="totalesCredito(forma)" ngModel class="form-control" placeholder="Cantidad" aria-label="Username" aria-describedby="basic-addon1" required autocomplete="off">
        </div>
        </div>
 
@@ -30,7 +30,7 @@
          <div class="input-group-prepend">
           <span class="input-group-text" id="basic-addon1"><i class="fa fa-edit"> </i> </span>
          </div>
-         <input type="text" name="importeDebito" ngModel class="form-control" placeholder="Importe Débito" aria-label="Username" aria-describedby="basic-addon1" required autocomplete="off">
+         <input type="text" name="importeDebito" (keyup)="totalesCredito(forma)" ngModel class="form-control" placeholder="Importe Débito" aria-label="Username" aria-describedby="basic-addon1" required autocomplete="off">
        </div>
      </div>
        <div class="col-md-6 to" >
@@ -51,16 +51,26 @@
         </div>
        </div>
    <br>
-  
+   <div class="col-md-6 to">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1"><i class="fa fa-edit"> </i> </span>
+        </div>
+        <input type="date" name="fechaDebito" ngModel class="form-control"  aria-label="Username" aria-describedby="basic-addon1" required autocomplete="off">
+     </div>
+     </div>
  
-        <div class="col-md-12 to" *ngIf="!cambio" >
+        <div class="col-md-6 to" *ngIf="!cambio" >
           <button [disabled]="forma.invalid"
           type="submit" class="btn btn-primary btn-block btn-lg">Agregar Nota</button>
         </div>
-
-        <div class="col-md-12 to" *ngIf="cambio" >
+        <div class="col-md-5 alert alert-danger" *ngIf="mostrarTotal" >
+            Total del Crédito  $ {{ totalCredito }}
+       
+           </div>
+        <div class="col-md-6 to" *ngIf="cambio" >
           <button 
-          type="submit" class="btn btn-primary btn-block btn-lg"><i class="fa fa-spinner fa-spin"></i> Guardando ......</button>
+          type="button" class="btn btn-primary btn-block btn-lg"><i class="fa fa-spinner fa-spin"></i> Guardando ......</button>
         </div>
      </div>
   </div>
