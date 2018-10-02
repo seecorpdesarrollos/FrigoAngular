@@ -57,7 +57,7 @@
 
     <div class="" *ngIf="!ceroData">
 
-   
+
       <div class=" to  animated fadeIn" *ngIf="formu == true">
         <div>
           <button type="button" (click)="salir()" class="btn btn-outline-success">Nuevas Busqueda</button>
@@ -106,37 +106,60 @@
               <h5 >Saldo Anterior : <span class="text-dark">$ {{toSal | number}}</span> </h5>
             </div>
           </div>
-          <div class="table-responsive "  *ngIf="loader1 == true" >
-            <table class="table table-bordered table-hover">
-              <thead class="bg-primary text-white ">
-                <tr>
-                  <td scope="col">Fecha</td>
-                  <td scope="col">Comprobante</td>
-                  <td scope="col">Debe</td>
-                  <td scope="col">Haber</td>
-                  <td scope="col">Saldos</td>
-                  <td scope="col">Cobrador</td>
-                </tr>
-              </thead>
-              <tbody *ngIf="sinData == false">
+          <div class="table-responsive row"  *ngIf="loader1 == true" >
+            <div class="col-md-9">
 
-                <tr *ngFor="let cli of tot" >
-                  <td>{{ cli.fecha | date: 'dd/MM/yyyy'}}</td>
-                  <td> {{ cli.comprobante }} </td>
-                  <td *ngIf="cli.entrada == 0 " > </td>
-                  <td *ngIf="cli.entrada != 0 " >$ {{  cli.entrada | number}}</td>
-                  <td *ngIf="cli.pagos == 0 " > </td>
-                  <td *ngIf="cli.pagos != 0 " >$ {{  cli.pagos | number}}</td>
-                  <td>$ {{cli.saldo | number}}</td>
-                  <td>{{cli.nombreVendedor}}</td>
+              <table class="table table-bordered table-hover">
+                <thead class="bg-primary text-white ">
+                  <tr>
+                    <td scope="col">Fecha</td>
+                    <td scope="col">Comprobante</td>
+                    <td scope="col" class="text-lft">Debe</td>
+                    <td scope="col" class="text-lft">Haber</td>
+                    <!-- <td scope="col">Saldos</td> -->
+                    <!-- <td scope="col">Cobrador</td> -->
+                  </tr>
+                </thead>
+                <tbody *ngIf="sinData == false">
+  
+                  <tr *ngFor="let cli of tot" >
+                    <td>{{ cli.fecha | date: 'dd/MM/yyyy'}}</td>
+                    <td> {{ cli.comprobante }} </td>
+                    <td *ngIf="cli.entrada == 0 " > </td>
+                    <td *ngIf="cli.entrada != 0 " >$ {{  cli.entrada | number}}</td>
+                    <td *ngIf="cli.pagos == 0 " > </td>
+                    <td *ngIf="cli.pagos != 0 " >$ {{  cli.pagos | number}}</td>
+                    <!-- <td >$ {{ sal | number}}</td>  -->
+                    <!-- <td>{{cli.nombreVendedor}}</td> -->
+                  </tr>
+                 
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-3 left">
+              <table class="table table-bordered table-hover">
+                  <thead class="bg-primary text-white ">
+                    <tr>
+                     <td class="text-center">Saldo</td> 
+                    </tr>
+                    
+                  </thead>
+                <tr *ngFor="let sal of totSaldo">
+                  <td class="text-center">{{ sal + + toSal| number}}</td>
                 </tr>
-                <tr class="table-warning ">
-                  <td colspan="2"><strong>Movimientos Totales de Cuentas</strong></td>
-                  <td class="" ><strong>$ {{ totalCompras | number }}</strong></td>
-                  <td class=""><strong>$ {{ totalPagos | number }}</strong></td>
-                  <td class=""><strong>$ {{ toSal + totalCompras- totalPagos | number }}</strong></td> 
-                </tr>
-              </tbody>
+              </table>
+            </div>
+            <table class="table">
+              <tr class="table-warning ">
+                <td ><strong>Movimientos Totales de Cuentas</strong></td>
+                <td class="text-center" ><strong>$ {{ totalCompras | number }}</strong></td> 
+                <td class="text-left"><strong>$ {{ totalPagos | number }}</strong></td>
+                <!-- <td></td> -->
+                <td class="text-left"><strong>$ {{ toSal + totalCompras- totalPagos | number }}</strong></td>
+             <td></td>
+             <td></td>
+              </tr>
+              
               <tr class="table-warning " *ngIf="sinData == true && loader1 == true">
                 <td colspan="6"><strong>Sin movimientos en la de cuentas corriente en el rango de fechas seleccionadas</strong></td>
               </tr>
@@ -146,9 +169,9 @@
                 <td class="text-center bg-danger text-white ">Total de kilos</td>
               </tr>
               <tr>
-                <td class="text-center" *ngIf="fe ">Historial completo   </td>
+                <td class="text-center" *ngIf="fe ">Historial completos   </td>
                 <td class="text-center" *ngIf="!fe ">{{fechaInicial | date: 'dd-MM-yyy' }} al {{ fechaFinal | date: 'dd-MM-yyy'}}  </td>
-                <td class="text-center "> ${{ toSal + totalCompras- totalPagos | number}}</td>
+                <td class="text-center "> ${{toSal + totalCompras- totalPagos  + saldoActual | number}}</td>
                 <td class="text-center "> {{ totalKilos | number}} KG</td>
               </tr>
             </table>

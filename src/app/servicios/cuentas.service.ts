@@ -96,6 +96,14 @@ sakdo:any
         return res.json();
       });
    }
+
+   saldoAnterior(idCliente, fechaInicial){
+    return this.http.post("https://losmagnates.com/Frigorifico/controllers/cuentasControllers.php?id=saldoAnterior",
+    { 'idCliente': idCliente , 'fechaInicial':fechaInicial })
+      .map(res => {
+        return res.json();
+      })
+   }
    
 
 // comienza principal

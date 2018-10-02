@@ -91,6 +91,8 @@ totalKilos:any;
 formu:boolean = false;
 
 public tot:any[];
+public salAnterior:any[];
+public totSaldo:any[]=[];
 saldoActual:number=0;
 nroFactura:any;
 entrada :any;
@@ -143,8 +145,24 @@ cli(forma:NgForm){
   
   if (this.fechaInicial.length ==0 && this.fechaFinal.length == 0) {
     this.fe = true;
-  }if(this.fechaInicial > this.fechaFinal ){
-      alert ('Error de fechas')
+  }else{
+    this.cuenta.saldoAnterior(this.idCliente, this.fechaInicial)
+    .subscribe(response=>{
+      this.salAnterior= response;
+
+
+      for (let i = 0; i < this.salAnterior.length; i++) {
+        this.toSal = this.toSal  +  parseFloat(this.salAnterior[i].entrada) - parseFloat(this.salAnterior[i].pagos)  ;
+        
+        // console.log(this.salAnterior);
+
+      }
+      
+    })
+
+  }
+  if(this.fechaInicial > this.fechaFinal ){
+      alert ('Erroren las fechas fechas')
     } else{
       this.formu = true;
       
@@ -168,39 +186,39 @@ cli(forma:NgForm){
       }else{
         this.ceroData = false;
       }
-                if(this.tot[0].entrada == 0){
-                  this.saldo = parseFloat(this.tot[0].saldo);
-                  this.pa  =   parseFloat(this.tot[0].pagos);
-                  this.toSal = this.saldo + this.pa;
+                // if(this.tot[0].entrada == 0){
+                //   this.saldo = parseFloat(this.tot[0].saldo);
+                //   this.pa  =   parseFloat(this.tot[0].pagos);
+                //   this.toSal = this.saldo + this.pa;
                  
                   
-                } 
-                 if(this.tot[0].pagos == 0){
-                  this.saldo = parseFloat(this.tot[0].saldo);
-                  this.co  =   parseFloat(this.tot[0].entrada);
-                  this.toSal = this.saldo - this.co;
+                // } 
+                //  if(this.tot[0].pagos == 0){
+                //   this.saldo = parseFloat(this.tot[0].saldo);
+                //   this.co  =   parseFloat(this.tot[0].entrada);
+                //   this.toSal = this.saldo - this.co;
                
           
-                }
+                // }
                 
                 if(res.length == 0){
                   this.sinData = true;
                 }
       
+              
                 
-                
-            // this.totalSaldos =  this.toSal;
+           
                 
            for (let i = 0; i < this.tot.length; i++) {
                   
            this.totalCompras = this.totalCompras +  parseFloat(this.tot[i].entrada) ;
            this.totalPagos = this.totalPagos +  parseFloat(this.tot[i].pagos) ;
             
-          // this.totalSaldos = this.totalSaldos + this.totalCompras - this.totalPagos;
-          // console.log(this.totalSaldos);
-          
-      
-        
+           this.totalSaldos =  this.totalCompras - this.totalPagos ;
+
+           this.totSaldo.push(this.totalSaldos)
+            // console.log(this.totSaldo);
+
       }
       
      

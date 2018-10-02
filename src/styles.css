@@ -10,6 +10,10 @@ body{
 .cursor{
   cursor: pointer;
 }
+.left{
+  margin-left: -32px;
+}
+
 
 .main{
   margin:20px;
