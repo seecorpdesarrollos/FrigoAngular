@@ -106,8 +106,10 @@
               <h5 >Saldo Anterior : <span class="text-dark">$ {{toSal | number}}</span> </h5>
             </div>
           </div>
-          <div class="table-responsive row"  *ngIf="loader1 == true" >
-            <div class="col-md-9">
+          <div class="row">
+            <div class="col-md-12">
+          <div class=" row"  *ngIf="loader1 == true" >
+            <div class="col-md-10">
 
               <table class="table table-bordered table-hover">
                 <thead class="bg-primary text-white ">
@@ -136,26 +138,30 @@
                 </tbody>
               </table>
             </div>
-            <div class="col-md-3 left">
-              <table class="table table-bordered table-hover">
+            <div class="col-md-2 left">
+              <table class=" table table-bordered table-hover">
                   <thead class="bg-primary text-white ">
                     <tr>
-                     <td class="text-center">Saldo</td> 
+                     <td class="">Saldo</td> 
                     </tr>
                     
                   </thead>
-                <tr *ngFor="let sal of totSaldo">
-                  <td class="text-center">{{ sal + + toSal| number}}</td>
-                </tr>
+                  <tbody>
+                    <tr *ngFor="let sal of totSaldo">
+                      <td class="">{{ sal + + toSal| number}}</td>
+                    </tr>
+                  </tbody>
               </table>
             </div>
+            </div>
+          </div>
             <table class="table">
               <tr class="table-warning ">
                 <td ><strong>Movimientos Totales de Cuentas</strong></td>
-                <td class="text-center" ><strong>$ {{ totalCompras | number }}</strong></td> 
-                <td class="text-left"><strong>$ {{ totalPagos | number }}</strong></td>
+                <td class="text-right" ><strong>$ {{ totalCompras | number }}</strong></td> 
+                <td class="text-center"><strong>$ {{ totalPagos | number }}</strong></td>
                 <!-- <td></td> -->
-                <td class="text-left"><strong>$ {{ toSal + totalCompras- totalPagos | number }}</strong></td>
+                <td class="text-center"><strong>$ {{ toSal + totalCompras- totalPagos | number }}</strong></td>
              <td></td>
              <td></td>
               </tr>

@@ -280,7 +280,7 @@ salir(){
 
 
 imprimirCuenta(imprimir){
- $('#hiden').removeClass('hiden');
+//  $('#hiden').removeClass('hiden');
   location.reload();
   var contenido= document.getElementById(imprimir).innerHTML;
   var contenidoOriginal= document.body.innerHTML;
